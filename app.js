@@ -6,6 +6,7 @@ const logger = require('morgan');
 const { sequelize } = require('./db/models');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const { restoreUser } = require('./auth');
 
 const { sessionSecret } = require('./config');
 const indexRouter = require('./routes/index');
@@ -15,7 +16,7 @@ const app = express();
 
 // view engine setup
 app.set('view engine', 'pug');
-
+app.use(restoreUser);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
