@@ -3,7 +3,7 @@ var router = express.Router();
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
-const { requireAuth, restoreUser, logoutUser, requireAuth } = require('../auth');
+const { requireAuth, restoreUser, logoutUser } = require('../auth');
 
 
 /* GET users listing. */
