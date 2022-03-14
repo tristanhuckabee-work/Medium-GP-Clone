@@ -16,7 +16,7 @@ const app = express();
 
 // view engine setup
 app.set('view engine', 'pug');
-app.use(restoreUser);
+// app.use(restoreUser);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
