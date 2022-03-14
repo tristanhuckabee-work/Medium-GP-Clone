@@ -37,8 +37,6 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
       if (passwordMatched) {
         loginUser(req, res, user);
         res.redirect('/records');
-      } else {
-        
       }
     }
 
@@ -50,6 +48,10 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
   }
 
 }));
+
+router.get('/records', (req, res) => {
+  res.render('records.pug', {});
+});
 
 
 module.exports = router;
