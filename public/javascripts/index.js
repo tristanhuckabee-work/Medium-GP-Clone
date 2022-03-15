@@ -1,4 +1,4 @@
-window.addEventListener("load", (event)=>{
+window.addEventListener("load", (event) => {
     console.log("hello from javascript!")
 
     //Sign In Things
@@ -12,5 +12,8 @@ window.addEventListener("load", (event)=>{
         } else {
           signInContainer.classList.remove('show');
         }
+
     })
 })
+
+
