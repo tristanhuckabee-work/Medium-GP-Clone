@@ -25,7 +25,7 @@ block content
   footer
 
   div(class="sign-in-container")
-    p Login
+    p Sign-In
 
     +validationErrorSummary(errors)
     form(action='/' method='post' class='login-form')
@@ -34,10 +34,10 @@ block content
       input(type="text" id="userName" name="userName")
       label(for="password") Password
       input(type="password" id="password" name="password")
-      input(type="submit" value="Sign-in" id="sign-in-close")
+      input(type="submit" value="SIGN IN" id="sign-in-close")
 
   div(class="sign-up-container")
-    p Login
+    p Sign-Up
 
     +validationErrorSummary(errors)
     form(action='/' method='post' class='signup-form')
@@ -48,4 +48,4 @@ block content
       input(type="password" id="password" name="password")
       label(for="passwordConfirm") Confirm Password
       input(type="password" id="passwordConfirm" name="passwordConfirm")
-      input(type="submit" value="Sign-in" id="sign-in-close")
+      input(type="submit" value="SIGN UP" id="sign-up-close")
