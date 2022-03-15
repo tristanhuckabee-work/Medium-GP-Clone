@@ -1,6 +1,7 @@
 window.addEventListener("load", (event) => {
     console.log("hello from javascript!")
 
+
     //HEADER
     const header = document.getElementsByTagName('header')[0];
     const signInToggle = document.getElementById("sign-in-open");
@@ -8,13 +9,14 @@ window.addEventListener("load", (event) => {
     const signInContainer = document.querySelector(".sign-in-container");
     const signUpContainer = document.querySelector(".sign-up-container");
 
-    const disableselect = e => false;  
+    const disableselect = e => false;
 
-    header.onselectstart = disableselect  
+    header.onselectstart = disableselect
     header.onmousedown = disableselect
 
-    signInToggle.addEventListener('click',() =>{
-
+    signInToggle.addEventListener('click',(e) =>{
+        e.preventDefault()
+        // console.log('ClassList: ', signInContainer.classList.value)
         if ( !signInContainer.classList.value.includes('show') ) {
           if (signUpContainer.classList.value.includes('show')) {
             signUpContainer.classList.remove('show');
@@ -31,7 +33,7 @@ window.addEventListener("load", (event) => {
         if (signInContainer.classList.value.includes('show')) {
           signInContainer.classList.remove('show');
         }
-        
+
         signUpContainer.classList.add('show');
       } else {
         signUpContainer.classList.remove('show');
