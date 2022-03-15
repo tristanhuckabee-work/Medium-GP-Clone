@@ -8,8 +8,7 @@ window.addEventListener("load", (event)=>{
         signInContainer.classList.add('show');
     })
     signInContainer.addEventListener('click', (e) =>{
-        const inputChildren = Array.from(signInContainer.children)
-        // console.log(inputChildren);
+        
         signInContainer.classList.remove('show');
     })
 })
