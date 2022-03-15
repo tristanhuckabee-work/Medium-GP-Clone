@@ -112,7 +112,8 @@ router.post('/demo-user', asyncHandler(async (req, res) => {
       userName: 'John Doe'
     }
   });
-  console.log(user);
+  loginUser(req, res, user);
+  res.redirect('/records');
 }));
 
 module.exports = router;
