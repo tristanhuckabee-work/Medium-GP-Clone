@@ -8,7 +8,6 @@ window.addEventListener("load", (event)=>{
         signInContainer.classList.add('show');
     })
     signInContainer.addEventListener('click', (e) =>{
-        
         signInContainer.classList.remove('show');
     })
 })
