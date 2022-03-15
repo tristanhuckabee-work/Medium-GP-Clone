@@ -8,7 +8,10 @@ window.addEventListener("load", (event)=>{
         signInContainer.classList.add('show');
     })
     signInContainer.addEventListener('click', (e) =>{
-        
+        const children = Array.from(signInContainer.children);
+        children.addEventListener('click', e => {
+          e.preventPropagation();
+        })
         signInContainer.classList.remove('show');
     })
 })
