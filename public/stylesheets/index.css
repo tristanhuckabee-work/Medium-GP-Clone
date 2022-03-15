@@ -4,6 +4,7 @@ h1 {
    margin-top: 0;
    margin-bottom: 0;
    font-family: 'Abril Fatface', cursive;
+   color: darkgrey;
 }
 body {
     margin: 0;
@@ -14,8 +15,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: whitesmoke;
+    background-color: #191d26;
     position: sticky;
+    color: white;
 }
 .buttons{
     display: flex;
@@ -37,7 +39,8 @@ header {
   cursor: pointer;
 }
 .signup {
-  border: 2px solid red;
+  border: 2px solid #b39856;
+  background-color: #b39856;
   border-radius: 10px;
   padding: 3px 10px;
   margin-left: 10px;
