@@ -17,6 +17,9 @@ window.addEventListener("load", (event) => {
     signInToggle.addEventListener('click',() =>{
         console.log('ClassList: ', signInContainer.classList.value)
         if ( !signInContainer.classList.value.includes('show') ) {
+          if (signUpContainer.classList.value.includes('show')) {
+            signUpContainer.classList.remove('show');
+          }
           signInContainer.classList.add('show');
         } else {
           signInContainer.classList.remove('show');
@@ -25,6 +28,9 @@ window.addEventListener("load", (event) => {
     signUpToggle.addEventListener('click',() =>{
       console.log('ClassList: ', signUpContainer.classList.value)
       if ( !signUpContainer.classList.value.includes('show') ) {
+        if (signInContainer.classList.value.includes('show')) {
+          signInContainer.classList.remove('show');
+        }
         signUpContainer.classList.add('show');
       } else {
         signUpContainer.classList.remove('show');
