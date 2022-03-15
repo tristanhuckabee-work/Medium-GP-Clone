@@ -10,21 +10,54 @@ body {
     font-family: 'Noto Sans', sans-serif;
 }
 header {
-    padding: 0 10px;
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
-    margin-top: 0;
     align-items: center;
     background-color: whitesmoke;
+    position: sticky;
 }
+.buttons{
+    display: flex;
+    width: 300px;
+    justify-content: flex-end;
+    gap: 20px;
+    align-items: center;
+}
+.main-img {
+    height: 50vh;
+}
+.img-div{
+    display: flex;
+    justify-content: center;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+}
+.signin, .signup {
+  cursor: pointer;
+}
+.signup {
+  border: 2px solid red;
+  border-radius: 10px;
+  padding: 3px 10px;
+  margin-left: 10px;
+}
+
 .sign-in-container{
     display: none;
     background-color: rgba(0, 0, 0, 0.1);
     padding-left: 50%;
     padding-right: 50%;
 }
+.sign-up-container{
+  display: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding-left: 50%;
+  padding-right: 50%;
+}
 .show{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
