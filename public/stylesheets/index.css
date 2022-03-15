@@ -65,6 +65,11 @@ header {
     align-items: center;
 /* Note: backdrop-filter has minimal browser support */
 }
+.alert-danger{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
 #sign-in-close{
     position: absolute;
     width: 257px;
@@ -101,7 +106,7 @@ header {
     font-size: 15px;
     line-height: 23px;
 
-    color: #000000;
+    color: white;
 }
 
 #userName-input{
@@ -116,7 +121,7 @@ header {
     font-size: 20px;
     line-height: 23px;
 
-    color: #000000;
+    color: white;
 }
 
 #password-input{
@@ -131,7 +136,7 @@ header {
     font-size: 20px;
     line-height: 23px;
 
-    color: #000000;
+    color: white;
 }
 
 .inputBox{

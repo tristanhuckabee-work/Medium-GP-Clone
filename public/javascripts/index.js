@@ -16,7 +16,7 @@ window.addEventListener("load", (event) => {
 
     signInToggle.addEventListener('click',(e) =>{
         e.preventDefault()
-        console.log('ClassList: ', signInContainer.classList.value)
+        // console.log('ClassList: ', signInContainer.classList.value)
         if ( !signInContainer.classList.value.includes('show') ) {
           if (signUpContainer.classList.value.includes('show')) {
             signUpContainer.classList.remove('show');
