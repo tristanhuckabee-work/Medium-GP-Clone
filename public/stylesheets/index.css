@@ -5,6 +5,7 @@ h1 {
    margin-top: 0;
    margin-bottom: 0;
    font-family: 'Abril Fatface', cursive;
+   color: darkgrey;
 }
 /* body */
 body {
@@ -17,8 +18,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: whitesmoke;
+    background-color: #191d26;
     position: sticky;
+    color: white;
 }
 
 
@@ -49,7 +51,8 @@ header {
 }
 /* sign up button */
 .signup {
-  border: 2px solid red;
+  border: 2px solid #b39856;
+  background-color: #b39856;
   border-radius: 10px;
   padding: 3px 10px;
   margin-left: 10px;
