@@ -1,4 +1,4 @@
-window.addEventListener("load", (event)=>{
+window.addEventListener("load", (event) => {
     console.log("hello from javascript!")
     const openSignIn = document.getElementById("sign-in-open");
     const signInContainer = document.querySelector(".sign-in-container");
@@ -11,3 +11,5 @@ window.addEventListener("load", (event)=>{
         signInContainer.classList.remove('show');
     })
 })
+
+

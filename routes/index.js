@@ -23,27 +23,27 @@ const loginValidators = [
 router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
   const { userName, password } = req.body;
   let errors = [];
-
   const validatorErrors = validationResult(req);
-  if (validatorErrors.isEmpty()) {
-    const user = await db.User.findOne({
-      where: {
-        userName
-      }
-    });
 
-    if (user) {
+  if (validatorErrors.isEmpty()) {
+    const user = await db.User.findOne({ where: { userName } });
+
+    console.log('\nthis is the user', user);
+    //if user exists use bcrypt compare 
+    if (user !== null) {
       const passwordMatched = await bcrypt.compare(password, user.hashedPassword.toString());
+
       if (passwordMatched) {
         loginUser(req, res, user);
-        res.redirect('/records');
-      } else errors.push('Sign In Failed, Username and Password did not match');
+        return res.redirect('/records');
+      }
     }
+
+    errors.push('Sign In Failed, Username and Password did not match');
   } else {
     errors = validatorErrors.array().map(error => error.msg);
-    res.render('index', { errors, csrfToken: req.csrfToken(), userName });
   }
-
+  res.render('index', { errors, csrfToken: req.csrfToken(), userName });
 }));
 
 router.get('/records', requireAuth, (req, res) => {
