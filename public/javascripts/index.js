@@ -5,13 +5,15 @@ window.addEventListener("load", (event)=>{
     // const closeSignIn = document.getElementById("sign-in-close")
 
     openSignIn.addEventListener('click',() =>{
-        signInContainer.classList.add('show');
+        if ( !signInContainer.classList.includes('show') ) {
+          signInContainer.classList.add('show');
+        } else {
+          signInContainer.classList.remove('show');
+        }
     })
-    signInContainer.addEventListener('click', (e) =>{
-        const children = Array.from(signInContainer.children);
-        children.addEventListener('click', e => {
-          e.preventPropagation();
-        })
-        signInContainer.classList.remove('show');
-    })
+    // signInContainer.addEventListener('click', (e) =>{  
+      
+    //   if ()
+    //     signInContainer.classList.remove('show');
+    // })
 })
