@@ -32,7 +32,7 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
   if (validatorErrors.isEmpty()) {
     const user = await db.User.findOne({ where: { userName } });
 
-    //if user exists use bcrypt compare 
+    //if user exists use bcrypt compare
     if (user !== null) {
       const passwordMatched = await bcrypt.compare(password, user.hashedPassword.toString());
 
