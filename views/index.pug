@@ -12,7 +12,8 @@ append head
 block content
   script(src="../public/javascripts/index.js")
   header
-    div
+    div(class='logo')
+      img(src='/images/vinyl-favicon.svg' class='favi')
       h1 VINYL
     div(class='buttons')
       p:a(type='button' class='signin' id='sign-in-open') Sign-in
@@ -20,10 +21,10 @@ block content
   main
     div(class='img-div')
       img(src='/images/main.jpg' class='main-img')
-    div
+    div(class='trending')
+      h3 Trending on vinyl
 
   footer
-
   div(class="sign-in-container")
     p Sign-In
 
