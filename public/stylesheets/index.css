@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Sans&display=swap');
 
+/* H1 = ICON */
 h1 {
    margin-top: 0;
    margin-bottom: 0;
    font-family: 'Abril Fatface', cursive;
 }
+/* body */
 body {
     margin: 0;
     font-family: 'Noto Sans', sans-serif;
 }
+/* header aka NAV BAR */
 header {
     padding: 15px 30px;
     display: flex;
@@ -17,6 +20,8 @@ header {
     background-color: whitesmoke;
     position: sticky;
 }
+
+
 .buttons{
     display: flex;
     width: 300px;
@@ -24,24 +29,58 @@ header {
     gap: 20px;
     align-items: center;
 }
+
+
 .main-img {
     height: 50vh;
 }
+
+
 .img-div{
     display: flex;
     justify-content: center;
     border-top: solid 1px black;
     border-bottom: solid 1px black;
 }
+
+
 .signin, .signup {
   cursor: pointer;
 }
+/* sign up button */
 .signup {
   border: 2px solid red;
   border-radius: 10px;
   padding: 3px 10px;
   margin-left: 10px;
 }
+
+/* SIGN IN */
+
+.sign-in-container{
+    background-color: rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 5;
+    margin: 0 auto;
+    position: absolute;
+    width: 488px;
+    height: 547px;
+    background: #191d26;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* backdrop-filter: grayscale(30%); */
+    border-radius: 10px;
+    /* justify-content: space-between;
+    align-items: center; */
+    color: white;
+}
+
+.show{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+}
+/* this keeps sign in modal center */
 .sign-in-content{
     display: flex;
     align-items: center;
@@ -49,68 +88,59 @@ header {
     width: 100%;
     height: 100%;
 }
-.sign-in-container{
-    z-index: 5;
-    display: none;
-    background-color: rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    position: absolute;
-    width: 488px;
-    height: 547px;
-    background: #191d26;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    backdrop-filter: grayscale(30%);
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-/* Note: backdrop-filter has minimal browser support */
+/* login form */
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
 }
-.alert-danger{
-    position: relative;
-    justify-content: center;
-    align-items: center;
+
+.login-form input{
+    margin-left: 10px;
+    margin-top: 10px;
 }
-#sign-in-close{
-    position: absolute;
+.alert{
+    background-color: rgba(255,0,0, 0.2);
+    border: 1px inset rgba(255,0,0, 0.4);
+    border-radius: 5px;
+    padding: 10px;
+}
+/* #sign-in-close{
+    display: flex;
+
+    margin-top: 25px;
     width: 257px;
     height: 40px;
     left: 115px;
-    top: 262px;
+
     background: #b39856;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
-}
-.sign-up-container{
-    z-index: 5;
-  display: none;
-  background-color: rgba(0, 0, 0, 0.1);
-  padding-left: 50%;
-  padding-right: 50%;
-}
-.show{
+} */
+
+
+/* #sign-in-instructions{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-#sign-in-instructions{
-    position: absolute;
+    justify-content: space-evenly;
+    align-items: flex-start;
     width: 298px;
     height: 23px;
-    left: 25px;
-    top: 25px;
 
     font-weight: 700;
     font-size: 15px;
     line-height: 23px;
 
     color: white;
-}
+} */
 
-#userName-input{
-    position: absolute;
+
+/* sign in input boxes */
+/* #userName-input{
+
     width: 135px;
     height: 23px;
     left: 115px;
@@ -122,10 +152,9 @@ header {
     line-height: 23px;
 
     color: white;
-}
-
-#password-input{
-    position: absolute;
+} */
+/* #password-input{
+    margin-top: 35px;
     width: 95px;
     height: 23px;
     left: 115px;
@@ -137,14 +166,25 @@ header {
     line-height: 23px;
 
     color: white;
-}
+} */
 
-.inputBox{
+/* input boxes styling */
+/* .inputBox{
     width: 257px;
     height: 25px;
-    left: 115px;
-    top: 204px;
     background: #C4C4C4;
     border-radius: 2px;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+} */
+
+
+
+/* SIGN UP */
+.sign-up-container{
+    /* display: flex;
+    flex-direction: column; */
+    display: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding-left: 50%;
+    padding-right: 50%;
 }
