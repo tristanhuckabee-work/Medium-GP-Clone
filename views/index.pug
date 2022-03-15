@@ -9,23 +9,20 @@ append head
 
 block content
   header
-    div 
-      h1= title
-  main 
+    div
+      h1 VINYL
+    div
+      p:a(type='button' class='login') Log In
+      button(type='button' class='signup') Sign Up
+  main
 
-  footer 
+  footer
 
-  div
-    button(type='button' class='login') Log In
-
-  div 
-    p Login
-    
-    +validationErrorSummary(errors)
-    form(action='/' method='post' class='login-form')
-      input(type='hidden' name='_csrf' value=csrfToken)
-      label(for="userName") User-Name
-      input(type="text" id="userName" name="userName")
-      label(for="password") Password 
-      input(type="password" id="password" name="password")
-      input(type="submit" value="submit")
+      +validationErrorSummary(errors)
+      form(action='/' method='post' class='login-form')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        label(for="userName") User-Name
+        input(type="text" id="userName" name="userName")
+        label(for="password") Password
+        input(type="password" id="password" name="password")
+        input(type="submit" value="submit")
