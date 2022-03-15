@@ -22,13 +22,17 @@ block content
   footer
 
   div(class="sign-in-container")
-    p Login
+    div(id="sign-in-instructions")
+      p Enter your information to Sign In:
 
     +validationErrorSummary(errors)
     form(action='/' method='post' class='login-form')
       input(type='hidden' name='_csrf' value=csrfToken)
-      label(for="userName") User-Name
-      input(type="text" id="userName" name="userName")
-      label(for="password") Password
-      input(type="password" id="password" name="password")
-      input(type="submit" value="Sign-in" id="sign-in-close")
+      div(id="userName-input")
+        label(for="userName") User-Name
+        input(type="text" id="userName" name="userName" class="inputBox")
+      div(id="password-input")
+        label(for="password") Password
+        input(type="password" id="password" name="password" class="inputBox")
+      div
+        input(type="submit" value="Sign-in" id="sign-in-close")

@@ -20,11 +20,85 @@ header {
 .sign-in-container{
     display: none;
     background-color: rgba(0, 0, 0, 0.1);
-    padding-left: 50%;
-    padding-right: 50%;
+    margin-left: 50%;
+    margin-right: 50%;
+    /* position: relative; */
+    width: 488px;
+    height: 547px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+/* Note: backdrop-filter has minimal browser support */
+}
+#sign-in-close{
+    position: absolute;
+    width: 257px;
+    height: 40px;
+    left: 115px;
+    top: 262px;
+    background: #B46565;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
 }
 .show{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+#sign-in-instructions{
+    position: absolute;
+    width: 298px;
+    height: 23px;
+    left: 25px;
+    top: 25px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+#userName-input{
+    position: absolute;
+    width: 135px;
+    height: 23px;
+    left: 115px;
+    top: 100px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+
+}
+
+#password-input{
+    position: absolute;
+    width: 95px;
+    height: 23px;
+    left: 115px;
+    top: 181px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+.inputBox{
+    background: #C4C4C4;
+    border-radius: 2px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
