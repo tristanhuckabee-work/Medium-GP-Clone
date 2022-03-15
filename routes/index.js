@@ -23,7 +23,7 @@ const loginValidators = [
 ];
 
 router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
-  // console.log('\nthis is the req.body', req.body, '\n')
+  console.log('\nthis is the req.body', req.body, '\n')
   const { userName, password } = req.body;
 
   let errors = [];
@@ -58,7 +58,7 @@ router.get('/records', requireAuth, (req, res) => {
 const userValidators = [
   check('userName')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a value for First Name')
+    .withMessage('Please provide a value for userName')
     .isLength({ max: 50 })
     .withMessage('First Name must not be more than 50 characters long'),
   check('password')
@@ -82,25 +82,30 @@ const userValidators = [
 ]
 //Not sure what the route should be for sign up
 router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req, res, next) => {
-  console.log(req.body);
-  const { userName: usernameSignUp, password: passwordSignUp } = req.body;
+  // console.log('\nthis is req.body', req.body);
+  const { userName, password: passwordSignUp } = req.body;
+
+  console.log(userName, passwordSignUp)
 
   const userSignUp = db.User.build({
-    usernameSignUp,
+    userName,
   });
 
   const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
+    console.log('\nthis is if validatorErrors is empty')
     const hashedPassword = await bcrypt.hash(passwordSignUp, 10);
-    user.hashedPassword = hashedPassword;
-    await user.save();
+    userSignUp.hashedPassword = hashedPassword;
+    await userSignUp.save();
+    loginUser(req, res, userSignUp)
     res.redirect('/records');
   } else {
+    console.log('\nthis is if validatorErros isn\'t empty');
     const errorsSignup = validatorErrors.array().map(error => error.msg);
     res.render('index', {
       title: 'filler',
-      usernameSignUp,
+      userName,
       errorsSignup,
       csrfToken: req.csrfToken(),
     });
