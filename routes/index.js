@@ -28,7 +28,6 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
   if (validatorErrors.isEmpty()) {
     const user = await db.User.findOne({ where: { userName } });
 
-    console.log('\nthis is the user', user);
     //if user exists use bcrypt compare 
     if (user !== null) {
       const passwordMatched = await bcrypt.compare(password, user.hashedPassword.toString());
@@ -105,6 +104,15 @@ router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req,
 router.post('/logout', asyncHandler(async (req, res) => {
   logoutUser(req, res);
   res.redirect('/');
+}));
+
+router.post('/demo-user', asyncHandler(async (req, res) => {
+  const user = await db.User.findOne({
+    where: {
+      userName: 'John Doe'
+    }
+  });
+  console.log(user);
 }));
 
 module.exports = router;
