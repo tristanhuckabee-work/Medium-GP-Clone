@@ -5,7 +5,8 @@ window.addEventListener("load", (event)=>{
     // const closeSignIn = document.getElementById("sign-in-close")
 
     openSignIn.addEventListener('click',() =>{
-        if ( !signInContainer.classList.includes('show') ) {
+        console.log('ClassList: ', signInContainer.classList.value)
+        if ( !signInContainer.classList.value.includes('show') ) {
           signInContainer.classList.add('show');
         } else {
           signInContainer.classList.remove('show');
