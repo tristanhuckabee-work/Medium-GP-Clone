@@ -7,9 +7,11 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth, restoreUser, logoutUser, loginUser } = require('../auth');
 
 /* GET home page. */
-router.get('/', csrfProtection, function (req, res, next) {
-  res.render('index', { title: 'a/A Express Skeleton Home', csrfToken: req.csrfToken() });
+router.get('/', csrfProtection, (req, res, next) => {
+  const user = db.User.build();
+  res.render('index', { title: 'a/A Express Skeleton Home', user, csrfToken: req.csrfToken() });
 });
+
 
 const loginValidators = [
   check('userName')
@@ -21,14 +23,15 @@ const loginValidators = [
 ];
 
 router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
+  console.log('\nthis is the req.body', req.body, '\n')
   const { userName, password } = req.body;
+
   let errors = [];
   const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
     const user = await db.User.findOne({ where: { userName } });
 
-    console.log('\nthis is the user', user);
     //if user exists use bcrypt compare 
     if (user !== null) {
       const passwordMatched = await bcrypt.compare(password, user.hashedPassword.toString());
@@ -43,6 +46,7 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
   } else {
     errors = validatorErrors.array().map(error => error.msg);
   }
+  console.log('\nthis is the userName', userName, '\n')
   res.render('index', { errors, csrfToken: req.csrfToken(), userName });
 }));
 
@@ -54,7 +58,7 @@ router.get('/records', requireAuth, (req, res) => {
 const userValidators = [
   check('userName')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a value for First Name')
+    .withMessage('Please provide a value for userName')
     .isLength({ max: 50 })
     .withMessage('First Name must not be more than 50 characters long'),
   check('password')
@@ -78,33 +82,49 @@ const userValidators = [
 ]
 //Not sure what the route should be for sign up
 router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req, res, next) => {
-  const { userName, password } = req.body;
+  // console.log('\nthis is req.body', req.body);
+  const { userName, password: passwordSignUp } = req.body;
 
-  const user = db.User.build({
+  console.log(userName, passwordSignUp)
+
+  const userSignUp = db.User.build({
     userName,
   });
 
   const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    user.hashedPassword = hashedPassword;
-    await user.save();
+    console.log('\nthis is if validatorErrors is empty')
+    const hashedPassword = await bcrypt.hash(passwordSignUp, 10);
+    userSignUp.hashedPassword = hashedPassword;
+    await userSignUp.save();
+    loginUser(req, res, userSignUp)
     res.redirect('/records');
   } else {
-    const errors = validatorErrors.array().map(error => error.msg);
-    res.render('sign-up', {
+    console.log('\nthis is if validatorErros isn\'t empty');
+    const errorsSignup = validatorErrors.array().map(error => error.msg);
+    res.render('index', {
       title: 'filler',
-      user,
-      errors,
+      userName,
+      errorsSignup,
       csrfToken: req.csrfToken(),
-    })
+    });
   }
 }));
 
 router.post('/logout', asyncHandler(async (req, res) => {
   logoutUser(req, res);
   res.redirect('/');
+}));
+
+router.post('/demo-user', asyncHandler(async (req, res) => {
+  const user = await db.User.findOne({
+    where: {
+      userName: 'John Doe'
+    }
+  });
+  loginUser(req, res, user);
+  res.redirect('/records');
 }));
 
 module.exports = router;
