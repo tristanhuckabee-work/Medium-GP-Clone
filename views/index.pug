@@ -30,22 +30,27 @@ block content
     +validationErrorSummary(errors)
     form(action='/' method='post' class='login-form')
       input(type='hidden' name='_csrf' value=csrfToken)
-      label(for="userName") User-Name
-      input(type="text" id="userName" name="userName")
-      label(for="password") Password
-      input(type="password" id="password" name="password")
+      +field('username', 'userName', userName)
+      +field('Password', 'password', null, 'password')
       input(type="submit" value="SIGN IN" id="sign-in-close")
+      //- label(for="userName") User-Name
+      //- input(type="text" id="userName" name="userName" value=user.userName)
+      //- label(for="password") Password
+      //- input(type="password" id="password" name="password")
 
   div(class="sign-up-container")
     p Sign-Up
 
-    +validationErrorSummary(errors)
-    form(action='/' method='post' class='signup-form')
+    +validationErrorSummary(errorsSignup)
+    form(action='/sign-up' method='post' class='signup-form')
       input(type='hidden' name='_csrf' value=csrfToken)
-      label(for="userName") User-Name
-      input(type="text" id="userName" name="userName")
-      label(for="password") Password
-      input(type="password" id="password" name="password")
-      label(for="passwordConfirm") Confirm Password
-      input(type="password" id="passwordConfirm" name="passwordConfirm")
+      //- label(for="userName") Username
+      //- input(type="text" id="userName" name="userName")
+      //- label(for="password") Password
+      //- input(type="password" id="password" name="password")
+      //- label(for="passwordConfirm") Confirm Password
+      //- input(type="password" id="passwordConfirm" name="passwordConfirm")
+      +field('Username', 'username', usernameSignUp)
+      +field('Password', 'password', null, 'password')
+      +field('Confirm Password', 'confirmPassword', '', 'password')
       input(type="submit" value="SIGN UP" id="sign-up-close")

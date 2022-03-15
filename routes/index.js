@@ -7,9 +7,11 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth, restoreUser, logoutUser, loginUser } = require('../auth');
 
 /* GET home page. */
-router.get('/', csrfProtection, function (req, res, next) {
-  res.render('index', { title: 'a/A Express Skeleton Home', csrfToken: req.csrfToken() });
+router.get('/', csrfProtection, (req, res, next) => {
+  const user = db.User.build();
+  res.render('index', { title: 'a/A Express Skeleton Home', user, csrfToken: req.csrfToken() });
 });
+
 
 const loginValidators = [
   check('userName')
@@ -21,7 +23,9 @@ const loginValidators = [
 ];
 
 router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
+  // console.log('\nthis is the req.body', req.body, '\n')
   const { userName, password } = req.body;
+
   let errors = [];
   const validatorErrors = validationResult(req);
 
@@ -42,6 +46,7 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
   } else {
     errors = validatorErrors.array().map(error => error.msg);
   }
+  console.log('\nthis is the userName', userName, '\n')
   res.render('index', { errors, csrfToken: req.csrfToken(), userName });
 }));
 
@@ -77,27 +82,28 @@ const userValidators = [
 ]
 //Not sure what the route should be for sign up
 router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req, res, next) => {
-  const { userName, password } = req.body;
+  console.log(req.body);
+  const { userName: usernameSignUp, password: passwordSignUp } = req.body;
 
-  const user = db.User.build({
-    userName,
+  const userSignUp = db.User.build({
+    usernameSignUp,
   });
 
   const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(passwordSignUp, 10);
     user.hashedPassword = hashedPassword;
     await user.save();
     res.redirect('/records');
   } else {
-    const errors = validatorErrors.array().map(error => error.msg);
-    res.render('sign-up', {
+    const errorsSignup = validatorErrors.array().map(error => error.msg);
+    res.render('index', {
       title: 'filler',
-      user,
-      errors,
+      usernameSignUp,
+      errorsSignup,
       csrfToken: req.csrfToken(),
-    })
+    });
   }
 }));
 
