@@ -16,7 +16,7 @@ block content
       h1 VINYL
     div
       p:a(type='button' class='signin' id='sign-in-open') Sign-in
-      button(type='button' class='signup') Sign Up
+      p:a(type='button' class='signup' id='sign-up-open') Sign-Up
   main
 
   footer
@@ -31,4 +31,18 @@ block content
       input(type="text" id="userName" name="userName")
       label(for="password") Password
       input(type="password" id="password" name="password")
+      input(type="submit" value="Sign-in" id="sign-in-close")
+
+  div(class="sign-up-container")
+    p Login
+
+    +validationErrorSummary(errors)
+    form(action='/' method='post' class='signup-form')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      label(for="userName") User-Name
+      input(type="text" id="userName" name="userName")
+      label(for="password") Password
+      input(type="password" id="password" name="password")
+      label(for="passwordConfirm") Confirm Password
+      input(type="password" id="passwordConfirm" name="passwordConfirm")
       input(type="submit" value="Sign-in" id="sign-in-close")
