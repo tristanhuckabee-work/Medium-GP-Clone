@@ -24,19 +24,19 @@ block content
 
   footer
 
-  div(class="sign-in-container")
-    p Sign-In
-
-    +validationErrorSummary(errors)
-    form(action='/' method='post' class='login-form')
-      input(type='hidden' name='_csrf' value=csrfToken)
-      +field('username', 'userName', userName)
-      +field('Password', 'password', null, 'password')
-      input(type="submit" value="SIGN IN" id="sign-in-close")
-      //- label(for="userName") User-Name
-      //- input(type="text" id="userName" name="userName" value=user.userName)
-      //- label(for="password") Password
-      //- input(type="password" id="password" name="password")
+  div(class="sign-in-content")
+    div(class="sign-in-container")
+      div(id="sign-in-instructions")
+        p Enter your information to Sign In:
+        +validationErrorSummary(errors)
+        form(action='/' method='post' class='login-form')
+          input(type='hidden' name='_csrf' value=csrfToken)
+          div(id="userName-input")
+            +field('inputBox', 'username', 'userName', userName)
+          div(id="password-input")
+            +field('inputBox', 'Password', 'password', null, 'password')
+          div
+            input(type="submit" value="Sign-in" id="sign-in-close")
 
   div(class="sign-up-container")
     p Sign-Up
@@ -44,13 +44,7 @@ block content
     +validationErrorSummary(errorsSignup)
     form(action='/sign-up' method='post' class='signup-form')
       input(type='hidden' name='_csrf' value=csrfToken)
-      //- label(for="userName") Username
-      //- input(type="text" id="userName" name="userName")
-      //- label(for="password") Password
-      //- input(type="password" id="password" name="password")
-      //- label(for="passwordConfirm") Confirm Password
-      //- input(type="password" id="passwordConfirm" name="passwordConfirm")
-      +field('Username', 'userName', userName)
-      +field('Password', 'password', null, 'password')
-      +field('Confirm Password', 'confirmPassword', '', 'password')
+      +field('inputBox', 'Username', 'userName', userName)
+      +field('inputBox', 'Password', 'password', null, 'password')
+      +field('inputBox', 'Confirm Password', 'confirmPassword', '', 'password')
       input(type="submit" value="SIGN UP" id="sign-up-close")
