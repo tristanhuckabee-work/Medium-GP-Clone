@@ -15,11 +15,14 @@ block content
 
   footer 
 
+  div
+    button(type='button' class='login') Log In
+
   div 
     p Login
     
     +validationErrorSummary(errors)
-    form(action='/' method='post')
+    form(action='/' method='post' class='login-form')
       input(type='hidden' name='_csrf' value=csrfToken)
       label(for="userName") User-Name
       input(type="text" id="userName" name="userName")
