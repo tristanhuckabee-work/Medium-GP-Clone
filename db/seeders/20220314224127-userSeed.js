@@ -99,6 +99,46 @@ module.exports = {
           image: null,
           createdAt: new Date(),
           updatedAt: new Date()
+        },
+        {
+          userName: 'KanyeWest',
+          hashedPassword: bcrypt.hashSync('sketeDavidson', 10),
+          bio: "Skete Davidson IS WITH MY WIFE!! RIP CHANCE THE RAPPER, HE AINT DEAD BUT HIS MUSIC IS!",
+          image: null,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userName: 'XXXTentacion',
+          hashedPassword: bcrypt.hashSync('moonlight00', 10),
+          bio: "SPOTLIGH OOO MOONLIGHT OOOO",
+          image: null,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userName: 'SwitchMan227',
+          hashedPassword: bcrypt.hashSync('24681012', 10),
+          bio: 'I love nintendo! Especially the switch and I love nintendo     music!',
+          image: null,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userName: 'LilMuzzle',
+          hashedPassword: bcrypt.hashSync('buddyTheD0g8080', 10),
+          bio: "I love Dogs",
+          image: null,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userName: 'BEEPBOOPBEEP',
+          hashedPassword: bcrypt.hashSync('182A#,ai!', 10),
+          bio: "I like league!",
+          image: null,
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
     ], {});
   },

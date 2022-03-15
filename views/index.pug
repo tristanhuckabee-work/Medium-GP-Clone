@@ -28,7 +28,7 @@ block content
   div(class="sign-in-content")
     div(class="sign-in-container")
       div(id="sign-in-instructions")
-        p Enter your information to Sign In:
+        //- p Enter your information to Sign In:
         +validationErrorSummary(errors)
         form(action='/' method='post' class='login-form')
           input(type='hidden' name='_csrf' value=csrfToken)
@@ -38,6 +38,7 @@ block content
             +field('inputBox', 'Password', 'password', null, 'password')
           div
             input(type="submit" value="Sign-in" id="sign-in-close")
+      p Enter your information to Sign In:
 
   div(class="sign-up-container")
     p Sign-Up
