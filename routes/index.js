@@ -46,7 +46,7 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
 
 }));
 
-router.get('/records', (req, res) => {
+router.get('/records', requireAuth, (req, res) => {
   res.render('records.pug', {});
 });
 
