@@ -51,6 +51,54 @@ module.exports = {
           image: null,
           createdAt: new Date(),
           updatedAt: new Date()
+        },
+        {
+          userName: 'doodlebob',
+          hashedPassword: bcrypt.hashSync('123', 10),
+          bio: 'mehoymioy',
+          image: null,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userName: 'batman',
+          hashedPassword: bcrypt.hashSync('justice', 10),
+          bio: 'justice',
+          image: null,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userName: 'walterWhite',
+          hashedPassword: bcrypt.hashSync('iamthedanger', 10),
+          bio: 'local dealer',
+          image: null,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userName: 'jesse',
+          hashedPassword: bcrypt.hashSync('biatch', 10),
+          bio: 'local dealer',
+          image: null,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userName: 'TheRiddler',
+          hashedPassword: bcrypt.hashSync('justice', 10),
+          bio: 'if you are justice do not lie',
+          image: null,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userName: 'spongebob1435',
+          hashedPassword: bcrypt.hashSync('123', 10),
+          bio: 'employee of the month 20 years in a row',
+          image: null,
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
     ], {});
   },
