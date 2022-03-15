@@ -10,9 +10,9 @@ h1 {
     padding-left: 50%;
     padding-right: 50%;
 }
-
 .show{
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
