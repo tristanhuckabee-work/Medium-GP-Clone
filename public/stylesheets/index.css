@@ -1,5 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Sans&display=swap');
+
 h1 {
-    color: #555555;
+   margin-top: 0;
+   margin-bottom: 0;
+   font-family: 'Abril Fatface', cursive;
+}
+body {
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+}
+header {
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0;
+    align-items: center;
+    background-color: whitesmoke;
 }
 .sign-in-container{
     /* display: none; */
@@ -15,4 +31,3 @@ h1 {
     align-items: center;
     justify-content: center;
 }
-
