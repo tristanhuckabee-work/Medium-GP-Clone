@@ -4,11 +4,12 @@ window.addEventListener("load", (event) => {
     const signInContainer = document.querySelector(".sign-in-container");
     // const closeSignIn = document.getElementById("sign-in-close")
 
-    // openSignIn.addEventListener('click',() =>{
-    //     signInContainer.classList.add('show');
-    // })
-    // signInContainer.addEventListener('click', (e) =>{
-
-    //     signInContainer.classList.remove('show');
-    // })
+    openSignIn.addEventListener('click',() =>{
+        signInContainer.classList.add('show');
+    })
+    signInContainer.addEventListener('click', (e) =>{
+        signInContainer.classList.remove('show');
+    })
 })
+
+
