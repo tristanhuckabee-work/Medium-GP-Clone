@@ -47,7 +47,14 @@ footer {
     border-bottom: solid 1px black;
 }
 
-
+.sign-up-container{
+    /* display: flex;
+    flex-direction: column; */
+    display: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding-left: 50%;
+    padding-right: 50%;
+}
 .signin, .signup {
   cursor: pointer;
 }
@@ -62,7 +69,7 @@ footer {
 
 /* SIGN IN */
 
-.sign-in-container{
+.sign-in-container, .sign-up-container{
     background-color: rgba(0, 0, 0, 0.1);
     display: none;
     z-index: 5;
@@ -185,11 +192,3 @@ footer {
 
 
 /* SIGN UP */
-.sign-up-container{
-    /* display: flex;
-    flex-direction: column; */
-    display: none;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding-left: 50%;
-    padding-right: 50%;
-}
