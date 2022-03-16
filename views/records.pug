@@ -11,4 +11,6 @@ block content
 
   include navbar
   main
-    h1 records and such
+    for record in records
+      h1= record.title
+      p= record.description
