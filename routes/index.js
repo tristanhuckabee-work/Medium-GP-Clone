@@ -54,11 +54,11 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
 }));
 
 router.get('/records', requireAuth, async(req, res) => {
+  const pk = req.session.auth.userId
   const records = await db.Record.findAll({
     include: 'User'
   })
-
-  res.render('records', {records});
+  res.render('records', {records, pk});
 });
 
 
