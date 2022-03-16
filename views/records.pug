@@ -12,5 +12,6 @@ block content
   include navbar
   main
     for record in records
-      h2= record.title
-      p= record.description
+      div(class="records")
+        h2= record.title
+        p= record.description
