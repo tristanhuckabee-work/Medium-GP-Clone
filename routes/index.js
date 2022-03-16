@@ -4,13 +4,13 @@ const bcrypt = require('bcryptjs');
 const db = require('../db/models')
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
-const { requireAuth,logoutUser , loginUser } = require('../auth');
+const { requireAuth, logoutUser, loginUser } = require('../auth');
 
 /* GET home page. */
 router.get('/', csrfProtection, (req, res) => {
-  if(res.locals.authenticated){
+  if (res.locals.authenticated) {
     res.redirect('/records')
-  }else{
+  } else {
     const user = db.User.build();
     res.render('index', { user, csrfToken: req.csrfToken() });
   }
@@ -53,9 +53,12 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
   res.render('index', { errors, csrfToken: req.csrfToken(), userName });
 }));
 
-router.get('/records', requireAuth, (req, res) => {
-  const pk = req.session.auth.userId
-  res.render('records', {pk});
+router.get('/records', requireAuth, async(req, res) => {
+  const records = await db.Record.findAll({
+    include: 'User'
+  })
+
+  res.render('records', {records});
 });
 
 
@@ -116,12 +119,12 @@ router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req,
   }
 }));
 
-router.post('/logout', asyncHandler(async (req, res) => {
+router.get('/logout', asyncHandler(async (req, res) => {
   logoutUser(req, res);
   res.redirect('/');
 }));
 
-router.post('/demo-user', asyncHandler(async (req, res) => {
+router.get('/demo-user', asyncHandler(async (req, res) => {
   const user = await db.User.findOne({
     where: {
       userName: 'John Doe'
