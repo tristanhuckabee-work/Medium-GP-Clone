@@ -8,7 +8,7 @@ const { requireAuth, restoreUser, logoutUser } = require('../auth');
 
 
 /* GET users listing. */
-router.get('/:id', csrfProtection, async(req, res, next) => {
+router.get('/:id', async(req, res, next) => {
   if(res.locals.authenticated){
     const pk = req.session.auth.userId
     const id = req.params.id
