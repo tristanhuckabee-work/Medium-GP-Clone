@@ -9,18 +9,8 @@ append head
 
 block content
 
-  nav
-    div
-      img(src='/favicon.svg' class='nav-favi')
-    div
-      form(action='/records' method='get')
-        button(type='submit') Home
-    div
-      form(action='/records' method='get')
-        button(type='submit') profile
-      form(action='/logout' method='post')
-        button(type='submit') Logout
+  include navbar
   main
     h1 records and such
   sidebar
-   h1 profile stuff
+    h1 profile stuff

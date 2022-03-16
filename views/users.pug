@@ -1,0 +1,12 @@
+extends layout
+include utils
+
+append head
+    link(rel="stylesheet" href="/stylesheets/records.css")
+    script(src="/javascripts/index.js" type="module" defer)
+block content
+    include navbar
+    main
+        h1= pk
+    sidebar
+        h1 profile stuff
