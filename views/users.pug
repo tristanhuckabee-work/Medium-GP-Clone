@@ -8,6 +8,10 @@ block content
     include navbar
     main
         h1= user.userName
+        if records
+            for record in records
+                h1= record.title
+                p= record.description
     sidebar
         h1= user.userName
         h3= user.bio

@@ -22,9 +22,13 @@ block content
     div(class='img-div')
       img(src='/images/main.jpg' class='main-img')
     div
-
+      h3 Trending on vinyl
+      div(class='trendContainer')
+        for trend in trending
+          div(class='trendCards')
+            h3=trend.title
+            p=trend.description
   footer
-    h3 Trending on vinyl
 
   div(class="sign-in-content")
 
@@ -43,7 +47,8 @@ block content
         div(id="userName-input")
           +field('inputBox', 'Username', 'userName', userName)
         div(id="password-input")
-          +field('inputBox', 'Password', 'password', null, 'password')
+          label(for='Password') Password
+          input(class='inputbox' type="password" id="password" name="password")
         div
           input(type="submit" value="Sign-in" id="sign-in-close")
       p Enter your information to Sign In:
