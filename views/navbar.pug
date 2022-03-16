@@ -1,0 +1,11 @@
+nav
+    div
+        img(src='/favicon.svg' class='nav-favi')
+    div
+        form(action='/records' method='get')
+            button(type='submit') Home
+    div
+        form(action=`/users/${pk}` method='get')
+            button(type='submit') profile
+        form(action='/logout' method='post')
+            button(type='submit') Logout

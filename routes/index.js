@@ -54,7 +54,8 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
 }));
 
 router.get('/records', requireAuth, (req, res) => {
-  res.render('records', {});
+  const pk = req.session.auth.userId
+  res.render('records', {pk});
 });
 
 
