@@ -7,9 +7,13 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth, restoreUser, logoutUser, loginUser } = require('../auth');
 
 /* GET home page. */
-router.get('/', csrfProtection, (req, res, next) => {
-  const user = db.User.build();
-  res.render('index', { title: 'a/A Express Skeleton Home', user, csrfToken: req.csrfToken() });
+router.get('/', csrfProtection, async (req, res) => {
+  if(res.locals.authenticated){
+    res.redirect('/records')
+  }else{
+    const user = db.User.build();
+    res.render('index', { user, csrfToken: req.csrfToken() });
+  }
 });
 
 
@@ -32,7 +36,7 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
   if (validatorErrors.isEmpty()) {
     const user = await db.User.findOne({ where: { userName } });
 
-    //if user exists use bcrypt compare 
+    //if user exists use bcrypt compare
     if (user !== null) {
       const passwordMatched = await bcrypt.compare(password, user.hashedPassword.toString());
 
@@ -51,7 +55,7 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
 }));
 
 router.get('/records', requireAuth, (req, res) => {
-  res.render('records.pug', {});
+  res.render('records', {});
 });
 
 
