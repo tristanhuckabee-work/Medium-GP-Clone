@@ -64,6 +64,12 @@ footer {
   padding: 3px 10px;
   margin-left: 10px;
 }
+.signup:hover {
+  border: 2px solid #b39856;
+  background-color: #191d26;
+  color: #b39856;
+
+}
 
 /* SIGN IN  & SIGN UP container*/
 .sign-in-container, .sign-up-container{
