@@ -9,6 +9,7 @@ body{
 
 /* record container */
 .records{
+    margin-top: 20px;
     overflow: hidden;
     font-family: 'Noto Sans', sans-serif;
     width: 1100px;
