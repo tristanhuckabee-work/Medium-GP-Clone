@@ -53,12 +53,6 @@ footer {
     border-bottom: solid 1px black;
 }
 
-.sign-up-container, .sign-up-container{
-    display: none;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding-left: 50%;
-    padding-right: 50%;
-}
 .signin, .signup {
   cursor: pointer;
 }
@@ -71,10 +65,9 @@ footer {
   margin-left: 10px;
 }
 
-/* SIGN IN */
-
+/* SIGN IN  & SIGN UP container*/
 .sign-in-container, .sign-up-container{
-    background-color: rgba(0, 0, 0, 0.1);
+    overflow: wrap;
     display: none;
     z-index: 5;
     margin: 0 auto;
@@ -86,23 +79,21 @@ footer {
     border-radius: 10px;
     color: white;
 }
-
+/* This content keeps the modals centered */
+.sign-in-content, .sign-up-content{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: static;
+    z-index: 3;
+}
 .show{
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
     justify-content: space-evenly;
 }
-/* this keeps sign in modal center */
-.sign-in-content, .sign-up-content{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: static;
-    /* width: 100vw;
-    height: 100vh; */
-    z-index: 3;
-}
+
 /* login form */
 .login-form, .signup-form{
     display: flex;
@@ -111,15 +102,22 @@ footer {
     align-items: flex-end;
 }
 
-.login-form input{
+.login-form input, .signup-form input{
     margin-left: 10px;
     margin-top: 10px;
 }
+/* styling for error messages */
 .alert{
+    /* flex-wrap: nowrap; */
     background-color: rgba(255,0,0, 0.2);
     border: 1px inset rgba(255,0,0, 0.4);
     border-radius: 5px;
     padding: 10px;
+    width: 80%;
+}
+#sign-in-instructions, #sign-up-instructions{
+    display: flex;
+    justify-content: center;
 }
 /* #sign-in-close{
     display: flex;

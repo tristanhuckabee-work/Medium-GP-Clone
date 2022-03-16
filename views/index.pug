@@ -34,7 +34,7 @@ block content
       form(action='/' method='post' class='login-form')
         input(type='hidden' name='_csrf' value=csrfToken)
         div(id="userName-input")
-          +field('inputBox', 'username', 'userName', userName)
+          +field('inputBox', 'Username', 'userName', userName)
         div(id="password-input")
           +field('inputBox', 'Password', 'password', null, 'password')
         div
@@ -43,7 +43,8 @@ block content
 
   div(class="sign-up-content")
     div(class="sign-up-container")
-      p Sign-Up
+      div(id="sign-up-instructions")
+        //- p Enter your information to Sign Up:
 
         +validationErrorSummary(errorsSignup)
       form(action='/sign-up' method='post' class='signup-form')
@@ -55,4 +56,5 @@ block content
         div(id="password-input")
           +field('inputBox', 'Confirm Password', 'confirmPassword', '', 'password')
         div()
-          input(type="submit" value="SIGN UP" id="sign-up-close")
+          input(type="submit" value="Sign-up" id="sign-up-close")
+      p Enter your information to Sign Up:
