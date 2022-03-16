@@ -31,23 +31,30 @@ block content
       div(id="sign-in-instructions")
         //- p Enter your information to Sign In:
         +validationErrorSummary(errors)
-        form(action='/' method='post' class='login-form')
-          input(type='hidden' name='_csrf' value=csrfToken)
-          div(id="userName-input")
-            +field('inputBox', 'username', 'userName', userName)
-          div(id="password-input")
-            +field('inputBox', 'Password', 'password', null, 'password')
-          div
-            input(type="submit" value="Sign-in" id="sign-in-close")
+      form(action='/' method='post' class='login-form')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        div(id="userName-input")
+          +field('inputBox', 'Username', 'userName', userName)
+        div(id="password-input")
+          +field('inputBox', 'Password', 'password', null, 'password')
+        div
+          input(type="submit" value="Sign-in" id="sign-in-close")
       p Enter your information to Sign In:
 
-  div(class="sign-up-container")
-    p Sign-Up
+  div(class="sign-up-content")
+    div(class="sign-up-container")
+      div(id="sign-up-instructions")
+        //- p Enter your information to Sign Up:
 
-    +validationErrorSummary(errorsSignup)
-    form(action='/sign-up' method='post' class='signup-form')
-      input(type='hidden' name='_csrf' value=csrfToken)
-      +field('inputBox', 'Username', 'userName', userName)
-      +field('inputBox', 'Password', 'password', null, 'password')
-      +field('inputBox', 'Confirm Password', 'confirmPassword', '', 'password')
-      input(type="submit" value="SIGN UP" id="sign-up-close")
+        +validationErrorSummary(errorsSignup)
+      form(action='/sign-up' method='post' class='signup-form')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        div(id="userName-input")
+          +field('inputBox', 'Username', 'userName', userName)
+        div(id="password-input")
+          +field('inputBox', 'Password', 'password', null, 'password')
+        div(id="password-input")
+          +field('inputBox', 'Confirm Password', 'confirmPassword', '', 'password')
+        div()
+          input(type="submit" value="Sign-up" id="sign-up-close")
+      p Enter your information to Sign Up:
