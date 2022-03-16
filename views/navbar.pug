@@ -1,9 +1,10 @@
+link(rel="stylesheet" href="/stylesheets/nav-bar.css")
+//- link stylesheet for nav bar
 nav
     div
         img(src='/favicon.svg' class='nav-favi')
     div
-        form(action='/records' method='get')
-            button(type='submit') Home
+        a(href="/records"): img(src="/images/house-solid.svg")
     div
         form(action=`/users/${pk}` method='get')
             button(type='submit') profile
