@@ -1,6 +1,4 @@
 .nav-bar{
-    /* display: flex; */
-    flex-direction: column;
     background-color: #b39856;
     justify-content: center;
 }
@@ -15,6 +13,7 @@
     align-items: center;
 }
 .home-create-buttons{
+    margin-top: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
