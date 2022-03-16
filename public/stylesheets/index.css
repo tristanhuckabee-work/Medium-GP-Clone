@@ -125,6 +125,20 @@ footer {
     text-decoration: none;
     color: white;
 }
+.trendCards {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 30vw;
+    height: 20vh;
+}
+.trendContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
 /* #sign-in-close{
     display: flex;
 
