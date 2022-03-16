@@ -7,7 +7,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth,logoutUser , loginUser } = require('../auth');
 
 /* GET home page. */
-router.get('/', csrfProtection, async(req, res) => {
+router.get('/', csrfProtection, (req, res) => {
   if(res.locals.authenticated){
     res.redirect('/records')
   }else{
