@@ -22,9 +22,13 @@ block content
     div(class='img-div')
       img(src='/images/main.jpg' class='main-img')
     div
-
+      h3 Trending on vinyl
+      div(class='trendContainer')
+        for trend in trending
+          div(class='trendCards')
+            h3=trend.title
+            p=trend.description
   footer
-    h3 Trending on vinyl
 
   div(class="sign-in-content")
 
