@@ -4,13 +4,13 @@ const bcrypt = require('bcryptjs');
 const db = require('../db/models')
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
-const { requireAuth,logoutUser , loginUser } = require('../auth');
+const { requireAuth, logoutUser, loginUser } = require('../auth');
 
 /* GET home page. */
 router.get('/', csrfProtection, (req, res) => {
-  if(res.locals.authenticated){
+  if (res.locals.authenticated) {
     res.redirect('/records')
-  }else{
+  } else {
     const user = db.User.build();
     res.render('index', { user, csrfToken: req.csrfToken() });
   }
@@ -55,7 +55,7 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
 
 router.get('/records', requireAuth, (req, res) => {
   const pk = req.session.auth.userId
-  res.render('records', {pk});
+  res.render('records', { pk });
 });
 
 
@@ -121,7 +121,7 @@ router.post('/logout', asyncHandler(async (req, res) => {
   res.redirect('/');
 }));
 
-router.post('/demo-user', asyncHandler(async (req, res) => {
+router.get('/demo-user', asyncHandler(async (req, res) => {
   const user = await db.User.findOne({
     where: {
       userName: 'John Doe'
