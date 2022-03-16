@@ -5,10 +5,12 @@ append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/records.css")
   //- add page specific js
-  script(src="/javascripts/index.js" type="module" defer)
+  script(src="/javascripts/records.js" type="module" defer)
 
 block content
 
   include navbar
   main
-    h1 records and such
+    for record in records
+      h1= record.title
+      p= record.description
