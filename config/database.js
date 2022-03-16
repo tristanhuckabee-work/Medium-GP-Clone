@@ -16,4 +16,5 @@ module.exports = {
     dialect: 'postgres',
     seederStorage: 'sequelize',
   }
+  //this is a comment
 };
