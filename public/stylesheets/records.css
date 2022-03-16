@@ -29,6 +29,7 @@ nav {
 
 /* record container */
 .records{
+    margin-top: 20px;
     overflow: hidden;
     font-family: 'Noto Sans', sans-serif;
     margin-left: 5%;
