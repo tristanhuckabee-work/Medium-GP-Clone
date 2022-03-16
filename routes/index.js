@@ -4,10 +4,10 @@ const bcrypt = require('bcryptjs');
 const db = require('../db/models')
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
-const { requireAuth, restoreUser, logoutUser, loginUser } = require('../auth');
+const { requireAuth,logoutUser , loginUser } = require('../auth');
 
 /* GET home page. */
-router.get('/', csrfProtection, async (req, res) => {
+router.get('/', csrfProtection, (req, res) => {
   if(res.locals.authenticated){
     res.redirect('/records')
   }else{
@@ -15,7 +15,6 @@ router.get('/', csrfProtection, async (req, res) => {
     res.render('index', { user, csrfToken: req.csrfToken() });
   }
 });
-
 
 const loginValidators = [
   check('userName')
