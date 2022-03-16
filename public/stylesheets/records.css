@@ -1,28 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Sans&display=swap');
+
+
 body{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin: 0;
+    align-items: flex-start;
 }
 nav {
     display: flex;
     position: sticky;
     flex-direction: column;
-    height: 90vh;
-    top:45px;
+    width: 50px;
+    height: 1000px;
     justify-content: space-between;
+    border-radius: 15px;
+    box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.25);
 }
-main {
+/* main {
     border-right: 1px solid lightblue;
     height: 1000vh;
     border-left: 1px solid lightblue;
     padding: 0 30%;
-}
-.nav-favi {
+} */
+/* .nav-favi {
     height: 40px;
-}
+} */
 
 /* record container */
 .records{
+    font-family: 'Noto Sans', sans-serif;
+    margin-left: 5%;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -31,6 +39,7 @@ main {
 }
 /* title of each record */
 .records > h2{
+    font-family: 'Noto Sans', sans-serif;
     width: 210px;
     height: 35px;
     font-style: normal;

@@ -1,9 +1,12 @@
 link(rel="stylesheet" href="/stylesheets/nav-bar.css")
 //- link stylesheet for nav bar
 nav(class="nav-bar")
-    div
+    div(class="icon")
         img(src='/favicon.svg' class='nav-favi')
     div(class="interactions-nav-bar")
-        a(href="/records"): img(src="/images/house-solid.svg" class="home-button")
-        a(href=`/users/${ pk }`): img(src="/images/user-secret-solid.svg" class="user-button")
-        a(href='/logout' class='logout-button'): img(src="/images/arrow-right-from-bracket-solid.svg" class="logout-button")
+        div(class="home-create-buttons")
+            a(href="/records"): img(src="/images/house-solid.svg" class="home-button")
+            a(href="/records/new"): img(src="/images/square-plus-solid.svg" class="create-record-button")
+        div(class="user-logout-buttons")
+            a(href=`/users/${ pk }`): img(src="/images/user-secret-solid.svg" class="user-button")
+            a(href='/logout' class='logout-button'): img(src="/images/arrow-right-from-bracket-solid.svg" class="logout-button")

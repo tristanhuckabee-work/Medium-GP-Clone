@@ -1,18 +1,50 @@
 .nav-bar{
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
-    /* background-color: red; */
+    background-color: #b39856;
+    justify-content: center;
 }
 .interactions-nav-bar{
     display: flex;
     flex-direction: column;
 }
-.home-button{
+/* location and spacing of buttons */
+.user-logout-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.home-create-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+
+/* styling of each button */
+.home-button{
+    width: 2rem;
 }
 .user-button{
-
+    width: 2rem;
 }
 .logout-button{
+    width: 2rem;
 
+}
+.create-record-button{
+    width: 2rem;
+}
+
+
+/* styling and location of logo */
+.icon{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 10px;
+}
+.nav-favi{
+    width: 3rem;
 }
