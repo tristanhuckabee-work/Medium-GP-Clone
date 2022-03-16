@@ -1,0 +1,18 @@
+.nav-bar{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+}
+.interactions-nav-bar{
+    display: flex;
+    flex-direction: column;
+}
+.home-button{
+
+}
+.user-button{
+
+}
+.logout-button{
+
+}

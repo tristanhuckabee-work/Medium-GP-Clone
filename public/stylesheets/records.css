@@ -1,6 +1,7 @@
 body{
     display: flex;
     justify-content: space-between;
+    margin: 0;
 }
 nav {
     display: flex;
