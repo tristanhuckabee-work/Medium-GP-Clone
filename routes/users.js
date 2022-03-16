@@ -8,11 +8,11 @@ const { requireAuth, restoreUser, logoutUser } = require('../auth');
 
 
 /* GET users listing. */
-router.get('/:id', csrfProtection, (req, res, next) => {
+router.get('/:id', csrfProtection, async(req, res, next) => {
   if(res.locals.authenticated){
-    const pk = req.session.auth.userId
-    console.log(pk)
-    res.render('users', { pk })
+    const id = req.params.id
+    const user = await db.User.findByPk(id)
+    res.render('users', { user })
   }else{
     res.redirect('/');
   }
