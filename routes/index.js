@@ -116,7 +116,7 @@ router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req,
   }
 }));
 
-router.post('/logout', asyncHandler(async (req, res) => {
+router.get('/logout', asyncHandler(async (req, res) => {
   logoutUser(req, res);
   res.redirect('/');
 }));
