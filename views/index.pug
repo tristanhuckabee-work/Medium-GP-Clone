@@ -15,7 +15,7 @@ block content
     div
       h1 VINYL
     div(class='buttons')
-      p:a(type='button' class='demo') Demo-User
+      a(href='/demo-user' class='demo') Demo User
       p:a(type='button' class='signin' id='sign-in-open') Sign-in
       p:a(type='button' class='signup' id='sign-up-open') Sign-Up
   main
@@ -27,7 +27,7 @@ block content
     h3 Trending on vinyl
 
   div(class="sign-in-content")
-    
+
     div(class="sign-in-container")
       if errors
         script.
@@ -36,7 +36,7 @@ block content
           signInContainer.classList.add('show');
       div(id="sign-in-instructions")
         //- p Enter your information to Sign In:
-        
+
         +validationErrorSummary(errors)
       form(action='/' method='post' class='login-form')
         input(type='hidden' name='_csrf' value=csrfToken)
