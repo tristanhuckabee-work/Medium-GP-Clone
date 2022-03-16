@@ -1,7 +1,7 @@
 .nav-bar{
     display: flex;
     flex-direction: column;
-    background-color: red;
+    /* background-color: red; */
 }
 .interactions-nav-bar{
     display: flex;
