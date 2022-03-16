@@ -119,6 +119,12 @@ footer {
     display: flex;
     justify-content: center;
 }
+
+/* demo user styling */
+.demo{
+    text-decoration: none;
+    color: white;
+}
 /* #sign-in-close{
     display: flex;
 
