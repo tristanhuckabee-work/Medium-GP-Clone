@@ -3,12 +3,24 @@ include utils
 
 append head
   //- add page specific styles by appending to the head
-  link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="/stylesheets/records.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
 
-  h1 MAIN CONTENT
-  form(action='/logout' method='post')
-    button(type='submit') Logout
+  nav
+    div
+      img(src='/favicon.svg' class='nav-favi')
+    div
+      form(action='/records' method='get')
+        button(type='submit') Home
+    div
+      form(action='/records' method='get')
+        button(type='submit') profile
+      form(action='/logout' method='post')
+        button(type='submit') Logout
+  main
+    h1 records and such
+  sidebar
+   h1 profile stuff

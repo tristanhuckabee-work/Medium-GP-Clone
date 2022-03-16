@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    justify-content: space-between;
+}
+nav {
+    display: flex;
+    position: sticky;
+    flex-direction: column;
+    height: 90vh;
+    top:45px;
+    justify-content: space-between;
+}
+main {
+    border-right: 1px solid lightblue;
+    height: 1000vh;
+    border-left: 1px solid lightblue;
+    padding: 0 10%;
+}
+.nav-favi {
+    height: 40px;
+}

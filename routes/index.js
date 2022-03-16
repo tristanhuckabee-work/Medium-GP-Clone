@@ -4,14 +4,17 @@ const bcrypt = require('bcryptjs');
 const db = require('../db/models')
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
-const { requireAuth, restoreUser, logoutUser, loginUser } = require('../auth');
+const { requireAuth,logoutUser , loginUser } = require('../auth');
 
 /* GET home page. */
-router.get('/', csrfProtection, (req, res, next) => {
-  const user = db.User.build();
-  res.render('index', { title: 'a/A Express Skeleton Home', user, csrfToken: req.csrfToken() });
+router.get('/', csrfProtection, (req, res) => {
+  if(res.locals.authenticated){
+    res.redirect('/records')
+  }else{
+    const user = db.User.build();
+    res.render('index', { user, csrfToken: req.csrfToken() });
+  }
 });
-
 
 const loginValidators = [
   check('userName')
@@ -51,7 +54,7 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
 }));
 
 router.get('/records', requireAuth, (req, res) => {
-  res.render('records.pug', {});
+  res.render('records', {});
 });
 
 
