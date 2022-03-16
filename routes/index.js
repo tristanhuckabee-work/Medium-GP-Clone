@@ -7,12 +7,15 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth, logoutUser, loginUser } = require('../auth');
 
 /* GET home page. */
-router.get('/', csrfProtection, (req, res) => {
+router.get('/', csrfProtection, async(req, res) => {
   if (res.locals.authenticated) {
     res.redirect('/records')
   } else {
     const user = db.User.build();
-    res.render('index', { user, csrfToken: req.csrfToken() });
+    const trending = await db.Record.findAll({
+      limit: 6
+    })
+    res.render('index', { trending, user, csrfToken: req.csrfToken() });
   }
 });
 
