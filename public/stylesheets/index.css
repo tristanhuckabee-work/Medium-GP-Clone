@@ -64,6 +64,12 @@ footer {
   padding: 3px 10px;
   margin-left: 10px;
 }
+.signup:hover {
+  border: 2px solid #b39856;
+  background-color: #191d26;
+  color: #b39856;
+
+}
 
 /* SIGN IN  & SIGN UP container*/
 .sign-in-container, .sign-up-container{
@@ -121,6 +127,9 @@ footer {
 }
 
 /* demo user styling */
+.trends {
+  background-color: #661b1c;
+}
 .demo{
     text-decoration: none;
     color: white;
@@ -139,77 +148,3 @@ footer {
     gap: 20px;
     justify-content: center;
 }
-/* #sign-in-close{
-    display: flex;
-
-    margin-top: 25px;
-    width: 257px;
-    height: 40px;
-    left: 115px;
-
-    background: #b39856;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 20px;
-} */
-
-
-/* #sign-in-instructions{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    width: 298px;
-    height: 23px;
-
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 23px;
-
-    color: white;
-} */
-
-
-/* sign in input boxes */
-/* #userName-input{
-
-    width: 135px;
-    height: 23px;
-    left: 115px;
-    top: 100px;
-
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 23px;
-
-    color: white;
-} */
-/* #password-input{
-    margin-top: 35px;
-    width: 95px;
-    height: 23px;
-    left: 115px;
-    top: 181px;
-
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 23px;
-
-    color: white;
-} */
-
-/* input boxes styling */
-/* .inputBox{
-    width: 257px;
-    height: 25px;
-    background: #C4C4C4;
-    border-radius: 2px;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-} */
-
-
-
-/* SIGN UP */
