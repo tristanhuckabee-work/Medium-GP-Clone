@@ -7,6 +7,7 @@ append head
 block content
     include navbar
     main
-        h1= pk
+        h1= user.userName
     sidebar
-        h1 profile stuff
+        h1= user.userName
+        h3= user.bio
