@@ -1,28 +1,32 @@
 .nav-bar{
-    background-color: #b39856;
-    justify-content: center;
-}
-.interactions-nav-bar{
-    display: flex;
-    flex-direction: column;
+    background-color: #191d26;
+    justify-content: space-between;
+    width: 200px;
+    padding: -10px 0;
+    box-sizing: border-box;
 }
 /* location and spacing of buttons */
-.user-logout-buttons{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.home-create-buttons{
-    margin-top: 10%;
+.home-create-buttons, .user-logout-buttons{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.home-create-buttons i, .user-logout-buttons i {
+  margin: 5px;
 }
 
 
 /* styling of each button */
-.home-button{
+.nav-bar a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.nav-bar a:hover {
+  text-decoration: none;
+  color: #b39856;
+}
+/* .home-button{
     width: 2rem;
 }
 .user-button{
@@ -34,7 +38,7 @@
 }
 .create-record-button{
     width: 2rem;
-}
+} */
 
 
 /* styling and location of logo */
@@ -46,4 +50,6 @@
 }
 .nav-favi{
     width: 3rem;
+    align-self: center;
+    padding-top: 20px;
 }
