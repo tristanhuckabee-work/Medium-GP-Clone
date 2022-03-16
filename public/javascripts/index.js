@@ -9,6 +9,7 @@ window.addEventListener("load", (event) => {
     const signInContainer = document.querySelector(".sign-in-container");
     const signUpContainer = document.querySelector(".sign-up-container");
     const signInButton = document.getElementById('sign-in-close');
+    const demo = document.getElementById('.demo');
     const disableselect = e => false;
 
     header.onselectstart = disableselect
@@ -42,8 +43,10 @@ window.addEventListener("load", (event) => {
         signUpContainer.classList.remove('show');
       }
   })
-  
+
   signInContainer.addEventListener('click',(e) =>{
     e.stopPropagation();
   })
+
+  
 })
