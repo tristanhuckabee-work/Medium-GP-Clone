@@ -22,7 +22,9 @@ router.get('/', requireAuth, async (req, res) => {
 
 router.get('/new', csrfProtection, requireAuth, async (req, res) => {
   const record = db.Record.build()
-  res.render('form', {record, csrfToken: req.csrfToken() })
+  const pk = req.session.auth.userId;
+
+  res.render('form', { record, pk, csrfToken: req.csrfToken() })
 })
 
 const recordVal = [
