@@ -5,16 +5,18 @@
 }
 
 /* H1 = ICON */
-h1 {
+h1, h2, h3, h4, h5, h6 {
    margin-top: 0;
    margin-bottom: 0;
    font-family: 'Abril Fatface', cursive;
    color: darkgrey;
+   text-transform: uppercase;
 }
 /* body */
 body {
     margin: 0;
     font-family: 'Noto Sans', sans-serif;
+    overflow:hidden;
 }
 /* header aka NAV BAR */
 header {
@@ -27,8 +29,11 @@ header {
     color: white;
 }
 footer {
-    padding: 20px 15%;
-    border-bottom: 1px solid lightgray;
+  bottom: 0;
+  height: 10vh;
+  padding: 20px 15%;
+  border-top: 1px solid white;
+  background-color: #191d26;
 }
 .buttons{
     display: flex;
@@ -41,7 +46,7 @@ footer {
 
 .main-img {
     z-index: 2;
-    height: 50vh;
+    height: 30vh;
 }
 
 
@@ -128,23 +133,43 @@ footer {
 
 /* demo user styling */
 .trends {
-  background-color: #661b1c;
+  background-color: #191d26;
+  height: 50vh;
+}
+.trends > h3 {
+  padding: 10px 20px 10px 10%;
+  color: #b39856;
 }
 .demo{
     text-decoration: none;
     color: white;
 }
 .trendCards {
+    box-sizing: border-box;
     background: #FFFFFF;
+    overflow: hidden;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    width: 30vw;
+    border: 2px solid #ffffff;
+
+    width: 25vw;
     height: 20vh;
+    padding: 10px;
+}
+.trendCards:hover {
+  background: #191d26;
+  overflow: hidden;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: 2px solid #b39856;
+  color: #b39856;
+  width: 25vw;
+  height: 20vh;
 }
 .trendContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     justify-content: center;
 }
