@@ -12,6 +12,15 @@ block content
   include navbar
   main
     for record in records
-      div(class="records")
-        h2= record.title
-        p= record.description
+      if record.userId === pk
+        div(class="records")
+          h2= record.title
+          p= record.description
+          a(href=`/records/${record.id}/edit`)
+            button edit
+          a(href=`/records/${record.id}/delete`)
+            button delete
+      else
+        div(class="records")
+          h2= record.title
+          p= record.description
