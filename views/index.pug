@@ -20,15 +20,20 @@ block content
       p:a(type='button' class='signup' id='sign-up-open') Sign-Up
   main
     div(class='img-div')
-      img(src='/images/main.jpg' class='main-img')
+      //- img(src='/images/main.jpg' class='main-img')
+      
     div.trends
-      h3 Trending on vinyl
+      h2 Trending on vinyl
       div(class='trendContainer')
         for trend in trending
           div(class='trendCards')
-            h3=trend.title
-            p=trend.description
+            div.rank
+              h3=trend.id
+            div.cardContent
+              h3=trend.title
+              p=trend.description
   footer
+    p &copy; Team Record Player 2022
 
   div(class="sign-in-content")
 

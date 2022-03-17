@@ -1,65 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Sans&display=swap');
 
 *{
-    z-index: 4;
+  z-index: 4;
 }
 
 /* H1 = ICON */
 h1, h2, h3, h4, h5, h6 {
-   margin-top: 0;
-   margin-bottom: 0;
-   font-family: 'Abril Fatface', cursive;
-   color: darkgrey;
-   text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: 'Abril Fatface', cursive;
+  text-transform: uppercase;
 }
 /* body */
 body {
-    margin: 0;
-    font-family: 'Noto Sans', sans-serif;
-    overflow:hidden;
+  margin: 0;
+  font-family: 'Noto Sans', sans-serif;
+  overflow:hidden;
+
+  background-color: #191d26;
 }
 /* header aka NAV BAR */
 header {
-    padding: 15px 15%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #191d26;
-    position: sticky;
-    color: white;
+  padding: 15px 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #191d26;
+  position: sticky;
+  color: white;
 }
 footer {
-  bottom: 0;
-  height: 10vh;
-  padding: 20px 15%;
-  border-top: 1px solid white;
-  background-color: #191d26;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0; left: 10;
+  width: 100vw;
+  padding: 10px 15%;
+  color: darkgray;
 }
 .buttons{
-    display: flex;
-    width: 300px;
-    justify-content: flex-end;
-    gap: 20px;
-    align-items: center;
+  display: flex;
+  width: 300px;
+  justify-content: flex-end;
+  gap: 20px;
+  align-items: center;
 }
-
-
-.main-img {
-    z-index: 2;
-    height: 30vh;
-}
+  
+  
+/* .main-img {
+  z-index: 2;
+  height: 30vh;
+} */
 
 
 .img-div{
-    z-index: 2;
-    display: flex;
-    justify-content:right;
-    border-top: solid 1px black;
-    border-bottom: solid 1px black;
+  z-index: 2;
+  display: flex;
+  justify-content:right;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+  
+  background-image: url('images/skynews-vinyl-records_5627792.png');
+  background-position: center;
+  background-size:cover;
+  height: 30vh;
 }
 
-.signin, .signup {
+.signin, .signup, .demo {
   cursor: pointer;
+}
+.demo{
+    text-decoration: none;
+    color: #ffffff;
+}
+.signin:hover, .signup:hover, .demo:hover {
+  color: #b39856;
 }
 /* sign up button */
 .signup {
@@ -73,7 +87,6 @@ footer {
   border: 2px solid #b39856;
   background-color: #191d26;
   color: #b39856;
-
 }
 
 /* SIGN IN  & SIGN UP container*/
@@ -127,34 +140,36 @@ footer {
     width: 80%;
 }
 #sign-in-instructions, #sign-up-instructions{
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 /* demo user styling */
-.trends {
-  background-color: #191d26;
-  height: 50vh;
-}
-.trends > h3 {
-  padding: 10px 20px 10px 10%;
+.trends > h2 {
+  padding: 20px 0 20px 10%;
   color: #b39856;
 }
-.demo{
-    text-decoration: none;
-    color: white;
+.trendContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
 }
 .trendCards {
-    box-sizing: border-box;
-    background: #FFFFFF;
-    overflow: hidden;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    border: 2px solid #ffffff;
-
-    width: 25vw;
-    height: 20vh;
-    padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  
+  box-sizing: border-box;
+  background: #FFFFFF;
+  overflow: hidden;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: 2px solid #ffffff;
+  
+  width: 25vw;
+  /* height: 10vh; */
+  padding: 10px;
 }
 .trendCards:hover {
   background: #191d26;
@@ -163,13 +178,21 @@ footer {
   border-radius: 10px;
   border: 2px solid #b39856;
   color: #b39856;
-  width: 25vw;
-  height: 20vh;
 }
-.trendContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
+.rank {
+  display: flex;
+  border-right: 1px solid #ffffff;
+  align-items: center;
+  justify-content: center;
+  color: #b39856;
+}
+.cardContent {
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.cardContent p{
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
 }
