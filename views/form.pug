@@ -11,5 +11,7 @@ block content
     form(action='/records/new' method='post' class='record-form')
         input(type='hidden' name='_csrf' value=csrfToken)
         +field('title', 'Title', 'title', title)
-        +field('desc', 'Description', 'description', description, 'textfield')
+        div(class='form-group')
+          label(for='description') Body
+          textarea(class='desc' type='text' id='description' name='description' rows='40' cols='40' value=description)
         button(type='submit' class='record-submit') submit
