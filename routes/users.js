@@ -17,8 +17,15 @@ router.get('/:id', async(req, res, next) => {
       where: {
         userId: id
       }
-    })
-    res.render('users', { user, records, pk})
+    });
+    const following = await db.Follow.findAll({
+      where: { followerId: id }
+    }).length;
+    const followers = await db.Follow.findAll({
+      where: { userId: id }
+    }).length;
+
+    res.render('users', { user, records, following, followers, pk})
   }else{
     res.redirect('/');
   }
