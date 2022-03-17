@@ -53,7 +53,10 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
     errors = validatorErrors.array().map(error => error.msg);
   }
   console.log('\nthis is the userName', userName, '\n')
-  res.render('index', { errors, csrfToken: req.csrfToken(), userName });
+  const trending = await db.Record.findAll({
+    limit: 6
+  })
+  res.render('index', { errors, trending, csrfToken: req.csrfToken(), userName });
 }));
 
 // router.get('/records', requireAuth, async(req, res) => {
@@ -112,9 +115,13 @@ router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req,
     res.redirect('/records');
   } else {
     console.log('\nthis is if validatorErros isn\'t empty');
+    const trending = await db.Record.findAll({
+      limit: 6
+    })
     const errorsSignup = validatorErrors.array().map(error => error.msg);
     res.render('index', {
       title: 'filler',
+      trending,
       userName,
       errorsSignup,
       csrfToken: req.csrfToken(),
