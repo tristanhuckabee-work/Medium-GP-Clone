@@ -6,6 +6,10 @@ append head
   link(rel="stylesheet" href="/stylesheets/records.css")
   //- add page specific js
   script(src="/javascripts/records.js" type="module" defer)
+  script.
+    const redirect = (id) =>{
+      window.location.href = `/records/${id}`
+    }
 
 block content
 
@@ -13,14 +17,16 @@ block content
   main
     for record in records
       if record.userId === pk
-        div(class="records")
+        div(class="records" onclick=`redirect(${record.id})`)
           h2= record.title
-          p= record.description
+          a(href=`/users/${record.User.id}`): p.author= record.User.userName
+          p(class="description")= record.description
           a(href=`/records/${record.id}/edit`)
             button edit
           a(href=`/records/${record.id}/delete`)
             button delete
       else
-        div(class="records")
+        div(class="records" onclick=`redirect(${record.id})`)
           h2= record.title
-          p= record.description
+          a(href=`/users/${record.User.id}`): p.author= record.User.userName
+          p(class="description")= record.description

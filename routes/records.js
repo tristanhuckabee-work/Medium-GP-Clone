@@ -6,24 +6,25 @@ const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth, logoutUser, loginUser } = require('../auth');
 
-router.get('/', requireAuth, async(req, res) => {
-    const pk = req.session.auth.userId
-    const records = await db.Record.findAll({
-      include: 'User'
-    })
+router.get('/', requireAuth, async (req, res) => {
+  const pk = req.session.auth.userId
+  const records = await db.Record.findAll({
+    include: 'User'
+  })
 
-    // limit the character description shown on records page
-    records.forEach(ele =>{
-      ele.description = ele.description.slice(0,147) + "...";
-    })
+  // limit the character description shown on records page
+  records.forEach(ele => {
+    ele.description = ele.description.slice(0, 147) + "...";
+  })
 
-    res.render('records', {records, pk});
-  });
+  res.render('records', { records, pk });
+});
 
-router.get('/new', csrfProtection ,requireAuth, async(req,res) => {
-    const record = db.Record.build()
-    res.render('form', { record, csrfToken: req.csrfToken()})
+router.get('/new', csrfProtection, requireAuth, async (req, res) => {
+  const record = db.Record.build()
+  res.render('form', { record, csrfToken: req.csrfToken() })
 })
+
 const recordVal = [
     check('title')
         .exists({ checkFalsy: true })
@@ -34,7 +35,7 @@ const recordVal = [
         .exists({ checkFalsy: true })
         .withMessage('Please provide a value for Description')
         .isLength({max: 10000})
-        .withMessage('description cannot exceed charcter count of 10,000')
+        .withMessage('description cannot exceed character count of 10,000')
 ]
 router.post('/new',csrfProtection ,recordVal ,requireAuth, asyncHandler(async(req,res) => {
     const { title, description } = req.body
