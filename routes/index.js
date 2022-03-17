@@ -7,7 +7,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth, logoutUser, loginUser } = require('../auth');
 
 /* GET home page. */
-router.get('/', csrfProtection, async(req, res) => {
+router.get('/', csrfProtection, async (req, res) => {
   if (res.locals.authenticated) {
     res.redirect('/records')
   } else {
@@ -98,7 +98,7 @@ router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req,
   // console.log('\nthis is req.body', req.body);
   const { userName, password: passwordSignUp } = req.body;
 
-  console.log(userName, passwordSignUp)
+  // console.log(userName, passwordSignUp)
 
   const userSignUp = db.User.build({
     userName,
