@@ -10,6 +10,10 @@ module.exports = {
       */
       return queryInterface.bulkInsert('Comments', [
         {description:'Great story love to hear it! Poggers', userId:2, recordId:4, createdAt: new Date(), updatedAt: new Date()},
+        {description:'Another Banger', userId:1, recordId:4, createdAt: new Date(), updatedAt: new Date()},
+        {description:'L opinion + ratio + did not ask', userId:3, recordId:4, createdAt: new Date(), updatedAt: new Date()},
+        {description:'W + YBN better + lebron pwns', userId:1, recordId:4, createdAt: new Date(), updatedAt: new Date()},
+
       ], {});
   },
 

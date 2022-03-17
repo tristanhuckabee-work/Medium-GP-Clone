@@ -9,7 +9,8 @@ const { requireAuth, logoutUser, loginUser } = require('../auth');
 router.get('/', requireAuth, async (req, res) => {
   const pk = req.session.auth.userId
   const records = await db.Record.findAll({
-    include: 'User'
+    include: 'User',
+    order: [['id', 'DESC']]
   })
 
   // limit the character description shown on records page
@@ -72,6 +73,7 @@ router.get('/:id/edit',requireAuth ,asyncHandler(async(req,res) => {
 // GET specific record
 router.get('/:id', csrfProtection, requireAuth,asyncHandler(async(req,res) =>{
   const id = req.params.id;
+
   // getting record info
   const record = await db.Record.findByPk(id,{
     include: 'User'
@@ -80,28 +82,35 @@ router.get('/:id', csrfProtection, requireAuth,asyncHandler(async(req,res) =>{
   const comments = await db.Comment.findAll({
       where: {
         recordId: id
-      }
+      },
+      order: [['id', 'DESC']]
   })
 
   if(record.userId !== req.session.auth.userId){
     res.redirect("/records")
   } else {
-    // console.log("you are allowed to be here!")
-    res.render('recordId', { record, comments,csrfToken: req.csrfToken()})
+    console.log(comments[0].id, "HEY THERE CHECK THIS OUT COMMENTS ID");
+    res.render('recordId', { record, comments, csrfToken: req.csrfToken()})
   }
 }))
 
 // validator for commments
-// const commentsVal=[
-//   check
-// ]
+const commentsVal=[
+  check('description')
+  .exists({ checkFalsy: true })
+  .withMessage('Please provide a message for comment')
+  .isLength({max: 255})
+  .withMessage('comments can only hold 255 characters')
+]
 
 router.post('/:id/comments/:commentsId',
+commentsVal,
 csrfProtection,
 requireAuth,
 asyncHandler(async(req,res)=>{
   const id = req.params.id;
-
+  const {comment} = req.body;
+  console.log(comment);
 
 }))
 module.exports = router

@@ -2,7 +2,7 @@ extends layout
 
 append head
     link(rel="stylesheet" href="/stylesheets/recordsId.css")
-    //- script(src="/javascripts/index.js" type="module" defer)
+    script(src="/javascripts/records.js" type="module" defer)
 
 block content
     //- include navbar
@@ -13,13 +13,13 @@ block content
             p= record.description
         div()
             h2 comment section
-            form(action='/records/:id/comments/:commentsId' method="post" class="comments-form")
+            form(action=`${record.id}/comments/${comments[0].id + 1}` method="post" class="comments-form")
                 input(type='hidden' name='_csrf' value=csrfToken)
                 div(class='text-area')
                     label(for='comment') Comment here:
-                    textarea(name="comment" type='text' class='comment', cols="30", rows="10")
+                    textarea(name="comment" type='text' id="comment", cols="30", rows="10")
                 button(type='submit' class='comment-submit') submit
         div()
 
-            for comment in  comments
+            for comment in comments
                 p= comment.description
