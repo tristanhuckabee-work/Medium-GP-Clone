@@ -29,12 +29,8 @@ header {
   position: sticky;
   color: white;
 }
-footer {
-  box-sizing: border-box;
-  position: absolute;
-  bottom: 0; left: 10;
-  width: 100vw;
-  padding: 10px 15%;
+h1 {
+  letter-spacing: 0.5em;
   color: darkgray;
 }
 .buttons{
@@ -44,35 +40,14 @@ footer {
   gap: 20px;
   align-items: center;
 }
-  
-  
-/* .main-img {
-  z-index: 2;
-  height: 30vh;
-} */
-
-
-.img-div{
-  z-index: 2;
-  display: flex;
-  justify-content:right;
-  border-top: solid 1px black;
-  border-bottom: solid 1px black;
-  
-  background-image: url('images/skynews-vinyl-records_5627792.png');
-  background-position: center;
-  background-size:cover;
-  height: 30vh;
-}
-
 .signin, .signup, .demo {
   cursor: pointer;
 }
 .demo{
     text-decoration: none;
     color: #ffffff;
-}
-.signin:hover, .signup:hover, .demo:hover {
+  }
+  .signin:hover, .signup:hover, .demo:hover {
   color: #b39856;
 }
 /* sign up button */
@@ -89,15 +64,47 @@ footer {
   color: #b39856;
 }
 
+.img-div{
+  z-index: 2;
+  display: flex;
+  justify-content:right;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+  
+  background-image: url('/images/vinyl-records.png');
+  background-position: center;
+  background-size:cover;
+  height: 30vh;
+}
+
+footer {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0; left: 10;
+  width: 100vw;
+  padding: 10px 15%;
+  color: darkgray;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+footer a {
+  text-decoration: none;
+  color: darkgray;
+  padding: 0 10px;
+}
+footer a:hover {color:#b39856}
+
 /* SIGN IN  & SIGN UP container*/
 .sign-in-container, .sign-up-container{
-    overflow: wrap;
-    display: none;
-    z-index: 5;
-    margin: 0 auto;
-    position: absolute;
-    width: 488px;
-    height: 547px;
+  overflow: wrap;
+  display: none;
+  z-index: 5;
+  margin: 0 auto;
+  position: absolute;
+  width: 488px;
+  height: 547px;
     background: #191d26;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -144,10 +151,12 @@ footer {
   justify-content: center;
 }
 
-/* demo user styling */
+/* demo user styling*/
+/* ??? */
 .trends > h2 {
-  padding: 20px 0 20px 10%;
-  color: #b39856;
+  text-align: center;
+  padding: 20px 0;
+  color: darkgray;
 }
 .trendContainer {
     display: flex;
@@ -161,33 +170,31 @@ footer {
   grid-template-columns: 1fr 4fr;
   
   box-sizing: border-box;
-  background: #FFFFFF;
   overflow: hidden;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  border: 2px solid #ffffff;
-  
   width: 25vw;
-  /* height: 10vh; */
-  padding: 10px;
-}
-.trendCards:hover {
+  /* padding: 10px; */
+
   background: #191d26;
-  overflow: hidden;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
   border: 2px solid #b39856;
   color: #b39856;
 }
+.trendCards:hover {
+  background: #ffffff;
+  border: 2px solid #ffffff;
+  color: #191d26;
+}
 .rank {
   display: flex;
-  border-right: 1px solid #ffffff;
+  /* border-right: 1px solid #ffffff; */
+  background-color: #292d36;
   align-items: center;
   justify-content: center;
   color: #b39856;
 }
 .cardContent {
-  padding: 0 10px;
+  padding: 10px;
   box-sizing: border-box;
 }
 .cardContent p{
