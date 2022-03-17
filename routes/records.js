@@ -26,46 +26,62 @@ router.get('/new', csrfProtection, requireAuth, async (req, res) => {
 })
 
 const recordVal = [
-    check('title')
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide a value for title')
-        .isLength({max: 50})
-        .withMessage('title cannot exceed character count of 50'),
-    check('description')
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide a value for Description')
-        .isLength({max: 10000})
-        .withMessage('description cannot exceed character count of 10,000')
+  check('title')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a value for title')
+    .isLength({ max: 50 })
+    .withMessage('title cannot exceed character count of 50'),
+  check('description')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a value for Description')
+    .isLength({ max: 10000 })
+    .withMessage('description cannot exceed character count of 10,000')
 ]
-router.post('/new',csrfProtection ,recordVal ,requireAuth, asyncHandler(async(req,res) => {
-    const { title, description } = req.body
-    console.log(title, description)
-    const record = db.Record.build({ title, description, userId: req.session.auth.userId })
-    const validatorErrors = validationResult(req);
+router.post('/new', csrfProtection, recordVal, requireAuth, asyncHandler(async (req, res) => {
+  const { title, description } = req.body
+  console.log(title, description)
+  const record = db.Record.build({ title, description, userId: req.session.auth.userId })
+  const validatorErrors = validationResult(req);
 
-    if (validatorErrors.isEmpty()) {
-      await record.save();
-      res.redirect('/');
-    } else {
-      const errors = validatorErrors.array().map(error => error.msg);
-      res.render('form', {
-        title,
-        description,
-        errors,
-        csrfToken: req.csrfToken(),
-      });
-    }
-    }
+  if (validatorErrors.isEmpty()) {
+    await record.save();
+    res.redirect('/');
+  } else {
+    const errors = validatorErrors.array().map(error => error.msg);
+    res.render('form', {
+      title,
+      description,
+      errors,
+      csrfToken: req.csrfToken(),
+    });
+  }
+}
 ))
-router.get('/:id/edit',requireAuth ,asyncHandler(async(req,res) => {
+router.get('/:id/edit', requireAuth, asyncHandler(async (req, res) => {
   const id = req.params.id
   const record = await db.Record.findByPk(id)
-  if(record.userId !== req.session.auth.userId){
+  if (record.userId !== req.session.auth.userId) {
     res.redirect('/records')
-  }else{
+  } else {
     const yes = `editing record number ${id}`
-    res.render(`edit`, {yes})
+    res.render(`edit`, { yes })
   }
 }))
+
+router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res) => {
+  console.log('\n you did hit the route')
+  const post = await db.Record.findByPk(req.params.id);
+  console.log('\nyou hit the delete route');
+  if (post) {
+    await post.destroy();
+    res.json({ message: 'Success' });
+  } else {
+    res.json({ message: 'Failure' });
+  }
+}));
+
+router.get('/delete-window', (req, res) => {
+  res.render('delete-record-confirm');
+})
 
 module.exports = router

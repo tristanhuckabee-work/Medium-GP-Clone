@@ -15,16 +15,19 @@ block content
 
   include navbar
   main
+    include delete-record-confirm
     for record in records
       if record.userId === pk
-        div(class="records" onclick=`redirect(${record.id})`)
+        div(class="records" /*onclick=`redirect(${record.id})`*/)
           h2= record.title
           a(href=`/users/${record.User.id}`): p.author= record.User.userName
           p(class="description")= record.description
-          a(href=`/records/${record.id}/edit`)
-            button edit
-          a(href=`/records/${record.id}/delete`)
-            button delete
+          button(class='delete-button-toggle' id=`delete-post-${record.id}`) Delete
+          button(class='edit-button') Edit
+          //- a(href=`/records/${record.id}/edit`)
+          //-   button edit
+          //- a(href=`/records/${record.id}/delete`)
+          //-   button delete
       else
         div(class="records" onclick=`redirect(${record.id})`)
           h2= record.title
