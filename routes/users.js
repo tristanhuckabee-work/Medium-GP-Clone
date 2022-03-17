@@ -24,6 +24,7 @@ router.get('/:id', async(req, res, next) => {
     const followers = await db.Follow.findAll({
       where: { userId: id }
     }).length;
+    const notSame = !boolean(pk === id);
 
     res.render('users', { user, records, following, followers, pk})
   }else{

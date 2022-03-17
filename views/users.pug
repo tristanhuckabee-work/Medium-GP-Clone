@@ -15,6 +15,8 @@ block content
     aside
         h1= user.userName
         div.relations
+          if notSame 
+            div.follow(onclick='')
           div.follow
               if following 
                 p= following
