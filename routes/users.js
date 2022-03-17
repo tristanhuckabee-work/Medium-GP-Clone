@@ -16,9 +16,10 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
     const records = await db.Record.findAll({
       where: {
         userId: id
-      }
+      },
+      include: 'User'
     })
-    res.render('users', {records, pk})
+    res.render('users', { records, pk})
   }else{
     res.redirect('/');
   }

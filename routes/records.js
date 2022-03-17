@@ -79,4 +79,15 @@ router.post('/:id/edit', csrfProtection, requireAuth, asyncHandler(async(req,res
   await record.save()
   res.redirect('/records')
 }))
+
+// GET specific record
+router.get('/:id', csrfProtection, asyncHandler(async(req,res) =>{
+  const id = req.params.id;
+  const record = await db.Record.findByPk(id,{
+    include: 'User'
+  })
+
+  res.render('recordId', { record })
+}))
+
 module.exports = router
