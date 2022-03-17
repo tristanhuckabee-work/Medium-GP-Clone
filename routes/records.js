@@ -9,9 +9,9 @@ const { requireAuth, logoutUser, loginUser } = require('../auth');
 router.get('/', requireAuth, async (req, res) => {
   const pk = req.session.auth.userId
   const records = await db.Record.findAll({
-    include: 'User'
+    include: 'User',
+    order: [['id', 'DESC']]
   })
-
   // limit the character description shown on records page
   records.forEach(ele => {
     ele.description = ele.description.slice(0, 147) + "...";
@@ -23,7 +23,7 @@ router.get('/', requireAuth, async (req, res) => {
 router.get('/new', csrfProtection, requireAuth, async (req, res) => {
   const record = db.Record.build()
   const pk = req.session.auth.userId;
-  
+
   res.render('form', { record, pk, csrfToken: req.csrfToken() })
 })
 
@@ -59,17 +59,28 @@ router.post('/new',csrfProtection ,recordVal ,requireAuth, asyncHandler(async(re
     }
     }
 ))
-router.get('/:id/edit',requireAuth ,asyncHandler(async(req,res) => {
+router.get('/:id/edit',csrfProtection,requireAuth ,asyncHandler(async(req,res) => {
   const id = req.params.id
+  const pk = req.session.auth.userId
+  const user = await db.User.findByPk(pk)
   const record = await db.Record.findByPk(id)
+  const {title, description} = record
+  console.log(typeof description)
   if(record.userId !== req.session.auth.userId){
     res.redirect('/records')
   }else{
-    const yes = `editing record number ${id}`
-    res.render(`edit`, {yes})
+    res.render(`edit`, {title, description, csrfToken: req.csrfToken(), id, pk, user})
   }
 }))
-
+router.post('/:id/edit', csrfProtection, requireAuth, asyncHandler(async(req,res) => {
+  const id = req.params.id
+  const record = await db.Record.findByPk(id)
+  const {title,description} = req.body
+  record.title = title
+  record.description = description
+  await record.save()
+  res.redirect('/records')
+}))
 
 // GET specific record
 router.get('/:id', csrfProtection, asyncHandler(async(req,res) =>{
@@ -80,4 +91,5 @@ router.get('/:id', csrfProtection, asyncHandler(async(req,res) =>{
 
   res.render('recordId', { record })
 }))
+
 module.exports = router
