@@ -11,6 +11,7 @@ body{
 .records{
     margin-top: 20px;
     overflow: hidden;
+    font-family: 'Noto Sans', sans-serif;
     width: 1100px;
     height: 220px;
 
@@ -23,7 +24,7 @@ body{
 
     font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
-    /* text-decoration: none; */
+    text-decoration: none;
 }
 
 /* title of each record */
@@ -36,11 +37,20 @@ body{
     font-weight: 700;
     font-size: 30px;
     line-height: 35px;
-    color: lightgrey;
+    color: black;
 }
 .records p{
     max-width: 100ch;
     text-decoration: none;
-    color: black;
+    /* color: black; */
     overflow: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.author{
+    color: lightgray;
+    font-size: 14px;
 }

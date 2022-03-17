@@ -6,13 +6,17 @@ append head
   link(rel="stylesheet" href="/stylesheets/records.css")
   //- add page specific js
   script(src="/javascripts/records.js" type="module" defer)
+  script.
+    const redirect = (id) =>{
+      window.location.href = `/records/${id}`
+    }
 
 block content
 
   include navbar
   main
     for record in records
-      a(href=`/records/${record.id}`): div(class="records")
+      div(class="records" onclick=`redirect(${record.id})`)
         h2= record.title
-        a(href=`/users/${record.User.id}`): p= record.User.userName
+        a(href=`/users/${record.User.id}`): p.author= record.User.userName
         p(class="description")= record.description
