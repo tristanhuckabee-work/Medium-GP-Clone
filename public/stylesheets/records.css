@@ -44,3 +44,6 @@ body{
     color: black;
     overflow: none;
 }
+textarea {
+    resize: none;
+}

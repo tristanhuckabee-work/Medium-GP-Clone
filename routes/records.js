@@ -40,9 +40,30 @@ router.post('/new',csrfProtection ,recordVal ,requireAuth, asyncHandler(async(re
     const { title, description } = req.body
     console.log(title, description)
     const record = db.Record.build({ title, description, userId: req.session.auth.userId })
-    await record.save()
-    res.redirect('/')
+    const validatorErrors = validationResult(req);
+
+    if (validatorErrors.isEmpty()) {
+      await record.save();
+      res.redirect('/');
+    } else {
+      const errors = validatorErrors.array().map(error => error.msg);
+      res.render('form', {
+        title,
+        description,
+        errors,
+        csrfToken: req.csrfToken(),
+      });
+    }
     }
 ))
-
-  module.exports = router
+router.get('/:id/edit',requireAuth ,asyncHandler(async(req,res) => {
+  const id = req.params.id
+  const record = await db.Record.findByPk(id)
+  if(record.userId !== req.session.auth.userId){
+    res.redirect('/records')
+  }else{
+    const yes = `editing record number ${id}`
+    res.render(`edit`, {yes})
+  }
+}))
+module.exports = router
