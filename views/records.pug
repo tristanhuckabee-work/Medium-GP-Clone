@@ -4,6 +4,8 @@ include utils
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/records.css")
+  link(rel="stylesheet" href="/stylesheets/delete-record-confirm.css")
+
   //- add page specific js
   script(src="/javascripts/records.js" type="module" defer)
   script.
@@ -14,8 +16,8 @@ append head
 block content
 
   include navbar
+  include delete-record-confirm
   main
-    include delete-record-confirm
     for record in records
       if record.userId === pk
         div(class="records" /*onclick=`redirect(${record.id})`*/)
@@ -23,9 +25,8 @@ block content
           a(href=`/users/${record.User.id}`): p.author= record.User.userName
           p(class="description")= record.description
           button(class='delete-button-toggle' id=`delete-post-${record.id}`) Delete
-          button(class='edit-button') Edit
-          //- a(href=`/records/${record.id}/edit`)
-          //-   button edit
+          a(href=`/records/${record.id}/edit`)
+            button edit
           //- a(href=`/records/${record.id}/delete`)
           //-   button delete
       else
