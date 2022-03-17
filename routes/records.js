@@ -9,8 +9,10 @@ const { requireAuth, logoutUser, loginUser } = require('../auth');
 router.get('/', requireAuth, async (req, res) => {
   const pk = req.session.auth.userId
   const records = await db.Record.findAll({
-    include: 'User'
-  })
+    include: 'User',
+    order: [['id', 'DESC']]
+  }
+  )
 
   // limit the character description shown on records page
   records.forEach(ele => {
