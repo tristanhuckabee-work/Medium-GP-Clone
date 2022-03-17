@@ -8,20 +8,20 @@ const { requireAuth, restoreUser, logoutUser } = require('../auth');
 
 
 /* GET users listing. */
-router.get('/:id', async(req, res, next) => {
+router.get('/:id', asyncHandler(async(req, res, next) => {
   if(res.locals.authenticated){
     const pk = req.session.auth.userId
     const id = req.params.id
-    const user = await db.User.findByPk(id)
+    // const user = await db.User.findByPk(id)
     const records = await db.Record.findAll({
       where: {
         userId: id
       }
     })
-    res.render('users', { user, records, pk})
+    res.render('users', {records, pk})
   }else{
     res.redirect('/');
   }
-});
+}));
 
 module.exports = router;

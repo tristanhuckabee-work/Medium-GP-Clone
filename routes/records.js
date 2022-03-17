@@ -22,7 +22,7 @@ router.get('/', requireAuth, async (req, res) => {
 
 router.get('/new', csrfProtection, requireAuth, async (req, res) => {
   const record = db.Record.build()
-  res.render('form', { record, csrfToken: req.csrfToken() })
+  res.render('form', {record, csrfToken: req.csrfToken() })
 })
 
 const recordVal = [
@@ -59,13 +59,15 @@ router.post('/new',csrfProtection ,recordVal ,requireAuth, asyncHandler(async(re
 ))
 router.get('/:id/edit',csrfProtection,requireAuth ,asyncHandler(async(req,res) => {
   const id = req.params.id
+  const pk = req.session.auth.userId
+  // const user = await db.User.findByPk(pk)
   const record = await db.Record.findByPk(id)
   const {title, description} = record
   console.log(typeof description)
   if(record.userId !== req.session.auth.userId){
     res.redirect('/records')
   }else{
-    res.render(`edit`, {title, description, csrfToken: req.csrfToken(), id})
+    res.render(`edit`, {title, description, csrfToken: req.csrfToken(), id, pk, user})
   }
 }))
 router.post('/:id/edit', csrfProtection, requireAuth, asyncHandler(async(req,res) => {
