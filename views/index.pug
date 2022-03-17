@@ -20,15 +20,26 @@ block content
       p:a(type='button' class='signup' id='sign-up-open') Sign-Up
   main
     div(class='img-div')
-      img(src='/images/main.jpg' class='main-img')
+      
     div.trends
-      h3 Trending on vinyl
+      h2 Trending on vinyl
       div(class='trendContainer')
-        for trend in trending
-          div(class='trendCards')
-            h3=trend.title
-            p=trend.description
+        if trending
+          for trend in trending
+            div(class='trendCards')
+              div.rank
+                h3=trend.id
+              div.cardContent
+                h3=trend.title
+                p=trend.description
   footer
+    p &copy; Team Record Player 2022
+    div.githubs
+      a(href="https://github.com/edwincarr") Edwin Carrillo
+      a(href="https://github.com/mendezangel") Angel Mendez
+      a(href="https://github.com/Cmizell186") Christopher Mizell
+      a(href="https://github.com/tristanhuckabee-work") Tristan Huckabee
+
 
   div(class="sign-in-content")
 
