@@ -2,16 +2,33 @@ extends layout
 include utils
 
 append head
-    link(rel="stylesheet" href="/stylesheets/records.css")
+    link(rel="stylesheet" href="/stylesheets/user.css")
     script(src="/javascripts/index.js" type="module" defer)
 block content
     include navbar
     main
-        h1= user.userName
         if records
             for record in records
-                h1= record.title
-                p= record.description
-    sidebar
+              div.record
+                  h2= record.title
+                  p= record.description
+    aside
         h1= user.userName
-        h3= user.bio
+        div.relations
+          div.follow
+              if following 
+                p= following
+              else
+                p= 0 
+              p FOLLOWERS
+          div.follow
+              if followers 
+                p= followers
+              else
+                p= 0 
+              p FOLLOWING
+        if user.bio
+            p= user.bio
+        else 
+            p.empty No Bio Available :(
+
