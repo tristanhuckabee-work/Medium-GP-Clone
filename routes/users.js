@@ -8,7 +8,7 @@ const { requireAuth, restoreUser, logoutUser } = require('../auth');
 
 
 /* GET users listing. */
-router.get('/:id', async(req, res, next) => {
+router.get('/:id', asyncHandler(async(req, res, next) => {
   if(res.locals.authenticated){
     const pk = req.session.auth.userId
     const id = req.params.id
@@ -17,11 +17,18 @@ router.get('/:id', async(req, res, next) => {
       where: {
         userId: id
       }
-    })
-    res.render('users', { user, records, pk})
+    });
+    const following = await db.Follow.findAll({
+      where: { followerId: id }
+    }).length;
+    const followers = await db.Follow.findAll({
+      where: { userId: id }
+    }).length;
+
+    res.render('users', { user, records, following, followers, pk})
   }else{
     res.redirect('/');
   }
-});
+}));
 
 module.exports = router;
