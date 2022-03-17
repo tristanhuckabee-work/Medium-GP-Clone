@@ -60,7 +60,7 @@ router.post('/new',csrfProtection ,recordVal ,requireAuth, asyncHandler(async(re
 router.get('/:id/edit',csrfProtection,requireAuth ,asyncHandler(async(req,res) => {
   const id = req.params.id
   const pk = req.session.auth.userId
-  // const user = await db.User.findByPk(pk)
+  const user = await db.User.findByPk(pk)
   const record = await db.Record.findByPk(id)
   const {title, description} = record
   console.log(typeof description)

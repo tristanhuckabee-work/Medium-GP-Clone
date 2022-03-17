@@ -12,14 +12,13 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
   if(res.locals.authenticated){
     const pk = req.session.auth.userId
     const id = req.params.id
-    // const user = await db.User.findByPk(id)
+    const user = await db.User.findByPk(id)
     const records = await db.Record.findAll({
       where: {
         userId: id
-      },
-      include: 'User'
+      }
     })
-    res.render('users', { records, pk})
+    res.render('users', { user, records, pk})
   }else{
     res.redirect('/');
   }
