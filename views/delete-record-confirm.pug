@@ -1,0 +1,14 @@
+.delete-window
+  .form-container
+    p Are you sure you wish to delete this record?
+    a(href='yes-delete'): button(class='yes-delete-button') Delete
+    a(href='no-delete'): button(class='no-delete-button') Cancel
+    script.
+      const yesDeleteButton = document.querySelector('.yes-delete-button');
+      const noDeleteButton = document.querySelector('.no-delete-button');
+      yesDeleteButton.addEventListener('click', e => {
+        e.preventDefault();
+      });
+      noDeleteButton.addEventListener('click', e => {
+        e.preventDefault();
+      })
