@@ -3,7 +3,7 @@ var router = express.Router();
 const bcrypt = require('bcryptjs');
 const db = require('../db/models')
 const { check, validationResult } = require('express-validator');
-const { csrfProtection, asyncHandler } = require('./utils');
+const { csrfProtection, asyncHandler, handleValidationErrors } = require('./utils');
 const { requireAuth, logoutUser, loginUser } = require('../auth');
 
 router.get('/', requireAuth, async (req, res) => {
@@ -107,10 +107,11 @@ router.post('/:id/comments/:commentsId',
 commentsVal,
 csrfProtection,
 requireAuth,
+handleValidationErrors,
 asyncHandler(async(req,res)=>{
   const id = req.params.id;
   const {comment} = req.body;
-  console.log(comment);
+  
 
 }))
 module.exports = router
