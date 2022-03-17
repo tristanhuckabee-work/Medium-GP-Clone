@@ -12,6 +12,7 @@ block content
   include navbar
   main
     for record in records
-      div(class="records")
+      a(href=`/records/${record.id}`): div(class="records")
         h2= record.title
-        p= record.description
+        a(href=`/users/${record.User.id}`): p= record.User.userName
+        p(class="description")= record.description

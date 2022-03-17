@@ -11,6 +11,12 @@ router.get('/', requireAuth, async (req, res) => {
   const records = await db.Record.findAll({
     include: 'User'
   })
+
+  // limit the character description shown on records page
+  records.forEach(ele => {
+    ele.description = ele.description.slice(0, 147) + "...";
+  })
+
   res.render('records', { records, pk });
 });
 
