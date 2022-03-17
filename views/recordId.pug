@@ -1,0 +1,12 @@
+extends layout
+
+append head
+    link(rel="stylesheet" href="/stylesheets/recordsId.css")
+    //- script(src="/javascripts/index.js" type="module" defer)
+
+block content
+    //- include navbar
+    main
+        h1= record.title
+        h2= record.User.userName
+        p= record.description
