@@ -3,7 +3,7 @@ var router = express.Router();
 const bcrypt = require('bcryptjs');
 const db = require('../db/models')
 const { check, validationResult } = require('express-validator');
-const { csrfProtection, asyncHandler } = require('./utils');
+const { csrfProtection, asyncHandler, handleValidationErrors } = require('./utils');
 const { requireAuth, logoutUser, loginUser } = require('../auth');
 
 router.get('/', requireAuth, async (req, res) => {
@@ -83,13 +83,48 @@ router.post('/:id/edit', csrfProtection, requireAuth, asyncHandler(async(req,res
 }))
 
 // GET specific record
-router.get('/:id', csrfProtection, asyncHandler(async(req,res) =>{
+router.get('/:id', csrfProtection, requireAuth,asyncHandler(async(req,res) =>{
   const id = req.params.id;
+
+  // getting record info
   const record = await db.Record.findByPk(id,{
     include: 'User'
   })
+  // getting comments of record
+  const comments = await db.Comment.findAll({
+      where: {
+        recordId: id
+      },
+      order: [['id', 'DESC']]
+  })
 
-  res.render('recordId', { record })
+  if(record.userId !== req.session.auth.userId){
+    res.redirect("/records")
+  } else {
+    console.log(comments[0].id, "HEY THERE CHECK THIS OUT COMMENTS ID");
+    res.render('recordId', { record, comments, csrfToken: req.csrfToken()})
+  }
+}))
+
+// validator for commments
+const commentsVal=[
+  check('description')
+  .exists({ checkFalsy: true })
+  .withMessage('Please provide a message for comment')
+  .isLength({max: 255})
+  .withMessage('comments can only hold 255 characters')
+]
+
+router.post('/:id/comments/:commentsId',
+commentsVal,
+csrfProtection,
+requireAuth,
+handleValidationErrors,
+asyncHandler(async(req,res)=>{
+  const id = req.params.id;
+  const {comment} = req.body;
+  
+
 }))
 
 module.exports = router
