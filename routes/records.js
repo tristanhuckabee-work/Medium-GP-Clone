@@ -70,12 +70,30 @@ router.get('/:id/edit',requireAuth ,asyncHandler(async(req,res) => {
 
 
 // GET specific record
-router.get('/:id', csrfProtection, asyncHandler(async(req,res) =>{
+router.get('/:id', csrfProtection, requireAuth,asyncHandler(async(req,res) =>{
   const id = req.params.id;
   const record = await db.Record.findByPk(id,{
     include: 'User'
   })
+  if(record.userId !== req.session.auth.userId){
+    res.redirect("/records")
+  } else {
+    // console.log("you are allowed to be here!")
+    res.render('recordId', { record, csrfToken: req.csrfToken()})
+  }
+}))
 
-  res.render('recordId', { record })
+// validator for commments
+// const commentsVal=[
+//   check
+// ]
+
+router.post('/:id/comments/:commentsId',
+csrfProtection,
+requireAuth,
+asyncHandler(async(req,res)=>{
+  const id = req.params.id;
+  
+
 }))
 module.exports = router
