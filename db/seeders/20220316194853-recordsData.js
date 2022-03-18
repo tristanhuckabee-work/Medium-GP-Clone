@@ -9,11 +9,85 @@ module.exports = {
       Example:
       */
       return queryInterface.bulkInsert('Records', [
-        {title:'small title',description:'...',userId:'1', createdAt: new Date(), updatedAt: new Date()},
-        {title:'Basic Title',description:'...',userId:'1', createdAt: new Date(), updatedAt: new Date()},
-        {title:'small desc',description:'hey whats going on',userId:'1', createdAt: new Date(), updatedAt: new Date()},
-        {title:'big description',description:'Lorem ipsum dolor sit amet, ea vix elitr instructior. Ex tamquam molestie ius. Euismod eleifend disputando id mei, libris omittam legendos vix an, dolore scaevola in cum. Et mea regione adolescens, nominavi probatus at sit. Ad eum insolens gloriatur, ei pri imperdiet gloriatur.No eos natum graeci interpretaris, facer comprehensam in cum. Nec causae expetenda cu, denique officiis abhorreant mei in. Ut case assueverit pri, qui tritani expetendis cu, eu vel soluta debitis accusam. Pri id assum facilis delicata, solet forensibus in duo.Mazim decore menandri ne vix, mel epicurei accusata senserit an. Pri modus volumus insolens cu, ea ius vidit sanctus feugait. Per inermis recusabo concludaturque eu, omnium recusabo adolescens ius in. Ei prompta blandit intellegam sea. No duo omnesque patrioque assentior.Nam ut laoreet periculis accusamus. Wisi doming duo et. An nam justo posse consequuntur, et nam deleniti appellantur. Ne error euismod intellegam nam. Cu ullum noluisse antiopam cum, in hinc admodum minimum quo. Cu modo novum duo.Sit ei efficiantur complectitur, ad quo ludus elaboraret, tantas perpetua vis ut. Per ex percipit similique sententiae. Percipit pertinax ius et, ea ludus accusam salutatus pri. Legimus voluptua hendrerit at usu. Eos et offendit incorrupte, no vis stet mediocrem maluisset. Facer imperdiet cum ad, utroque debitis vim ex, ex esse duis duo.',userId:'1', createdAt: new Date(), updatedAt: new Date()},
         {title:'VENGEANCE',description:'I DO IT FOR GOTHAM CITY AND I BE LISTENING TO SKRILLEX',userId:'8', createdAt: new Date(), updatedAt: new Date()},
+        {
+          title:'mehoymiyo: im sorry',
+          description:'as a past resident of bikini bottom id like to say i am sorry for how i acted.i was brought into this world on a whim and since that fateful day i have been trying to find who i am and today i am proud to announce my new debut album -mehoymiyo- out in stores now let me know how you like it down below',
+          userId:7,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          title:'squidward collab ??',
+          description:'no, his music is bad... soryy not sorry',
+          userId:7,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          title:'top 5 best songs to fight crime',
+          description:'starting off on number 5 we have IF I CANT-50 CENT,at number 4 THE DOOR-SPACE92,number 3 ME AND YOUR MAMA-CHILDISH GAMBINO, coming in at our number 2 spot is THIS NIGHT HAS OPENED MY EYES-THE SMITHS, and at our number 1 spot, we all saw this coming SOMETHING IN THE WAY-NIRVANA. -JUSTICE FOR GOTHAM, BATMAN OUT',
+          userId:8,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          title:'who won?',
+          description:'rick grimes vs walter white: search it up and light up the comments',
+          userId:9,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          title:'CITY OF GOTHAM I REQUEST AID!!',
+          description:'what cat themed songs would woo a women?? i need help asap!',
+          userId:8,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          title:'whts ur favrit song genre',
+          description:'myne is qoir music',
+          userId:5,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          title:'SPOTIFY DOWN',
+          description:'anybody else having connection',
+          userId:1,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          title:'am i going crazy',
+          description:'everytime i reminisce on my childhood i keep hearing music and my thoughts become black and white',
+          userId:20,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          title:'RICK GRIMES WON THE EPIC RAP BATTLE OF HISTORY',
+          description:'REFER TO THE TITLE B*********',
+          userId:10,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          title:'petition to have squidward play music at work',
+          description:'i really like squidwards music and i would love for him to play it when we arent busy',
+          userId:12,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          title:'riddle me this',
+          description:'... --- .-.. --- / . ... - --- -.-- / . -. / . ... - . / ... .. - .. --- / .-- . -... / .--. --- .-. --.- ..- . / . ... -.-. ..- -.-. .... ..-.. / --.- ..- . / -... .- - -- .- -. / . ... - .- -... .- / . -. / ..-.. .-.. .-.-.-',
+          userId:11,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+
       ], {});
   },
 
