@@ -100,23 +100,5 @@ router.get('/:id', csrfProtection, requireAuth,asyncHandler(async(req,res) =>{
   res.render('recordId', { record, comments, csrfToken: req.csrfToken()})
 }))
 
-// validator for commments
-const commentsVal=[
-  check('description')
-  .exists({ checkFalsy: true })
-  .withMessage('Please provide a message for comment')
-  .isLength({max: 255})
-  .withMessage('comments can only hold 255 characters')
-]
-
-router.post('/:id/comments/:commentsId',
-commentsVal,
-csrfProtection,
-requireAuth,
-asyncHandler(async(req,res)=>{
-  const {comment} = req.body;
-  res.json({description: comment}).end();
-  console.log('sending post request')
-}))
 
 module.exports = router
