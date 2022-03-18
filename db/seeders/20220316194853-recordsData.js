@@ -54,7 +54,7 @@ module.exports = {
         },
         {
           title:'SPOTIFY DOWN',
-          description:'anybody else having connection',
+          description:'anybody else having connection issues',
           userId:1,
           createdAt: new Date(),
           updatedAt: new Date()
