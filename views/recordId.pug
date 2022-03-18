@@ -5,21 +5,21 @@ append head
     script(src="/javascripts/records.js" type="module" defer)
 
 block content
-    //- include navbar
+    include navbar
     main
-        div()
+        div(class="record-info")
             h1= record.title
             h2= record.User.userName
             p= record.description
-        div()
+        div(class="comments-form")
             h2 comment section
             form(action=`/comments` method="post" class="comments-form")
                 input(type='hidden' name='_csrf' value=csrfToken)
                 input(type='hidden' name='recordId' value=record.id class="recordId")
                 input(type='hidden' name='userId' value=record.User.id class="userId")
                 div(class='text-area')
-                    label(for='description') Comment here:
-                    textarea(name="description" type='text' id="description", cols="30", rows="10")
+                    label(for='description')
+                    textarea(name="description" type='text' id="description" placeholder="New comment")
                 button(type='submit' id=`newComment-btn`) submit
         div(id="comments-container")
             for comment in comments
