@@ -1,0 +1,20 @@
+extends layout
+include utils
+append head
+  link(rel="stylesheet" href="/stylesheets/records.css")
+  link(rel="stylesheet" href="/stylesheets/newRecord.css")
+  //- add page specific js
+  script(src="/javascripts/records.js" type="module" defer)
+block content
+    include navbar
+
+    +validationErrorSummary(errors)
+    form(action='/records/new' method='post' class='record-form')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        +field('title', null, 'title', title, null, 'Title')
+        div(class='form-group')
+          label(for='description')
+          textarea(class='desc' type='text' id='description' name='description' value=description placeholder='Description')
+        div(class='bottom-submit')
+          h2 SHOW THE WORLD YOUR BAD MUSIC TAKE
+          button(type='submit' class='record-submit') Publish

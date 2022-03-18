@@ -17,7 +17,7 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
     const user = await db.User.findByPk(id)
     const records = await db.Record.findAll({
       where: { userId: id } });
-    
+
     // THESE ARE MY CHANGES
     const following = await db.Follow.findAll({
       where: { followerId: id } }).length;
@@ -25,7 +25,7 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
       where: { userId: id } }).length;
     // ------------------------------------
 
-    res.render('users', { user, records, following, followers, pk})
+    res.render('usersPage', { user, records, following, followers, pk})
   }else{
     res.redirect('/');
   }
