@@ -110,7 +110,7 @@ router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req,
       limit: 6
     })
     const errorsSignup = validatorErrors.array().map(error => error.msg);
-    res.render('splash', {
+    res.render('splashPage', {
       title: 'filler',
       trending,
       userName,
