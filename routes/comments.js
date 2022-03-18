@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const bcrypt = require('bcryptjs');
 const db = require('../db/models')
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler, handleValidationErrors } = require('./utils');
@@ -18,18 +17,19 @@ const commentsVal=[
   //  Front end API for POST
   router.post('/',
   commentsVal,
-  csrfProtection,
   requireAuth,
   handleValidationErrors,
   asyncHandler(async(req,res)=>{
-    const {description, recordId, userId} = req.body;
-    const comment = db.Comment.build({
+    console.log(req.body);
+    const {recordId, userId, description} = req.body;
+    const comment = await db.Comment.create({
         description,
         recordId,
         userId,
     })
-    await comment.save()
+    // await comment.save()
     res.json({message: 'success!'});
+    res.end()
   }))
 
 // router.post('/', commentsVal, csrfProtection, requireAuth, handleValidationErrors,

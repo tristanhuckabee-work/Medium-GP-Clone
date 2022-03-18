@@ -22,18 +22,26 @@ window.addEventListener("load", (e) => {
     // })
 
 
-    newComment.addEventListener('click', (e) =>{
+    newComment.addEventListener('click', async(e) =>{
         e.preventDefault()
-        const res = await fetch('/comments')
-        const { description }  = await res.json();
-        const commentDiv = document.querySelector('#comments-container');
+        const userId = document.querySelector('.userId').value;
+        const recordId = document.URL.split('/')[4]
+        // console.log(recordId);
+        const description = document.querySelector('#description').value;
+        // console.log(JSON.stringify({description, userId, recordId}));
+        const res = await fetch('/comments', {
+            method: 'POST',
+            body: JSON.stringify({description, userId, recordId}),
+            headers: {"Content-Type":"application/json"}
+        })
 
-        const commentHTML = description.map(({description}) =>{
-            return `
-            <p> ${description} </p>
-            `
-        });
-
-        commentDiv.innerHTML = commentHTML.join('');
+        const waiting = await res.json();
+        if(waiting.message === 'success!'){
+            console.log(waiting, 'consoleloged');
+            const commentDiv = document.querySelector('#comments-container');
+            commentDiv.innerHTML = `
+            <p>${description}</p>
+            ` + commentDiv.innerHTML;
+        }
     })
 })
