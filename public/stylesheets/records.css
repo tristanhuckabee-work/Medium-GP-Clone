@@ -26,8 +26,7 @@ body{
     height: 220px;
     margin: 10px 0 10px 5%;
     
-    border: 2px solid black;
-    border-radius: 10px;
+    border-bottom: 2px solid black;
 
     font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
@@ -82,6 +81,9 @@ body{
 
 .authorOpts {
   grid-area: opts;
+  align-self: end;
+  justify-self: end;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,8 +91,8 @@ body{
 
   background-color: #191d26;
   height: 100%;
-  width: 100%;
-  /* border-radius: 0 10px 10px 0; */
+  width: 50%;
+  border-radius: 0 10px 0 0;
 }
 .authorOpts a {
   color: #ffffff;
