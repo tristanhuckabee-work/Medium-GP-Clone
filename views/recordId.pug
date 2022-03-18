@@ -11,7 +11,7 @@ block content
             h1= record.title
             h2= record.User.userName
             p= record.description
-        div(class="comments-form")
+        div(class="comments-section")
             h2 comment section
             form(action=`/comments` method="post" class="comments-form")
                 input(type='hidden' name='_csrf' value=csrfToken)

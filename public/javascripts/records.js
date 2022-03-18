@@ -28,6 +28,9 @@ window.addEventListener("load", async (e) => {
             <p>${description}</p>
             ` + commentDiv.innerHTML;
             }
+            // setting comment input field to empty
+            const textInputField = document.getElementById('description');
+            textInputField.value = '';
         })
     }
 
