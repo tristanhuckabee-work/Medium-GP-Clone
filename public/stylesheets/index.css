@@ -68,14 +68,16 @@ h1 {
 .img-div{
   z-index: 2;
   display: flex;
-  justify-content:right;
+  justify-content:left;
   border-top: solid 1px black;
   border-bottom: solid 1px black;
-  
+  align-items: center;
+
+
   background-image: url('/images/vinyl-records.png');
   background-position: center;
   background-size:cover;
-  height: 30vh;
+  height: 35vh;
 }
 
 footer {
@@ -168,14 +170,13 @@ footer a:hover {color:#b39856}
 }
 .trendCards {
   display: grid;
-  grid-template-columns: 1fr 4fr;
-  
+  grid-template-columns: 5vw 18vw;
+
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: clip;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   width: 25vw;
-  /* padding: 10px; */
 
   background: #191d26;
   border: 2px solid #b39856;
@@ -199,10 +200,36 @@ footer a:hover {color:#b39856}
 .cardContent {
   padding: 10px;
   box-sizing: border-box;
+  white-space: nowrap;
+  overflow: clip;
+  text-overflow: ellipsis;
 }
 .cardContent p{
   max-width: 250px;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: clip;
   text-overflow:ellipsis;
+}
+
+
+
+/* styling for info-user */
+.info-user{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba(0,0,0,0.75);
+  margin-left: 19%;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+}
+
+.info-user h2{
+  font-family: 'Abril Fatface', cursive;
+  font-weight: lighter;
+}
+.info-user p{
+  font-family: 'Noto Sans', sans-serif;
 }

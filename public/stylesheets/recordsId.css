@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Sans&display=swap');
+
+
+/* main content centering */
+main{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+}
+/* preventing text area from resizing */
+textarea{
+    resize: none;
+    border: none;
+    outline: none;
+    width: 30vw;
+    height: 5vh;
+    transition: height 1s ease;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+textarea:focus{
+    box-shadow: 0 0 5px lightgrey;
+    height: 10vh;
+}
+
+/* record info are */
+.record-info{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px lightgrey inset;
+}
+/* record title */
+.record-info h1{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    font-weight: bold;
+    font-family: sans-serif;
+
+    margin-bottom: -10px;
+    margin-left: 20%;
+    margin-right: 20%;
+
+}
+
+/* record user owner */
+.record-info h4{
+    margin-left: 20%;
+    margin-right: 20%;
+
+    font-family: 'Noto Sans', sans-serif;
+    color: grey;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* record description */
+.record-info p{
+    /* font-family: 'Noto Sans', sans-serif; */
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 40px;
+    margin-left: 20%;
+    margin-right: 20%;
+    font-size: 20px;
+
+    word-wrap: break-word;
+}
+
+
+/* COMMENT SECTION */
+
+.comments-section{
+    font-family: 'Abril Fatface', cursive;
+    font-weight: lighter;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-bottom: 1px lightgray solid;
+}
+.comments-form{
+    display: flex;
+    flex-direction: column;
+}
+#newComment-btn{
+    font-family: 'Noto Sans', sans-serif;
+    padding: 5px 10px;
+    align-self: flex-end;
+    color: white;
+    background-color: #661b1c;
+    border-radius: 4px;
+    margin-bottom: 3%;
+    border: none;
+    transition: background-color 0.25s;
+}
+#newComment-btn:hover{
+    background-color: #1B662F;
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0, .1);
+    cursor: pointer;
+}
+
+.comments-section h2{
+    font-family: 'Noto Sans', sans-serif;
+    color: #661b1c;
+    align-self: flex-start;
+}
+
+#comments-container{
+    font-family: 'Noto Sans', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 20px;
+    border-right: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    height: 100%;
+    /* border: blue 1px solid; */
+}
+
+/* comment user name */
+.individual-comment{
+    width: 100%;
+    border-top: 1px solid black;
+}
+
+.individual-comment a{
+    text-decoration: none;
+    width: 25%;
+    margin: 0;
+}
+/* user names for each comment */
+h4{
+    text-decoration: none;
+    color: #b39856;
+}

@@ -25,10 +25,17 @@ window.addEventListener("load", async (e) => {
             if (waiting.message === 'success!') {
                 const commentDiv = document.querySelector('#comments-container');
                 commentDiv.innerHTML = `
-            <h4>${waiting.userName}</h4>
-            <p>${description}</p>
+            <div class="individual-comment">
+                <a href="/users/${userId}">
+                    <h4>${waiting.userName}</h4>
+                </a>
+                <p>${description}</p>
+            </div>
             ` + commentDiv.innerHTML;
             }
+            // setting comment input field to empty
+            const textInputField = document.getElementById('description');
+            textInputField.value = '';
         })
     }
 
