@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   Record.associate = function (models) {
     // associations can be defined here
     Record.belongsTo(models.User, { foreignKey: 'userId' });
-    Record.hasMany(models.Applaud, { foreignKey: 'recordId' });
-    Record.hasMany(models.Comment, { foreignKey: 'recordId' });
+    Record.hasMany(models.Applaud, { foreignKey: 'recordId', onDelete: 'CASCADE', hooks: true });
+    Record.hasMany(models.Comment, { foreignKey: 'recordId', onDelete: 'CASCADE', hooks: true });
   };
   return Record;
 };

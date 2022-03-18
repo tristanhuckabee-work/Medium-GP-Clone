@@ -37,7 +37,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        userName: 'hotbox420',
+        userName: 'iloveqoir',
         hashedPassword: bcrypt.hashSync('123', 10),
         bio: null,
         image: null,
