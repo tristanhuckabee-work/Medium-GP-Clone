@@ -6,12 +6,7 @@ window.addEventListener('load', async(e) =>{
     const deleteCancelButtons = document.querySelector('.delete-cancel-buttons');
     const deleteCommentButton = document.querySelectorAll('.delete-comment');
 
-    // pull up modal for each delete button
-    deleteCommentButton.forEach((btn) =>{
-        btn.addEventListener('click', (e) =>{
-            deleteWindowContainer.classList.add('.show');
-        })
-    })
+
 
 
 })

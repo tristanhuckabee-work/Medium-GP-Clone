@@ -6,10 +6,9 @@ window.addEventListener("load", async (e) => {
     const deleteWindowContainer = document.querySelector('.delete-window-container');
     let recordId;
 
-
-    //  POST for new comment
-const newComment = document.querySelector(`#newComment-btn`);
-if (newComment) {
+    // POST api comment
+    const newComment = document.querySelector(`#newComment-btn`);
+    if (newComment) {
     newComment.addEventListener('click', async (e) => {
         e.preventDefault()
         const userId = document.querySelector('.userId').value;
@@ -40,6 +39,7 @@ if (newComment) {
 }
 
 
+
     //  delete button for modal
     for (let i = 0; i < deleteButtons.length; i++) {
         const button = deleteButtons[i];
@@ -65,7 +65,6 @@ if (newComment) {
         button.addEventListener('click', async e => {
             e.stopPropagation();
             if (!deleteWindow.classList.value.includes('show')) {
-                deleteWindow.style.transition = 'all 2s';
                 deleteWindow.classList.add('show');
                 deleteWindowContainer.classList.add('show');
                 console.log(e.target.parentElement);
