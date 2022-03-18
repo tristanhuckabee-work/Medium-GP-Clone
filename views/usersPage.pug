@@ -4,32 +4,47 @@ include utils
 append head
     link(rel="stylesheet" href="/stylesheets/user.css")
     script(src="/javascripts/users.js" type="module" defer)
+    script.
+      const redirect = (id) =>{
+      window.location.href = `/records/${id}`
+      }
 
 block content
     include navbar
+    include delete-record-confirm
     main
         if records
             for record in records
-              div.record
+              div.records(id=`record-container-${record.id}` onclick=`redirect(${record.id})`)
                   h2= record.title
                   p= record.description
+
+                  div(class='authorOpts' id=`author-opts-${record.id}`)
+                    button(class="delete-button-toggle delete" id=`delete-post-${record.id}`)
+                      i.fas.fa-trash-can.fa-2x
+                    a(href=`/records/${record.id}/edit`)
+                      button(class="edit-button edit")
+                        i.fas.fa-pen-to-square.fa-2x
     aside
         h1= user.userName
         div.relations
-          div(class="follow relate")
+          if pk !== user.id
+            div(class="follow relate")
               i.fas.fa-circle-plus.fa-3x(style="color: darkgray")
               p FOLLOW
-          div.follow
-              if following 
-                p= following
-              else
-                p= 0 
-              p FOLLOWERS
+          else 
+            div(class="follow relate hidden")
           div.follow
               if followers 
-                p= followers
+                p.followers= followers
               else
-                p= 0 
+                p.followers= 0 
+              p FOLLOWERS
+          div.follow
+              if following
+                p.following= following
+              else
+                p.following= 0 
               p FOLLOWING
         if user.bio
             p= user.bio

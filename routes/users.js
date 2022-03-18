@@ -18,12 +18,18 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
     const records = await db.Record.findAll({
       where: { userId: id } });
 
-    // THESE ARE MY CHANGES
+    records.forEach(ele => {
+      if (ele.description.length >= 150) {
+        ele.description = ele.description.slice(0, 147) + "...";
+      } else {
+        ele.description = ele.description.slice(0, 147);
+      }
+    })
+    
     const following = await db.Follow.findAll({
       where: { followerId: id } }).length;
     const followers = await db.Follow.findAll({
       where: { userId: id } }).length;
-    // ------------------------------------
 
     res.render('usersPage', { user, records, following, followers, pk})
   }else{
