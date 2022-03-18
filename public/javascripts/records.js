@@ -4,28 +4,34 @@ window.addEventListener("load", async (e) => {
   const deleteWindow = document.querySelector('.delete-window');
   const deleteWindowContainer = document.querySelector('.delete-window-container');
   const records = document.querySelectorAll('.records');
+  let recordId;
 
 
-  const getRecordId = (() => {
-    for (let i = 0; i < records.length; i++) {
-      let record = records[i];
-      let children = [...record.children];
-      let buttonId = children[children.length - 2].id.split('-')[2];
-      return buttonId;
-    }
-  })();
+  // const getRecordId = (() => {
+  //   for (let i = 0; i < records.length; i++) {
+  //     let record = records[i];
+  //     // let children = [...record.children];
+  //     // let buttonId = children[children.length - 2].id.split('-')[2];
+  //     console.log(record.children)
+  //   }
+  // })();
 
 
   for (let i = 0; i < deleteButtons.length; i++) {
     const button = deleteButtons[i];
     button.addEventListener('click', async e => {
-      const postId = getRecordId;
+      // console.log(recordId);
       // console.log(getRecordId);
-      const res = await fetch(`/records/${postId}/delete`, {
+      const res = await fetch(`/records/${recordId}/delete`, {
         method: 'DELETE'
       });
       const data = await res.json();
-      console.log(data.message);
+      if (data.message === 'Success') {
+        let container = document.getElementById(`record-container-${recordId}`)
+        container.remove();
+        deleteWindow.classList.remove('show');
+        deleteWindowContainer.classList.remove('show');
+      }
     })
   }
   for (let i = 0; i < deleteButtonToggle.length; i++) {
@@ -34,6 +40,7 @@ window.addEventListener("load", async (e) => {
       if (!deleteWindow.classList.value.includes('show')) {
         deleteWindow.classList.add('show');
         deleteWindowContainer.classList.add('show');
+        recordId = e.target.id.split('-')[2];
       } else {
         deleteWindow.classList.remove('show');
         deleteWindowContainer.classList.remove('show');
