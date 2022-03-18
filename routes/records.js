@@ -95,7 +95,8 @@ router.get('/:id', csrfProtection, requireAuth, asyncHandler(async (req, res) =>
     where: {
       recordId: id
     },
-    order: [['id', 'DESC']]
+    order: [['id', 'DESC']],
+    include: 'User'
   })
   res.render('recordId', { record, comments, csrfToken: req.csrfToken()})
 }))
