@@ -15,7 +15,7 @@ router.get('/', csrfProtection, async (req, res) => {
     const trending = await db.Record.findAll({
       limit: 6
     })
-    res.render('index', { trending, user, csrfToken: req.csrfToken() });
+    res.render('splashPage', { trending, user, csrfToken: req.csrfToken() });
   }
 });
 
@@ -110,7 +110,7 @@ router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req,
       limit: 6
     })
     const errorsSignup = validatorErrors.array().map(error => error.msg);
-    res.render('index', {
+    res.render('splash', {
       title: 'filler',
       trending,
       userName,
