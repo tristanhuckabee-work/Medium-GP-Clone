@@ -68,7 +68,7 @@ module.exports = {
         },
         {
           title:'RICK GRIMES WON THE EPIC RAP BATTLE OF HISTORY',
-          description:'REFER TO THE TITLE B*********',
+          description:'REFER TO THE TITLE',
           userId:10,
           createdAt: new Date(),
           updatedAt: new Date()
