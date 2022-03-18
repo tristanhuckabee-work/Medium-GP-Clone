@@ -39,6 +39,8 @@ window.addEventListener("load", async (e) => {
             const res = await fetch(`/records/${recordId}/delete`, {
                 method: 'DELETE'
             });
+            console.log('recordID', recordId);
+            console.log('button', button)
             const data = await res.json();
             if (data.message === 'Success') {
                 let container = document.getElementById(`record-container-${recordId}`)
@@ -58,6 +60,7 @@ window.addEventListener("load", async (e) => {
                 deleteWindow.style.transition = 'all 2s';
                 deleteWindow.classList.add('show');
                 deleteWindowContainer.classList.add('show');
+                console.log(e.target.parentElement);
                 recordId = e.target.parentElement.id.split('-')[2];
             } else {
                 deleteWindow.classList.remove('show');
