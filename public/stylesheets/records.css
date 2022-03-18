@@ -25,7 +25,6 @@ body{
     width: 1100px;
     height: 220px;
     margin: 10px 0 10px 5%;
-    padding: 20px;
     
     border: 2px solid black;
     border-radius: 10px;
@@ -42,7 +41,6 @@ body{
 
     grid-area: title;
 
-
     text-decoration: none;
     font-family: 'Noto Sans', sans-serif;
 
@@ -55,34 +53,33 @@ body{
     color: black;
 }
 .description {
+  background-color: blue;
+
   grid-area: desc;
   align-self: start;
   justify-self: start;
 
-  margin-top: 0;
+  margin: 0;
   width: 100%;
   height: 100%;
 
   text-decoration: none;
 }
 .author {
-  background: red;
+  background: blue;
 
   grid-area: writer;
   align-self: center;
   justify-self: start;
+  text-decoration: none;
 
   width: 100%;
   height: 100%;
-  margin-top: 0;
+  margin: 0;
   color: lightgray;
   font-size: 14px;
 }
-.records p{
-    text-decoration: none;
-    background-color: blue;
-    overflow: none;
-}
+
 .authorOpts {
   grid-area: opts;
   display: flex;
@@ -90,15 +87,15 @@ body{
   align-items: center;
   justify-content: space-around;
 
-  background-color: blue;
+  background-color: #191d26;
   height: 100%;
   width: 100%;
-  border-radius: 0 10px 10px 0;
+  /* border-radius: 0 10px 10px 0; */
 }
-.author-options a {
+.authorOpts a {
   color: #ffffff;
 }
-.author-options a:hover {
+.authorOpts a:hover {
   color: #b39856;
 }
 .not-author {
