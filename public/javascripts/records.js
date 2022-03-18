@@ -1,5 +1,6 @@
 window.addEventListener("load", async (e) => {
     const deleteButtons = document.querySelectorAll('.delete-button');
+    const cancelButtons = document.querySelectorAll('.cancel-button');
     const deleteButtonToggle = document.querySelectorAll('.delete-button-toggle');
     const deleteWindow = document.querySelector('.delete-window');
     const deleteWindowContainer = document.querySelector('.delete-window-container');
@@ -45,6 +46,8 @@ window.addEventListener("load", async (e) => {
             const res = await fetch(`/records/${recordId}/delete`, {
                 method: 'DELETE'
             });
+            console.log('recordID', recordId);
+            console.log('button', button)
             const data = await res.json();
             if (data.message === 'Success') {
                 let container = document.getElementById(`record-container-${recordId}`)
@@ -61,9 +64,11 @@ window.addEventListener("load", async (e) => {
         button.addEventListener('click', async e => {
             e.stopPropagation();
             if (!deleteWindow.classList.value.includes('show')) {
+                deleteWindow.style.transition = 'all 2s';
                 deleteWindow.classList.add('show');
                 deleteWindowContainer.classList.add('show');
-                recordId = e.target.id.split('-')[2];
+                console.log(e.target.parentElement);
+                recordId = e.target.parentElement.id.split('-')[2];
             } else {
                 deleteWindow.classList.remove('show');
                 deleteWindowContainer.classList.remove('show');
@@ -71,5 +76,12 @@ window.addEventListener("load", async (e) => {
         })
     }
 
+    for (let i = 0; i < cancelButtons.length; i++) {
+        const cancelButton = cancelButtons[i];
+        cancelButton.addEventListener('click', e => {
+            deleteWindow.classList.remove('show');
+            deleteWindowContainer.classList.remove('show');
+        })
+    }
 
 });
