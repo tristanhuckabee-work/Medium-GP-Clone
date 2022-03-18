@@ -22,19 +22,25 @@ block content
       if record.userId === pk
         div(class="records" id=`record-container-${record.id}` onclick=`redirect(${record.id})`)
           h2= record.title
-          a(href=`/users/${record.User.id}`)
-            p.author= record.User.userName
+          a.author(href=`/users/${record.User.id}`)= record.User.userName
           p.description= record.description
           div.authorOpts
-            button.delete-button-toggle(id=`delete-post-${record.id}`)
+            button(class="delete-button-toggl delete" id=`delete-post-${record.id}`)
               i.fas.fa-trash-can.fa-2x
             a(href=`/records/${record.id}/edit`)
-              button.edit-button
+              button(class="edit-button edit")
                 i.fas.fa-pen-to-square.fa-2x
       else
         div.records(onclick=`redirect(${record.id})`)
           h2= record.title
-          a(href=`/users/${record.User.id}`)
-            p.author= record.User.userName
+          a.author(href=`/users/${record.User.id}`)= record.User.userName
           p.description= record.description
           div.authorOpts.not-author
+    
+    div.footer
+      p &copy; Team Record Player 2022
+      div.githubs
+        a(href="https://github.com/edwincarr") Edwin Carrillo
+        a(href="https://github.com/mendezangel") Angel Mendez
+        a(href="https://github.com/Cmizell186") Christopher Mizell
+        a(href="https://github.com/tristanhuckabee-work") Tristan Huckabee
