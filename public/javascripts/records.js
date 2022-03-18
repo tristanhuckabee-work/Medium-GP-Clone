@@ -8,36 +8,37 @@ window.addEventListener("load", async (e) => {
 
 
     //  POST for new comment
-    const newComment = document.querySelector(`#newComment-btn`);
-    if (newComment) {
-        newComment.addEventListener('click', async (e) => {
-            e.preventDefault()
-            const userId = document.querySelector('.userId').value;
-            const recordId = document.URL.split('/')[4]
-            const description = document.querySelector('#description').value;
-            const res = await fetch('/comments', {
-                method: 'POST',
-                body: JSON.stringify({ description, userId, recordId }),
-                headers: { "Content-Type": "application/json" }
-            })
-
-            const waiting = await res.json();
-            if (waiting.message === 'success!') {
-                const commentDiv = document.querySelector('#comments-container');
-                commentDiv.innerHTML = `
-            <div class="individual-comment">
-                <a href="/users/${userId}">
-                    <h4>${waiting.userName}</h4>
-                </a>
-                <p>${description}</p>
-            </div>
-            ` + commentDiv.innerHTML;
-            }
-            // setting comment input field to empty
-            const textInputField = document.getElementById('description');
-            textInputField.value = '';
+const newComment = document.querySelector(`#newComment-btn`);
+if (newComment) {
+    newComment.addEventListener('click', async (e) => {
+        e.preventDefault()
+        const userId = document.querySelector('.userId').value;
+        const recordId = document.URL.split('/')[4]
+        const description = document.querySelector('#description').value;
+        const res = await fetch('/comments', {
+            method: 'POST',
+            body: JSON.stringify({ description, userId, recordId }),
+            headers: { "Content-Type": "application/json" }
         })
-    }
+
+        const waiting = await res.json();
+        if (waiting.message === 'success!') {
+            const commentDiv = document.querySelector('#comments-container');
+            commentDiv.innerHTML = `
+        <div class="individual-comment">
+            <a href="/users/${userId}">
+                <h4>${waiting.userName}</h4>
+            </a>
+            <p>${description}</p>
+        </div>
+        ` + commentDiv.innerHTML;
+        }
+        // setting comment input field to empty
+        const textInputField = document.getElementById('description');
+        textInputField.value = '';
+    })
+}
+
 
     //  delete button for modal
     for (let i = 0; i < deleteButtons.length; i++) {
