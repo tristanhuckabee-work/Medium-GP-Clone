@@ -224,11 +224,10 @@ footer a:hover {color:#b39856}
   border-radius: 10px;
 }
 
-
 .info-user h2{
   font-family: 'Abril Fatface', cursive;
+  font-weight: lighter;
 }
 .info-user p{
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; */
   font-family: 'Noto Sans', sans-serif;
 }
