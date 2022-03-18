@@ -7,32 +7,34 @@ window.addEventListener("load", async (e) => {
     let recordId;
 
 
-//  POST for new comment
+    //  POST for new comment
     const newComment = document.querySelector(`#newComment-btn`);
-    newComment.addEventListener('click', async (e) => {
-        e.preventDefault()
-        const userId = document.querySelector('.userId').value;
-        const recordId = document.URL.split('/')[4]
-        // console.log(recordId);
-        const description = document.querySelector('#description').value;
-        // console.log(JSON.stringify({description, userId, recordId}));
-        const res = await fetch('/comments', {
-            method: 'POST',
-            body: JSON.stringify({ description, userId, recordId }),
-            headers: { "Content-Type": "application/json" }
-        })
+    if (newComment) {
+        newComment.addEventListener('click', async (e) => {
+            e.preventDefault()
+            const userId = document.querySelector('.userId').value;
+            const recordId = document.URL.split('/')[4]
+            // console.log(recordId);
+            const description = document.querySelector('#description').value;
+            // console.log(JSON.stringify({description, userId, recordId}));
+            const res = await fetch('/comments', {
+                method: 'POST',
+                body: JSON.stringify({ description, userId, recordId }),
+                headers: { "Content-Type": "application/json" }
+            })
 
-        const waiting = await res.json();
-        if (waiting.message === 'success!') {
-            console.log(waiting, 'consoleloged');
-            const commentDiv = document.querySelector('#comments-container');
-            commentDiv.innerHTML = `
+            const waiting = await res.json();
+            if (waiting.message === 'success!') {
+                console.log(waiting, 'consoleloged');
+                const commentDiv = document.querySelector('#comments-container');
+                commentDiv.innerHTML = `
             <p>${description}</p>
             ` + commentDiv.innerHTML;
-        }
-    })
+            }
+        })
+    }
 
-//  delete button for modal
+    //  delete button for modal
     for (let i = 0; i < deleteButtons.length; i++) {
         const button = deleteButtons[i];
         button.addEventListener('click', async e => {
@@ -51,21 +53,21 @@ window.addEventListener("load", async (e) => {
         })
     }
 
-//  delete button on each Record
-for (let i = 0; i < deleteButtonToggle.length; i++) {
-    const button = deleteButtonToggle[i];
-    button.addEventListener('click', async e => {
-      e.stopPropagation();
-      if (!deleteWindow.classList.value.includes('show')) {
-        deleteWindow.classList.add('show');
-        deleteWindowContainer.classList.add('show');
-        recordId = e.target.id.split('-')[2];
-      } else {
-        deleteWindow.classList.remove('show');
-        deleteWindowContainer.classList.remove('show');
-      }
-    })
-  }
+    //  delete button on each Record
+    for (let i = 0; i < deleteButtonToggle.length; i++) {
+        const button = deleteButtonToggle[i];
+        button.addEventListener('click', async e => {
+            e.stopPropagation();
+            if (!deleteWindow.classList.value.includes('show')) {
+                deleteWindow.classList.add('show');
+                deleteWindowContainer.classList.add('show');
+                recordId = e.target.id.split('-')[2];
+            } else {
+                deleteWindow.classList.remove('show');
+                deleteWindowContainer.classList.remove('show');
+            }
+        })
+    }
 
 
 });
