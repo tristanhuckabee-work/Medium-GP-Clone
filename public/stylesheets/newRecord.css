@@ -22,12 +22,6 @@ input {
     transition: all 0.5s linear;
     font-size: 40px;
 }
-/* input:focus{
-    border-left: 5px #b39856 solid;
-}
-textarea:focus{
-    border-left: 5px #b39856 solid;
-} */
 .record-form{
     padding: 20px;
     display: flex;
@@ -63,4 +57,8 @@ h2 {
     font-family: sans-serif;
     letter-spacing: .48em;
     word-spacing: 100%;
+}
+.edit-quip{
+    letter-spacing: .2em;
+    word-spacing: 80%;
 }

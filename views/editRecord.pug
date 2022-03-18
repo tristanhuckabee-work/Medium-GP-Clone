@@ -2,6 +2,7 @@ extends layout
 include utils
 append head
   link(rel="stylesheet" href="/stylesheets/records.css")
+  link(rel="stylesheet" href="/stylesheets/newRecord.css")
   //- add page specific js
   script(src="/javascripts/records.js" type="module" defer)
 block content
@@ -10,9 +11,10 @@ block content
     +validationErrorSummary(errors)
     form(action=`/records/${id}/edit` method='post' class='record-form')
         input(type='hidden' name='_csrf' value=csrfToken)
-        +field('title', 'Title', 'title', title)
+        +field('title', null, 'title', title)
         div(class='form-group')
-          label(for='description') Body
+          label(for='description')
           textarea(class='desc' type='text' id='description' name='description' rows='40' cols='40')= description
-
-        button(type='submit' class='record-submit') submit
+        div(class='bottom-submit')
+          h2(class='edit-quip') DO YOU REALLY THINK THIS IS GONNA MAKE IT BETTER ?
+          button(type='submit' class='record-submit') Update
