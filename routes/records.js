@@ -97,30 +97,9 @@ router.get('/:id', csrfProtection, requireAuth, asyncHandler(async (req, res) =>
     },
     order: [['id', 'DESC']]
   })
+  res.render('recordId', { record, comments, csrfToken: req.csrfToken()})
+}))
 
-  res.render('recordId', { record, comments, csrfToken: req.csrfToken() })
-}));
-
-// validator for commments
-const commentsVal = [
-  check('description')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a message for comment')
-    .isLength({ max: 255 })
-    .withMessage('comments can only hold 255 characters')
-]
-
-router.post('/:id/comments/:commentsId',
-  commentsVal,
-  csrfProtection,
-  requireAuth,
-  handleValidationErrors,
-  asyncHandler(async (req, res) => {
-    const id = req.params.id;
-    const { comment } = req.body;
-
-
-  }))
 
 router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res) => {
   console.log('\n you did hit the route')
@@ -134,8 +113,5 @@ router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res) =>
   }
 }));
 
-router.get('/delete-window', (req, res) => {
-  res.render('delete-record-confirm');
-})
 
 module.exports = router

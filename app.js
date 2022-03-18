@@ -12,6 +12,7 @@ const { sessionSecret } = require('./config');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const recordsRouter = require('./routes/records');
+const commentsRouter = require('./routes/comments');
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use(restoreUser);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/records', recordsRouter);
+app.use('/comments', commentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -60,4 +62,7 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
+app.get('*', (req,res) =>{
+  res.send('you fucked up...💯')
+});
 module.exports = app;
