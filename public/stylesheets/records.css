@@ -2,58 +2,79 @@
 
 body{
     display: flex;
+    align-items: flex-start;
     justify-content: center;
     margin: 0;
-    align-items: flex-start;
 }
 
 /* record container */
 .records{
     background-color: red;
-
-    width: 1100px;
-    height: 220px;
-    margin: 10px 0 10px 5%;
-    padding: 0;
     
-    border: 2px solid black;
-    border-radius: 10px;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 16px;
-    text-decoration: none;
-
     display: grid;
     grid-template-columns: 2fr 2fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: 
     'title writer opts'
     'desc  desc   opts';
+    grid-gap: 10px;
+
     align-items: center;
     justify-items: start;
+
+    width: 1100px;
+    height: 220px;
+    margin: 10px 0 10px 5%;
+    padding: 20px;
+    
+    border: 2px solid black;
+    border-radius: 10px;
+
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+
 }
 
 /* title of each record */
 .records h2{
     background-color: blue;
+
     grid-area: title;
+
 
     text-decoration: none;
     font-family: 'Noto Sans', sans-serif;
-    width: 225px;
-    height: 35px;
-    font-style: normal;
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
     font-weight: 700;
     font-size: 30px;
-    /* line-height: 35px; */
     color: black;
-    margin-top: 0;
 }
 .description {
   grid-area: desc;
+  align-self: start;
+  justify-self: start;
 
+  margin-top: 0;
+  width: 100%;
+  height: 100%;
+
+  text-decoration: none;
 }
 .author {
+  background: red;
+
   grid-area: writer;
+  align-self: center;
+  justify-self: start;
+
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
   color: lightgray;
   font-size: 14px;
 }
@@ -64,7 +85,24 @@ body{
 }
 .authorOpts {
   grid-area: opts;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
   background-color: blue;
+  height: 100%;
+  width: 100%;
+  border-radius: 0 10px 10px 0;
+}
+.author-options a {
+  color: #ffffff;
+}
+.author-options a:hover {
+  color: #b39856;
+}
+.not-author {
+  background-color: #ffffff;
 }
 
 .records a { text-decoration: none; }

@@ -26,9 +26,11 @@ block content
             p.author= record.User.userName
           p.description= record.description
           div.authorOpts
-            button.delete-button-toggle(id=`delete-post-${record.id}`) Delete
+            button.delete-button-toggle(id=`delete-post-${record.id}`)
+              i.fas.fa-trash-can.fa-2x
             a(href=`/records/${record.id}/edit`)
-              button edit
+              button.edit-button
+                i.fas.fa-pen-to-square.fa-2x
       else
         div.records(onclick=`redirect(${record.id})`)
           h2= record.title
