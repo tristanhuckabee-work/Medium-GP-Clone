@@ -68,14 +68,16 @@ h1 {
 .img-div{
   z-index: 2;
   display: flex;
-  justify-content:right;
+  justify-content:left;
   border-top: solid 1px black;
   border-bottom: solid 1px black;
-  
+  align-items: center;
+
+
   background-image: url('/images/vinyl-records.png');
   background-position: center;
   background-size:cover;
-  height: 30vh;
+  height: 35vh;
 }
 
 footer {
@@ -169,7 +171,7 @@ footer a:hover {color:#b39856}
 .trendCards {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  
+
   box-sizing: border-box;
   overflow: hidden;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -205,4 +207,28 @@ footer a:hover {color:#b39856}
   white-space: nowrap;
   overflow: hidden;
   text-overflow:ellipsis;
+}
+
+
+
+/* styling for info-user */
+.info-user{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba(0,0,0,0.75);
+  margin-left: 19%;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+}
+
+
+.info-user h2{
+  font-family: 'Abril Fatface', cursive;
+}
+.info-user p{
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; */
+  font-family: 'Noto Sans', sans-serif;
 }
