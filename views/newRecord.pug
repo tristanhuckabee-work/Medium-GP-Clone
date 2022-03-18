@@ -8,7 +8,6 @@ append head
 block content
     include navbar
 
-    +validationErrorSummary(errors)
     form(action='/records/new' method='post' class='record-form')
         input(type='hidden' name='_csrf' value=csrfToken)
         +field('title', null, 'title', title, null, 'Title')
@@ -16,5 +15,10 @@ block content
           label(for='description')
           textarea(class='desc' type='text' id='description' name='description' value=description placeholder='Description')
         div(class='bottom-submit')
-          h2 SHOW THE WORLD YOUR BAD MUSIC TAKE
+          if errors
+            div(class='alert' role='alert')
+              each error in errors
+                h2= error
+          else
+            h2 SHOW THE WORLD YOUR BAD MUSIC TAKE
           button(type='submit' class='record-submit') Publish
