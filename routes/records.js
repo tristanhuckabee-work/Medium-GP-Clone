@@ -28,7 +28,7 @@ router.get('/new', csrfProtection, requireAuth, async (req, res) => {
   const record = db.Record.build()
   const pk = req.session.auth.userId;
 
-  res.render('form', { record, pk, csrfToken: req.csrfToken() })
+  res.render('newRecord', { record, pk, csrfToken: req.csrfToken() })
 })
 
 const recordVal = [
@@ -54,7 +54,7 @@ router.post('/new', csrfProtection, recordVal, requireAuth, asyncHandler(async (
     res.redirect('/');
   } else {
     const errors = validatorErrors.array().map(error => error.msg);
-    res.render('form', {
+    res.render('newRecord', {
       title,
       description,
       errors,
@@ -73,7 +73,7 @@ router.get('/:id/edit', csrfProtection, requireAuth, asyncHandler(async (req, re
   if (record.userId !== req.session.auth.userId) {
     res.redirect('/records')
   } else {
-    res.render(`edit`, { title, description, csrfToken: req.csrfToken(), id, pk, user })
+    res.render(`editRecord`, { title, description, csrfToken: req.csrfToken(), id, pk, user })
   }
 }))
 router.post('/:id/edit', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
