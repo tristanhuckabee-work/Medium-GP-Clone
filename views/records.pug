@@ -20,17 +20,18 @@ block content
   main
     for record in records
       if record.userId === pk
-        div(class="records" id=`record-container-${record.id}` onclick=`redirect(${record.id})`)
+        div.records(id=`record-container-${record.id}` onclick=`redirect(${record.id})`)
           h2= record.title
-          a(href=`/users/${record.User.id}`): p.author= record.User.userName
-          p(class="description")= record.description
-          button(class='delete-button-toggle' id=`delete-post-${record.id}`) Delete
-          a(href=`/records/${record.id}/edit`)
-            button edit
-          //- a(href=`/records/${record.id}/delete`)
-          //-   button delete
+          a(href=`/users/${record.User.id}`)
+            p.author= record.User.userName
+          p.description= record.description
+          div.authorOpts
+            button.delete-button-toggle(id=`delete-post-${record.id}`) Delete
+            a(href=`/records/${record.id}/edit`)
+              button edit
       else
-        div(class="records" onclick=`redirect(${record.id})`)
+        div.records(onclick=`redirect(${record.id})`)
           h2= record.title
-          a(href=`/users/${record.User.id}`): p.author= record.User.userName
-          p(class="description")= record.description
+          a(href=`/users/${record.User.id}`)
+            p.author= record.User.userName
+          p.description= record.description
