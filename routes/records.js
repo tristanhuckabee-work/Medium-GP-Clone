@@ -14,7 +14,11 @@ router.get('/', requireAuth, async (req, res) => {
   })
   // limit the character description shown on records page
   records.forEach(ele => {
-    ele.description = ele.description.slice(0, 147) + "...";
+    if (ele.description.length >= 150) {
+      ele.description = ele.description.slice(0, 147) + "...";
+    } else {
+      ele.description = ele.description.slice(0, 147);
+    }
   })
 
   res.render('records', { records, pk });
@@ -103,7 +107,6 @@ router.get('/:id', csrfProtection, requireAuth, asyncHandler(async (req, res) =>
 
 
 router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res) => {
-  console.log('\n you did hit the route')
   const post = await db.Record.findByPk(req.params.id);
   console.log('\nyou hit the delete route');
   if (post) {
