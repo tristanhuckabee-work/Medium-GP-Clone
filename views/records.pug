@@ -25,7 +25,7 @@ block content
           a.author(href=`/users/${record.User.id}`)= record.User.userName
           p.description= record.description
           div.authorOpts
-            button(class="delete-button-toggl delete" id=`delete-post-${record.id}`)
+            button(class="delete-button-toggle delete" id=`delete-post-${record.id}`)
               i.fas.fa-trash-can.fa-2x
             a(href=`/records/${record.id}/edit`)
               button(class="edit-button edit")
