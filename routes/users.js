@@ -8,6 +8,7 @@ const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth, restoreUser, logoutUser } = require('../auth');
 
+
 /* GET users listing. */
 router.get('/:id', asyncHandler(async(req, res, next) => {
   if(res.locals.authenticated){
@@ -32,16 +33,18 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
 
 
 router.post('/follows/new', requireAuth, asyncHandler( async(req, res, next) => {
-  let data = await req.text();
-  console.log(data + '\n\n');
+  let {userId, followerId} = req.body
 
-}));
+  const relation = await db.Follow.findOne({
+    where: { userId, followerId }
+  });
 
-router.post('/follows/:id/delete', asyncHandler( async(req, res, next) => {
-  if( res.locals.authenticated) {
-    const pk = req.session.auth.userId
+  if (relation) {
+    relation.destroy();
+    res.json({msg: "User Unfollowed"});
   } else {
-    res.redirect('/');
+    await db.Follow.create(req.body);
+    res.json({msg: "User Followed"});
   }
 }));
 

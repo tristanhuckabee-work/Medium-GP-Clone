@@ -13,10 +13,18 @@ window.addEventListener("load", e => {
         }),
       headers: { 'Content-Type': 'application/json' }
     });
-    // const returnData = await res.json();
+    const returnData = await res.json();
+
+    let followBtn = document.querySelector('.relate');
+
+
+    if (returnData.msg === "User Followed") {
+      followBtn.style.backgroundColor = "#661b1c";
+    } else {
+      followBtn.style.backgroundColor = "#191d26";
+    }
     
-    console.log(`Page User: ${pageUserId}\nCurrent User: ${currUserId}`);
-    console.log('Response: ', res);
-    console.log('ReturnData: ', returnData);
+    // console.log(`Page User: ${pageUserId}\nCurrent User: ${currUserId}`);
+    // console.log('ReturnData: ', returnData);
   });
 });
