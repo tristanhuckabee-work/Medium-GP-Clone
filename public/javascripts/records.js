@@ -1,28 +1,15 @@
-window.addEventListener("load", (e) => {
+window.addEventListener("load", async (e) => {
+    const deleteButtons = document.querySelectorAll('.delete-button');
+    const deleteButtonToggle = document.querySelectorAll('.delete-button-toggle');
+    const deleteWindow = document.querySelector('.delete-window');
+    const deleteWindowContainer = document.querySelector('.delete-window-container');
+    const records = document.querySelectorAll('.records');
+    let recordId;
 
+
+//  POST for new comment
     const newComment = document.querySelector(`#newComment-btn`);
-    // newComment.addEventListener('click', async (e) =>{
-    //     e.preventDefault();
-    //     const data = document.getElementById('description').value
-
-    //     const res = await fetch("/comments", {
-    //         method: 'POST',
-    //         body: JSON.stringify({content: data}),
-    //         headers: {"Content-Type": "application/json"}
-    //     })
-
-    //     const returned = await res.json()
-
-    //     if(returned.message === 'success!'){
-    //         const commentHouse = document.getElementById('temp')
-    //         let newEle = document.createElement('p')
-    //         newEle.innerHTML = returned.comment.description
-    //         commentHouse.appendChild(newEle);
-    //     }
-    // })
-
-
-    newComment.addEventListener('click', async(e) =>{
+    newComment.addEventListener('click', async (e) => {
         e.preventDefault()
         const userId = document.querySelector('.userId').value;
         const recordId = document.URL.split('/')[4]
@@ -31,12 +18,12 @@ window.addEventListener("load", (e) => {
         // console.log(JSON.stringify({description, userId, recordId}));
         const res = await fetch('/comments', {
             method: 'POST',
-            body: JSON.stringify({description, userId, recordId}),
-            headers: {"Content-Type":"application/json"}
+            body: JSON.stringify({ description, userId, recordId }),
+            headers: { "Content-Type": "application/json" }
         })
 
         const waiting = await res.json();
-        if(waiting.message === 'success!'){
+        if (waiting.message === 'success!') {
             console.log(waiting, 'consoleloged');
             const commentDiv = document.querySelector('#comments-container');
             commentDiv.innerHTML = `
@@ -44,4 +31,36 @@ window.addEventListener("load", (e) => {
             ` + commentDiv.innerHTML;
         }
     })
+
+
+    for (let i = 0; i < deleteButtons.length; i++) {
+        const button = deleteButtons[i];
+        button.addEventListener('click', async e => {
+            // console.log(recordId);
+            // console.log(getRecordId);
+            const res = await fetch(`/records/${recordId}/delete`, {
+                method: 'DELETE'
+            });
+            const data = await res.json();
+            if (data.message === 'Success') {
+                let container = document.getElementById(`record-container-${recordId}`)
+                container.remove();
+                deleteWindow.classList.remove('show');
+                deleteWindowContainer.classList.remove('show');
+            }
+        })
+    }
+    for (let i = 0; i < deleteButtonToggle.length; i++) {
+        const button = deleteButtonToggle[i];
+        button.addEventListener('click', async e => {
+            if (!deleteWindow.classList.value.includes('show')) {
+                deleteWindow.classList.add('show');
+                deleteWindowContainer.classList.add('show');
+                recordId = e.target.id.split('-')[2];
+            } else {
+                deleteWindow.classList.remove('show');
+                deleteWindowContainer.classList.remove('show');
+            }
+        })
+    }
 })
