@@ -6,6 +6,16 @@ window.addEventListener("load", async (e) => {
   const records = document.querySelectorAll('.records');
   let recordId;
 
+const newComment = document.querySelector('.comment-submit');
+const commentArea = document.querySelector('.comment')
+newComment.addEventListener('click', async(e) =>{
+    // e.preventDefault()
+    console.log(commentArea.value);
+    const postId = e.target.value
+    console.log(postId);
+    // const res = await fetch()
+
+})
 
   // const getRecordId = (() => {
   //   for (let i = 0; i < records.length; i++) {
