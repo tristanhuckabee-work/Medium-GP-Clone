@@ -10,11 +10,15 @@ body {
 }
 .relations {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-evenly;
 }
-.follow {
-  text-align: center;
+.follow { text-align: center; }
+.relate {
+  background-color: #191d26;
+  color: darkgray;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 /* record container */

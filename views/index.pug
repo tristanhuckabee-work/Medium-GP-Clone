@@ -71,8 +71,6 @@ block content
             const signUpContainer = document.querySelector('.sign-up-container');
             signUpContainer.classList.add('show');
       div(id="sign-up-instructions")
-        //- p Enter your information to Sign Up:
-
         +validationErrorSummary(errorsSignup)
       form(action='/sign-up' method='post' class='signup-form')
         input(type='hidden' name='_csrf' value=csrfToken)
