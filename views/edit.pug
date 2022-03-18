@@ -1,1 +1,18 @@
-h1= yes
+extends layout
+include utils
+append head
+  link(rel="stylesheet" href="/stylesheets/records.css")
+  //- add page specific js
+  script(src="/javascripts/records.js" type="module" defer)
+block content
+    include navbar
+
+    +validationErrorSummary(errors)
+    form(action=`/records/${id}/edit` method='post' class='record-form')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        +field('title', 'Title', 'title', title)
+        div(class='form-group')
+          label(for='description') Body
+          textarea(class='desc' type='text' id='description' name='description' rows='40' cols='40')= description
+
+        button(type='submit' class='record-submit') submit

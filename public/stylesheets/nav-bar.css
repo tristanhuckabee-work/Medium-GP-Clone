@@ -26,6 +26,11 @@ nav {
     justify-content: center;
     align-items: center;
 }
+
+.user-logout-buttons {
+  margin-bottom: 10px;
+}
+
 .home-create-buttons i, .user-logout-buttons i {
   margin: 5px;
 }

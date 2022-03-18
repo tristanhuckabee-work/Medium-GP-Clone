@@ -9,7 +9,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth, restoreUser, logoutUser } = require('../auth');
 
 /* GET users listing. */
-router.get('/:id', asyncHandler( async(req, res, next) => {
+router.get('/:id', asyncHandler(async(req, res, next) => {
   if(res.locals.authenticated){
     const pk = req.session.auth.userId
     const id = req.params.id

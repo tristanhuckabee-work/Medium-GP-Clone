@@ -59,15 +59,6 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
   res.render('index', { errors, trending, csrfToken: req.csrfToken(), userName });
 }));
 
-// router.get('/records', requireAuth, async(req, res) => {
-//   const pk = req.session.auth.userId
-//   const records = await db.Record.findAll({
-//     include: 'User'
-//   })
-//   res.render('records', {records, pk});
-// });
-
-
 const userValidators = [
   check('userName')
     .exists({ checkFalsy: true })
