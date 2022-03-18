@@ -27,8 +27,6 @@ block content
           button(class='delete-button-toggle' id=`delete-post-${record.id}`) Delete
           a(href=`/records/${record.id}/edit`)
             button edit
-          //- a(href=`/records/${record.id}/delete`)
-          //-   button delete
       else
         div(class="records" onclick=`redirect(${record.id})`)
           h2= record.title
