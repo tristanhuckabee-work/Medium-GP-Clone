@@ -107,10 +107,6 @@ router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res) =>
   const post = await db.Record.findByPk(req.params.id);
   console.log('\nyou hit the delete route');
   if (post) {
-    let comments = db.Comment.findAll({
-      where: { recordId: post.id }
-    })
-    console.log(comments);
     await post.destroy();
     res.json({ message: 'Success' });
   } else {
