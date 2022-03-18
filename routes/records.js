@@ -110,18 +110,6 @@ const commentsVal = [
     .withMessage('comments can only hold 255 characters')
 ]
 
-router.post('/:id/comments/:commentsId',
-  commentsVal,
-  csrfProtection,
-  requireAuth,
-  handleValidationErrors,
-  asyncHandler(async (req, res) => {
-    const id = req.params.id;
-    const { comment } = req.body;
-
-
-  }))
-
 router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res) => {
   console.log('\n you did hit the route')
   const post = await db.Record.findByPk(req.params.id);
