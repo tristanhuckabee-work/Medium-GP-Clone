@@ -58,7 +58,7 @@ window.addEventListener("load", async (e) => {
                 deleteWindow.style.transition = 'all 2s';
                 deleteWindow.classList.add('show');
                 deleteWindowContainer.classList.add('show');
-                recordId = e.target.id.split('-')[2];
+                recordId = e.target.parentElement.id.split('-')[2];
             } else {
                 deleteWindow.classList.remove('show');
                 deleteWindowContainer.classList.remove('show');
