@@ -1,5 +1,6 @@
 window.addEventListener("load", async (e) => {
     const deleteButtons = document.querySelectorAll('.delete-button');
+    const cancelButtons = document.querySelectorAll('.cancel-button');
     const deleteButtonToggle = document.querySelectorAll('.delete-button-toggle');
     const deleteWindow = document.querySelector('.delete-window');
     const deleteWindowContainer = document.querySelector('.delete-window-container');
@@ -69,5 +70,16 @@ window.addEventListener("load", async (e) => {
         })
     }
 
+
+
+
+
+    for (let i = 0; i < cancelButtons.length; i++) {
+        const cancelButton = cancelButtons[i];
+        cancelButton.addEventListener('click', e => {
+            deleteWindow.classList.remove('show');
+            deleteWindowContainer.classList.remove('show');
+        })
+    }
 
 });
