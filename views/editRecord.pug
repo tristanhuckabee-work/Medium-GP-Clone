@@ -8,7 +8,6 @@ append head
 block content
     include navbar
 
-    +validationErrorSummary(errors)
     form(action=`/records/${id}/edit` method='post' class='record-form')
         input(type='hidden' name='_csrf' value=csrfToken)
         +field('title', null, 'title', title)
@@ -16,5 +15,10 @@ block content
           label(for='description')
           textarea(class='desc' type='text' id='description' name='description' rows='40' cols='40')= description
         div(class='bottom-submit')
-          h2(class='edit-quip') DO YOU REALLY THINK THIS IS GONNA MAKE IT BETTER ?
+          if errors
+            div(class='alert' role='alert')
+              each error in errors
+                h2= error
+          else
+            h2(class='edit-quip') DO YOU REALLY THINK THIS IS GONNA MAKE IT BETTER ?
           button(type='submit' class='record-submit') Update
