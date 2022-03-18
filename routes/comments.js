@@ -22,21 +22,16 @@ const commentsVal=[
   asyncHandler(async(req,res)=>{
     console.log(req.body);
     const {recordId, userId, description} = req.body;
+    const usern = await db.User.findByPk(userId)
     const comment = await db.Comment.create({
         description,
         recordId,
         userId,
     })
-    // await comment.save()
-    res.json({message: 'success!'});
+    console.log(comment)
+    res.json({message: 'success!', userName: usern.userName});
     res.end()
   }))
-
-// router.post('/', commentsVal, csrfProtection, requireAuth, handleValidationErrors,
-// asyncHandler(async(req,res) =>{
-//     const {description} = req.body;
-//     res.json({message: description}).end()
-// }))
 
 
 module.exports = router;
