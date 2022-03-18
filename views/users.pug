@@ -3,7 +3,8 @@ include utils
 
 append head
     link(rel="stylesheet" href="/stylesheets/user.css")
-    script(src="/javascripts/index.js" type="module" defer)
+    script(src="/javascripts/users.js" type="module" defer)
+
 block content
     include navbar
     main
@@ -15,8 +16,9 @@ block content
     aside
         h1= user.userName
         div.relations
-          if notSame 
-            div.follow(onclick='')
+          div(class="follow relate")
+              i.fas.fa-circle-plus.fa-3x(style="color: darkgray")
+              p FOLLOW
           div.follow
               if following 
                 p= following
