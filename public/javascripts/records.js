@@ -6,26 +6,16 @@ window.addEventListener("load", async (e) => {
   const records = document.querySelectorAll('.records');
   let recordId;
 
-const newComment = document.querySelector('.comment-submit');
-const commentArea = document.querySelector('.comment')
-newComment.addEventListener('click', async(e) =>{
-    // e.preventDefault()
-    console.log(commentArea.value);
-    const postId = e.target.value
-    console.log(postId);
-    // const res = await fetch()
+// const newComment = document.querySelector('.comment-submit');
+// const commentArea = document.querySelector('.comment')
+// newComment.addEventListener('click', async(e) =>{
+//     // e.preventDefault()
+//     console.log(commentArea.value);
+//     const postId = e.target.value
+//     console.log(postId);
+//     // const res = await fetch()
 
-})
-
-  // const getRecordId = (() => {
-  //   for (let i = 0; i < records.length; i++) {
-  //     let record = records[i];
-  //     // let children = [...record.children];
-  //     // let buttonId = children[children.length - 2].id.split('-')[2];
-  //     console.log(record.children)
-  //   }
-  // })();
-
+// })
 
   for (let i = 0; i < deleteButtons.length; i++) {
     const button = deleteButtons[i];
@@ -47,6 +37,7 @@ newComment.addEventListener('click', async(e) =>{
   for (let i = 0; i < deleteButtonToggle.length; i++) {
     const button = deleteButtonToggle[i];
     button.addEventListener('click', async e => {
+      e.stopPropagation();
       if (!deleteWindow.classList.value.includes('show')) {
         deleteWindow.classList.add('show');
         deleteWindowContainer.classList.add('show');

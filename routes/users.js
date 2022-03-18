@@ -29,15 +29,14 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
     res.redirect('/');
   }
 }));
-router.post('/follows/new', asyncHandler( async(req, res, next) => {
-  if( res.locals.authenticated) {
-    console.log(req.body);
 
-  } else {
-    res.redirect('/');
-  }
+
+router.post('/follows/new', requireAuth, asyncHandler( async(req, res, next) => {
+  let data = await req.text();
+  console.log(data + '\n\n');
 
 }));
+
 router.post('/follows/:id/delete', asyncHandler( async(req, res, next) => {
   if( res.locals.authenticated) {
     const pk = req.session.auth.userId

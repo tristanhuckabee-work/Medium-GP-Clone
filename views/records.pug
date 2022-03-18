@@ -20,7 +20,7 @@ block content
   main
     for record in records
       if record.userId === pk
-        div(class="records" id=`record-container-${record.id}`/*onclick=`redirect(${record.id})`*/)
+        div(class="records" id=`record-container-${record.id}` onclick=`redirect(${record.id})`)
           h2= record.title
           a(href=`/users/${record.User.id}`): p.author= record.User.userName
           p(class="description")= record.description

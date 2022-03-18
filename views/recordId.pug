@@ -13,12 +13,12 @@ block content
             p= record.description
         div()
             h2 comment section
-            form(action=`${record.id}/comments/${comments[0].id + 1}` method="post" class="comments-form")
-                input(type='hidden' name='_csrf' value=csrfToken)
-                div(class='text-area')
-                    label(for='comment') Comment here:
-                    textarea(name="comment" type='text' id="comment", cols="30", rows="10")
-                button(type='submit' class='comment-submit') submit
+            //- form(action=`${record.id}/comments/${comments[0].id + 1}` method="post" class="comments-form")
+            //-     input(type='hidden' name='_csrf' value=csrfToken)
+            //-     div(class='text-area')
+            //-         label(for='comment') Comment here:
+            //-         textarea(name="comment" type='text' id="comment", cols="30", rows="10")
+            //-     button(type='submit' class='comment-submit') submit
         div()
 
             for comment in comments

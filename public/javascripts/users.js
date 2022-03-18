@@ -5,7 +5,7 @@ window.addEventListener("load", e => {
     const pageUserId = document.URL.split('/')[4]
     const currUserId = document.querySelector('.user-logout-buttons').getElementsByTagName('a')[0].href.split('/')[4];
     
-    const res = await fetch('/follows/new', {
+    const res = await fetch('/users/follows/new', {
       method: 'POST',
       body: JSON.stringify(
         { userId: pageUserId,
@@ -13,7 +13,7 @@ window.addEventListener("load", e => {
         }),
       headers: { 'Content-Type': 'application/json' }
     });
-    const returnData = await res.json();
+    // const returnData = await res.json();
     
     console.log(`Page User: ${pageUserId}\nCurrent User: ${currUserId}`);
     console.log('Response: ', res);

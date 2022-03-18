@@ -98,13 +98,8 @@ router.get('/:id', csrfProtection, requireAuth, asyncHandler(async (req, res) =>
     order: [['id', 'DESC']]
   })
 
-  if (record.userId !== req.session.auth.userId) {
-    res.redirect("/records")
-  } else {
-    console.log(comments[0].id, "HEY THERE CHECK THIS OUT COMMENTS ID");
-    res.render('recordId', { record, comments, csrfToken: req.csrfToken() })
-  }
-}))
+  res.render('recordId', { record, comments, csrfToken: req.csrfToken() })
+}));
 
 // validator for commments
 const commentsVal = [
