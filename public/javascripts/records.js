@@ -1,10 +1,8 @@
 window.addEventListener("load", async (e) => {
-    const db = require('../../db/models');
     const deleteButtons = document.querySelectorAll('.delete-button');
     const deleteButtonToggle = document.querySelectorAll('.delete-button-toggle');
     const deleteWindow = document.querySelector('.delete-window');
     const deleteWindowContainer = document.querySelector('.delete-window-container');
-    const records = document.querySelectorAll('.records');
     let recordId;
 
 
@@ -23,10 +21,9 @@ window.addEventListener("load", async (e) => {
 
         const waiting = await res.json();
         if (waiting.message === 'success!') {
-            const user = await db.User.findByPk(userId)
             const commentDiv = document.querySelector('#comments-container');
             commentDiv.innerHTML = `
-            <h4>${user.userName}</h4>
+            <h4>${waiting.userName}</h4>
             <p>${description}</p>
             ` + commentDiv.innerHTML;
         }
