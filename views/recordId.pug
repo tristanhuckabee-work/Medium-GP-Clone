@@ -9,19 +9,21 @@ block content
     main
         div(class="record-info")
             h1= record.title
-            h2= record.User.userName
+            h4= record.User.userName
             p= record.description
         div(class="comments-section")
-            h2 comment section
+            h2 Comment Section
             form(action=`/comments` method="post" class="comments-form")
                 input(type='hidden' name='_csrf' value=csrfToken)
                 input(type='hidden' name='recordId' value=record.id class="recordId")
                 input(type='hidden' name='userId' value=record.User.id class="userId")
                 div(class='text-area')
                     label(for='description')
-                    textarea(name="description" type='text' id="description" placeholder="New comment")
-                button(type='submit' id=`newComment-btn`) submit
+                    textarea(name="description" type='text' id="description" placeholder="What are your thoughts?")
+                button(type='submit' id=`newComment-btn`) comment
         div(id="comments-container")
             for comment in comments
-                h4= comment.User.userName
-                p= comment.description
+                div(class="individual-comment")
+                    a(href=`/users/${comment.User.id}`)
+                        h4= comment.User.userName
+                    p= comment.description
