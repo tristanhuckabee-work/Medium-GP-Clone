@@ -81,6 +81,10 @@ body{
   text-decoration: none;
 }
 
+.author:hover {
+  text-decoration: underline;
+}
+
 .authorOpts {
   grid-area: opts;
   align-self: end;

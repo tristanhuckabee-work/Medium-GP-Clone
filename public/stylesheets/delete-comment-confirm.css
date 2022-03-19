@@ -1,4 +1,4 @@
- * {
+* {
   box-sizing: border-box;
 }
 
@@ -9,8 +9,10 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 } */
 
-.delete-window-container {
+.delete-window-comment-container {
   display: flex;
+  align-self: center;
+  justify-self: center;
   justify-content: center;
   align-items: center;
   z-index: -1;
@@ -19,7 +21,7 @@
   height: 100vh;
 }
 
-.delete-window {
+.delete-window-comment {
   display: none;
   z-index: -1;
   position: absolute;
@@ -34,8 +36,6 @@
 }
 
 .delete-comment-text {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: white;
   display: flex;
   /* margin: 16px 32px; */
   justify-content: center;
@@ -44,20 +44,19 @@
   height: 55%;
 }
 
-.delete-post-text > h3 {
-
+.delete-comment-text > h3 {
+  
   color: rgb(232, 230, 227);
 }
 
-.delete-cancel-buttons {
+.delete-cancel-comment-buttons {
   display: flex;
   width: 100%;
   height: 45%;
   flex-direction: column;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-.delete-cancel-buttons button {
+.delete-cancel-comment-buttons button {
   display: block;
   width: 100%;
   height: 100%;
@@ -73,7 +72,7 @@
   transition: all 0.2s;
 }
 
-.delete-cancel-buttons .delete-button {
+.delete-cancel-comment-buttons .delete-comment-button {
   color: red;
 }
 
@@ -81,7 +80,7 @@
   margin-bottom: 5px;
 } */
 
-.delete-cancel-buttons button:hover {
+.delete-cancel-comment-buttons button:hover {
   background-color: grey;
 }
 

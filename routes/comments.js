@@ -6,34 +6,33 @@ const { csrfProtection, asyncHandler, handleValidationErrors } = require('./util
 const { requireAuth, logoutUser, loginUser } = require('../auth');
 
 // comments validator
-const commentsVal=[
-    check('description')
+const commentsVal = [
+  check('description')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a message for comment')
-    .isLength({max: 255})
+    .isLength({ max: 255 })
     .withMessage('comments can only hold 255 characters')
-  ]
+]
 
-  //  Front end API for POST
+//  Front end API for POST
 router.post('/',
-commentsVal,
-requireAuth,
-handleValidationErrors,
-asyncHandler(async(req,res)=>{
-  console.log(req.body);
-  const {recordId, userId, description} = req.body;
-  const usern = await db.User.findByPk(userId)
-  const comment = await db.Comment.create({
+  commentsVal,
+  requireAuth,
+  handleValidationErrors,
+  asyncHandler(async (req, res) => {
+    const { recordId, userId, description } = req.body;
+    const user = await db.User.findByPk(userId)
+    const comment = await db.Comment.create({
       description,
       recordId,
       userId,
-  })
-  console.log(comment)
-  res.json({message: 'success!', userName: usern.userName});
-  res.end()
-}))
+    })
+    // console.log('this is the comment id\n\n', comment.id)
+    res.json({ message: 'success!', userName: user.userName, commentId: comment.id });
+    res.end()
+  }))
 
-const commentNotFound = (commentId) =>{
+const commentNotFound = (commentId) => {
   const error = new Error();
   error.title = `Comment does not exist`;
   error.status = 404;
@@ -42,15 +41,17 @@ const commentNotFound = (commentId) =>{
 }
 
 // Font end API for DELETE
-router.delete('/:id(\\d+)', requireAuth,asyncHandler(async(req,res,next) =>{
+router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res, next) => {
   const id = req.params.id;
   const comment = await db.Comment.findByPk(id);
-
-  if(comment){
+  if (comment) {
     comment.destroy()
-    res.status(204).end();
+    // res.status(204).end();
+    res.json({ message: "Success" })
+  } else {
+    res.json({ message: "Failure" })
   }
-  next(commentNotFound(id));
+  // next(commentNotFound(id));
 }))
 
 module.exports = router;

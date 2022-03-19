@@ -62,7 +62,7 @@ router.post('/new', csrfProtection, recordVal, requireAuth, asyncHandler(async (
   }
 }
 ))
-router.get('/:id/edit', csrfProtection,recordVal,requireAuth, asyncHandler(async (req, res) => {
+router.get('/:id/edit', csrfProtection, recordVal, requireAuth, asyncHandler(async (req, res) => {
   const id = req.params.id
   const pk = req.session.auth.userId
   const user = await db.User.findByPk(pk)
@@ -76,19 +76,19 @@ router.get('/:id/edit', csrfProtection,recordVal,requireAuth, asyncHandler(async
     res.render(`editRecord`, { title, description, csrfToken: req.csrfToken(), id, pk, user })
   }
 }))
-router.post('/:id/edit', csrfProtection,recordVal,requireAuth, asyncHandler(async (req, res) => {
+router.post('/:id/edit', csrfProtection, recordVal, requireAuth, asyncHandler(async (req, res) => {
   const id = req.params.id
   const record = await db.Record.findByPk(id)
   const { title, description } = req.body
   const validatorErrors = validationResult(req);
 
-  if(validatorErrors.isEmpty()){
+  if (validatorErrors.isEmpty()) {
 
     record.title = title
     record.description = description
     await record.save()
     res.redirect('/records')
-  }else{
+  } else {
     const errors = validatorErrors.array().map(error => error.msg);
     res.render('editRecord', {
       title,
@@ -103,7 +103,6 @@ router.post('/:id/edit', csrfProtection,recordVal,requireAuth, asyncHandler(asyn
 router.get('/:id', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
   const id = req.params.id;
   const pk = req.session.auth.userId
-
   // getting record info
   const record = await db.Record.findByPk(id, {
     include: 'User'
