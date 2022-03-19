@@ -13,7 +13,7 @@ block content
         +field('title', null, 'title', title, null, 'Title')
         div(class='form-group')
           label(for='description')
-          textarea(class='desc' type='text' id='description' name='description' value=description placeholder='Description')
+          textarea(class='desc' type='text' id='description' name='description' placeholder='Description')= description
         div(class='bottom-submit')
           if errors
             div(class='alert' role='alert')
