@@ -22,14 +22,14 @@ router.post('/',
   asyncHandler(async (req, res) => {
     // console.log(req.body);
     const { recordId, userId, description } = req.body;
-    const usern = await db.User.findByPk(userId)
+    const user = await db.User.findByPk(userId)
     const comment = await db.Comment.create({
       description,
       recordId,
       userId,
     })
     // console.log('this is the comment id\n\n', comment.id)
-    res.json({ message: 'success!', userName: usern.userName, commentId: comment.id });
+    res.json({ message: 'success!', userName: user.userName, commentId: comment.id });
     res.end()
   }))
 

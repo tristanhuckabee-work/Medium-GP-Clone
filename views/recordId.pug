@@ -18,7 +18,7 @@ block content
             form(action=`/comments` method="post" class="comments-form")
                 input(type='hidden' name='_csrf' value=csrfToken)
                 input(type='hidden' name='recordId' value=record.id class="recordId")
-                input(type='hidden' name='userId' value=record.User.id class="userId")
+                input(type='hidden' name='userId' value=pk class="userId")
                 div(class='text-area')
                     label(for='description')
                     textarea(name="description" type='text' id="description" placeholder="What are your thoughts?")
