@@ -4,6 +4,7 @@ append head
     link(rel="stylesheet" href="/stylesheets/recordsId.css")
     link(rel="stylesheet" href="/stylesheets/delete-comment-confirm.css")
     script(src="/javascripts/records.js" type="module")
+    script(src="/javascripts/delete-comment.js" type="module")
 
 block content
     include navbar
@@ -24,16 +25,16 @@ block content
                 button(type='submit' id=`newComment-btn`) comment
         div(id="comments-container")
             for comment in comments
-                div(class="individual-comment")
+                div(class="individual-comment" id=`comment-container-${comment.id}`)
                     a(href=`/users/${comment.User.id}`)
                         h4= comment.User.userName
                     p= comment.description
                     if comment.userId === pk
-                        button(class="delete-comment") delete
-        div(class="delete-window-container")
-            div(class="delete-window")
+                        button(class="delete-comment" id=`${comment.id}`) delete
+        div(class="delete-window-comment-container")
+            div(class="delete-window-comment")
                 div(class="delete-comment-text")
                     h3 Delete Comment?
-                div(class="delete-cancel-buttons")
-                    button(class='delete-button') Delete
-                    button(class='cancel-button') Cancel
+                div(class="delete-cancel-comment-buttons")
+                    button(class='delete-comment-button') Delete
+                    button(class='cancel-comment-button') Cancel

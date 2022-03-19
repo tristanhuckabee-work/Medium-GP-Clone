@@ -9,21 +9,21 @@ window.addEventListener("load", async (e) => {
     // POST api comment
     const newComment = document.querySelector(`#newComment-btn`);
     if (newComment) {
-    newComment.addEventListener('click', async (e) => {
-        e.preventDefault()
-        const userId = document.querySelector('.userId').value;
-        const recordId = document.URL.split('/')[4]
-        const description = document.querySelector('#description').value;
-        const res = await fetch('/comments', {
-            method: 'POST',
-            body: JSON.stringify({ description, userId, recordId }),
-            headers: { "Content-Type": "application/json" }
-        })
+        newComment.addEventListener('click', async (e) => {
+            e.preventDefault()
+            const userId = document.querySelector('.userId').value;
+            const recordId = document.URL.split('/')[4]
+            const description = document.querySelector('#description').value;
+            const res = await fetch('/comments', {
+                method: 'POST',
+                body: JSON.stringify({ description, userId, recordId }),
+                headers: { "Content-Type": "application/json" }
+            })
 
-        const waiting = await res.json();
-        if (waiting.message === 'success!') {
-            const commentDiv = document.querySelector('#comments-container');
-            commentDiv.innerHTML = `
+            const waiting = await res.json();
+            if (waiting.message === 'success!') {
+                const commentDiv = document.querySelector('#comments-container');
+                commentDiv.innerHTML = `
         <div class="individual-comment">
             <a href="/users/${userId}">
                 <h4>${waiting.userName}</h4>
@@ -31,12 +31,12 @@ window.addEventListener("load", async (e) => {
             <p>${description}</p>
         </div>
         ` + commentDiv.innerHTML;
-        }
-        // setting comment input field to empty
-        const textInputField = document.getElementById('description');
-        textInputField.value = '';
-    })
-}
+            }
+            // setting comment input field to empty
+            const textInputField = document.getElementById('description');
+            textInputField.value = '';
+        })
+    }
 
 
 
@@ -47,8 +47,8 @@ window.addEventListener("load", async (e) => {
             const res = await fetch(`/records/${recordId}/delete`, {
                 method: 'DELETE'
             });
-            console.log('recordID', recordId);
-            console.log('button', button)
+            // console.log('recordID', recordId);
+            // console.log('button', button)
             const data = await res.json();
             if (data.message === 'Success') {
                 let container = document.getElementById(`record-container-${recordId}`)
@@ -67,7 +67,7 @@ window.addEventListener("load", async (e) => {
             if (!deleteWindow.classList.value.includes('show')) {
                 deleteWindow.classList.add('show');
                 deleteWindowContainer.classList.add('show');
-                console.log(e.target.parentElement);
+                // console.log(e.target.parentElement);
                 recordId = e.target.parentElement.id.split('-')[2];
             } else {
                 deleteWindow.classList.remove('show');
