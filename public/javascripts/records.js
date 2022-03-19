@@ -69,6 +69,7 @@ window.addEventListener("load", async (e) => {
             e.stopPropagation();
             if (!deleteWindow.classList.value.includes('show')) {
                 deleteWindowContainer.classList.add('show');
+                deleteWindow.classList.add('show');
                 recordId = e.target.parentElement.id.split('-')[2];
             } else {
                 deleteWindow.classList.remove('show');
