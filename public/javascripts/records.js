@@ -41,6 +41,8 @@ window.addEventListener("load", async (e) => {
 
 
     //  delete button for modal
+    if(deleteButtons){
+
     for (let i = 0; i < deleteButtons.length; i++) {
         const button = deleteButtons[i];
         button.addEventListener('click', async e => {
@@ -58,12 +60,14 @@ window.addEventListener("load", async (e) => {
     }
 
     //  delete button on each Record
+    if(deleteButtonToggle){
+
+
     for (let i = 0; i < deleteButtonToggle.length; i++) {
         const button = deleteButtonToggle[i];
         button.addEventListener('click', async e => {
             e.stopPropagation();
             if (!deleteWindow.classList.value.includes('show')) {
-                deleteWindow.classList.add('show');
                 deleteWindowContainer.classList.add('show');
                 recordId = e.target.parentElement.id.split('-')[2];
             } else {
@@ -73,6 +77,7 @@ window.addEventListener("load", async (e) => {
         })
     }
 
+
     for (let i = 0; i < cancelButtons.length; i++) {
         const cancelButton = cancelButtons[i];
         cancelButton.addEventListener('click', e => {
@@ -80,6 +85,8 @@ window.addEventListener("load", async (e) => {
             deleteWindowContainer.classList.remove('show');
         })
     }
+    }
+}
     const likeButton = document.querySelector('.applaud')
     const likeUpDiv = document.querySelector('.applaud-up-div')
     const likeDownDiv = document.querySelector('.applaud-down-div')
