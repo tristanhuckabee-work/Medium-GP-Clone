@@ -41,14 +41,16 @@ window.addEventListener("load", async (e) => {
 
 
     //  delete button for modal
+    if(deleteButtons){
+
     for (let i = 0; i < deleteButtons.length; i++) {
         const button = deleteButtons[i];
         button.addEventListener('click', async e => {
             const res = await fetch(`/records/${recordId}/delete`, {
                 method: 'DELETE'
             });
-            // console.log('recordID', recordId);
-            // console.log('button', button)
+            console.log('recordID', recordId);
+            console.log('button', button)
             const data = await res.json();
             if (data.message === 'Success') {
                 let container = document.getElementById(`record-container-${recordId}`)
@@ -60,14 +62,17 @@ window.addEventListener("load", async (e) => {
     }
 
     //  delete button on each Record
+    if(deleteButtonToggle){
+
+
     for (let i = 0; i < deleteButtonToggle.length; i++) {
         const button = deleteButtonToggle[i];
         button.addEventListener('click', async e => {
             e.stopPropagation();
             if (!deleteWindow.classList.value.includes('show')) {
-                deleteWindow.classList.add('show');
                 deleteWindowContainer.classList.add('show');
-                // console.log(e.target.parentElement);
+                deleteWindow.classList.add('show');
+                console.log(e.target.parentElement);
                 recordId = e.target.parentElement.id.split('-')[2];
             } else {
                 deleteWindow.classList.remove('show');
@@ -76,6 +81,7 @@ window.addEventListener("load", async (e) => {
         })
     }
 
+
     for (let i = 0; i < cancelButtons.length; i++) {
         const cancelButton = cancelButtons[i];
         cancelButton.addEventListener('click', e => {
@@ -83,5 +89,7 @@ window.addEventListener("load", async (e) => {
             deleteWindowContainer.classList.remove('show');
         })
     }
+    }
+}
 
 });
