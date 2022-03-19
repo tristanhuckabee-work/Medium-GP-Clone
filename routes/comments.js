@@ -20,7 +20,6 @@ router.post('/',
   requireAuth,
   handleValidationErrors,
   asyncHandler(async (req, res) => {
-    // console.log(req.body);
     const { recordId, userId, description } = req.body;
     const user = await db.User.findByPk(userId)
     const comment = await db.Comment.create({
