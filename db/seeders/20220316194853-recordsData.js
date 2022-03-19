@@ -134,7 +134,33 @@ module.exports = {
         description:'LAST NIGHT, WHILE I WAS OUT FIGHTING CRIME OF COURSE, WHEN I SAW A MAN LITTER! SO OBVIOUSLY I HAD TO TAKE HIM DOWN! WHEN I HUNG HIM BY HIS DRAWS ON A GARGOYLE I NOTICED HIS PHONE WAS PLAYING KAYNE WEST!! This criminal was playing "Hey Mama"... Martha... she was my mama... THEN I REALIZED IF CRIMINALS LISTEN TO KAYNE WEST THEN I CANT!!!',
         userId:8,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        title: 'Blackened Tech-Death',
+        description: "Yes, 'blackened tech-death' is an actual metal subgenre, not the name of a futuristic plague. Some subgenres like thrash metal and heavy metal have seen considerable mainstream popularity with bands like Metallica and Iron Maiden, the former featuring fast aggressive riffing and drums with James Hetfield’s snarled vocals, and the latter embracing a more melodic approach with soaring guitar harmonies and Bruce Dickinson’s operatic delivery.The guttural growled or screamed vocals that are often stereotypically associated with metal actually occur in a relatively small percentage of metal, in subgenres like death metal, black metal, and metalcore. Other subgenres take a far more melodic approach, like symphonic metal, progressive metal, power metal, and so on. The ever-increasing number of subgenres has become something of an inside joke within the metal community, but it only goes to show that there is metal out there to cater to everyone. If you haven’t found a single metal song you like, you just haven’t looked hard enough!",
+        userId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        title: 'My Life was Saved by Yell of Thirst',
+        description: "Field of View's 'Yell of Thirst' saved my life. I was standing at the edge of a rooftop, threatening to throw myself from the edge if Yugi Mutou didn't let me win the duel!!! If it wasn't for that song then I wouldn't have been givin main antagonist privelages.",
+        userId: 19,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        title: 'MONSTER',
+        description: 'Broooo!!! Why is nobody talking about how 🔥🔥🔥 Monster by Em is??? Like the Juice WRLD (rip) refrain is soo HYPE!!! Under-rated for sure.',
+        userId: 4,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        title: 'Is Sea-Shanty A Genre?',
+        description: "Like are songs like the one from 'Pirates of the Carribean: At World's End' a type of music?",
+        userId: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
 
     ], {});

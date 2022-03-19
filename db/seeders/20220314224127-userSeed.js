@@ -7,7 +7,7 @@ module.exports = {
       {
         userName: 'John Doe',
         hashedPassword: bcrypt.hashSync('123', 10),
-        bio: null,
+        bio: "My tastes in music are a little quirky, a little out there, I'm not like the other boys!!! 😘💽🎶",
         image: null,
         createdAt: new Date(),
         updatedAt: new Date()

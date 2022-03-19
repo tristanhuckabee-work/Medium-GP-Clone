@@ -19,7 +19,7 @@ window.addEventListener("load", e => {
   followBtn.addEventListener('click', async (e) => {
     const pageUserId = document.URL.split('/')[4]
     const currUserId = document.querySelector('.user-logout-buttons').getElementsByTagName('a')[0].href.split('/')[4];
-    
+
     const res = await fetch('/users/follows/new', {
       method: 'POST',
       body: JSON.stringify(
@@ -34,10 +34,10 @@ window.addEventListener("load", e => {
     const followIcon = followBtn.querySelector('i');
     let followingCount = document.querySelector('.following');
     let followerCount = document.querySelector('.followers');
-    
-    
-    
-    
+
+
+
+
     if (returnData.msg === "User Followed") {
       followBtn.style.backgroundColor = "#661b1c";
       followBtn.innerHTML = `
@@ -51,7 +51,7 @@ window.addEventListener("load", e => {
       `;
       followerCount.innerText--
     }
-    
+
     // console.log(`Page User: ${pageUserId}\nCurrent User: ${currUserId}`);
     // console.log('ReturnData: ', returnData);
   });
