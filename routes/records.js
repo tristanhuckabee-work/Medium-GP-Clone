@@ -89,10 +89,12 @@ router.post('/:id/edit', csrfProtection, recordVal, requireAuth, asyncHandler(as
     res.redirect('/records')
   } else {
     const errors = validatorErrors.array().map(error => error.msg);
+    console.log(id)
     res.render('editRecord', {
       title,
       description,
       errors,
+      id,
       csrfToken: req.csrfToken(),
     });
   }
