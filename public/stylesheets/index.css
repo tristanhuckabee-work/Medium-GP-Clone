@@ -133,13 +133,46 @@ footer a:hover {color:#b39856}
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-end;
-}
+    align-items: center;
 
+    width: 400px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #292d36;
+}
+.userName-input, .password-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 .login-form input, .signup-form input{
     margin-left: 10px;
     margin-top: 10px;
+
+    background-color: #191d26;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
 }
+
+#sign-up-close, #sign-in-close {
+  background-color: #661b1c;
+  border: 2px solid #661b1c;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0 0 0;
+
+  color: white;
+  cursor: pointer;
+  width: 400px;
+}
+#sign-up-close:hover, #sign-in-close:hover {
+  background-color: transparent;
+  color: #b39856;
+}
+
 /* styling for error messages */
 .alert{
     /* flex-wrap: nowrap; */

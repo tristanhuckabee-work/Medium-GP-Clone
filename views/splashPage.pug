@@ -52,15 +52,15 @@ block content
           const signInContainer = document.querySelector('.sign-in-container');
           //- console.log(signInContainer);
           signInContainer.classList.add('show');
-      div(id="sign-in-instructions")
+      div(class="sign-in-instructions")
         //- p Enter your information to Sign In:
 
         +validationErrorSummary(errors)
       form(action='/' method='post' class='login-form')
         input(type='hidden' name='_csrf' value=csrfToken)
-        div(id="userName-input")
+        div(class="userName-input")
           +field('inputBox', 'Username', 'userName', userName)
-        div(id="password-input")
+        div(class="password-input")
           label(for='Password') Password
           input(class='inputbox' type="password" id="password" name="password")
         div
@@ -73,15 +73,15 @@ block content
           script.
             const signUpContainer = document.querySelector('.sign-up-container');
             signUpContainer.classList.add('show');
-      div(id="sign-up-instructions")
+      div(class="sign-up-instructions")
         +validationErrorSummary(errorsSignup)
       form(action='/sign-up' method='post' class='signup-form')
         input(type='hidden' name='_csrf' value=csrfToken)
-        div(id="userName-input")
+        div(class="userName-input")
           +field('inputBox', 'Username', 'userName', userName)
-        div(id="password-input")
+        div(class="password-input")
           +field('inputBox', 'Password', 'password', null, 'password')
-        div(id="password-input")
+        div(class="password-input")
           +field('inputBox', 'Confirm Password', 'confirmPassword', '', 'password')
         div()
           input(type="submit" value="Sign-up" id="sign-up-close")
