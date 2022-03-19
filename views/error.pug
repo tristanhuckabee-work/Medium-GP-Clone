@@ -1,6 +1,12 @@
 extends layout
 
+append head
+  link(rel="stylesheet" href="/stylesheets/error.css")
+
+
 block content
-  h1= message
+  h1= `Congrats you broke it... ${message}`
   h2= error.status
-  pre #{error.stack}
+    i(class="fa-solid fa-microphone-slash fa-1x")
+  //- pre #{error.stack}
+  a(href="/records"): h1 Return to Vinyl!

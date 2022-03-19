@@ -14,6 +14,7 @@ block content
     include delete-record-confirm
     main
         if records
+          h2 Users Records
             for record in records
                 if user.id === pk
                     div.records(id=`record-container-${record.id}` onclick=`redirect(${record.id})`)
@@ -26,13 +27,13 @@ block content
                           a(href=`/records/${record.id}/edit`)
                             button(class="edit-button edit")
                               i.fas.fa-pen-to-square.fa-2x
-                else 
+                else
                     div.records(onclick=`redirect(${record.id})`)
                         h2= record.title
                         p.description= record.description
-                        div.authorOpts.not-author    
+                        div.authorOpts.not-author
         div#noTastes
-          h2 Given Your Records, You've got Great Tastes!!! 
+          h2 Given Your Records, You've got Great Tastes!!!
           p Prove Me Wrong
     aside
         h1= user.userName
@@ -41,26 +42,25 @@ block content
             if isFollowed === true
               div(class="follow relate" style="background-color: #661b1c")
                 i.fas.fa-circle-minus.fa-3x(style="color: #dddddd")
-            else 
+            else
               div(class="follow relate" style="background-color: #dddddd")
                 i.fas.fa-circle-plus.fa-3x(style="color: #191d26")
-                
-          else 
+
+          else
             div(class="follow relate hidden")
           div.follow
-              if followers 
+              if followers
                 p.followers= followers
               else
-                p.followers= 0 
+                p.followers= 0
               p FOLLOWERS
           div.follow
               if following
                 p.following= following
               else
-                p.following= 0 
+                p.following= 0
               p FOLLOWING
         if user.bio
             p.bio= user.bio
-        else 
+        else
             p.bio No Bio Available :(
-

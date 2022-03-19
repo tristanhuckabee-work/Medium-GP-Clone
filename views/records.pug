@@ -17,6 +17,7 @@ block content
 
   include navbar
   main
+    h2 Feed
     for record in records
       if record.userId === pk
         div(class="records" id=`record-container-${record.id}` onclick=`redirect(${record.id})`)
