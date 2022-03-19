@@ -8,13 +8,15 @@ module.exports = {
 
       Example:
       */
-      return queryInterface.bulkInsert('Comments', [
-        {description:'Great story love to hear it! Poggers', userId:2, recordId:4, createdAt: new Date(), updatedAt: new Date()},
-        {description:'Another Banger', userId:1, recordId:4, createdAt: new Date(), updatedAt: new Date()},
-        {description:'L opinion + ratio + did not ask', userId:3, recordId:4, createdAt: new Date(), updatedAt: new Date()},
-        {description:'W + YBN better + lebron pwns', userId:1, recordId:4, createdAt: new Date(), updatedAt: new Date()},
-
-      ], {});
+    return queryInterface.bulkInsert('Comments', [
+      { description: 'Great story love to hear it! Poggers', userId: 2, recordId: 4, createdAt: new Date(), updatedAt: new Date() },
+      { description: 'Another Banger', userId: 1, recordId: 4, createdAt: new Date(), updatedAt: new Date() },
+      { description: 'L opinion + ratio + did not ask', userId: 3, recordId: 4, createdAt: new Date(), updatedAt: new Date() },
+      { description: 'W + YBN better + lebron pwns', userId: 1, recordId: 4, createdAt: new Date(), updatedAt: new Date() },
+      { description: 'ur trash kid', userId: 12, recordId: 2, createdAt: new Date(), updatedAt: new Date() },
+      { description: 'redemption arc??', userId: 20, recordId: 2, createdAt: new Date(), updatedAt: new Date() },
+      { description: 'I LOST SOMETHING ONCE...', userId: 12, recordId: 14, createdAt: new Date(), updatedAt: new Date() },
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -24,6 +26,6 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkDelete('Comments', null, {});
+    return queryInterface.bulkDelete('Comments', null, {});
   }
 };
