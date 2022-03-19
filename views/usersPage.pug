@@ -29,7 +29,6 @@ block content
                 else 
                     div.records(onclick=`redirect(${record.id})`)
                         h2= record.title
-                        a.author(href=`/users/${record.User.id}`)= record.User.userName
                         p.description= record.description
                         div.authorOpts.not-author    
         div#noTastes
