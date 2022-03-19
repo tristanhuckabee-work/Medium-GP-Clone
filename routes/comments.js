@@ -27,7 +27,6 @@ router.post('/',
       recordId,
       userId,
     })
-    // console.log('this is the comment id\n\n', comment.id)
     res.json({ message: 'success!', userName: user.userName, commentId: comment.id });
     res.end()
   }))

@@ -41,8 +41,6 @@ window.addEventListener('load', async e => {
         container.remove();
         deleteWindowComment.classList.remove('show');
         deleteWindowCommentContainer.classList.remove('show');
-      } else {
-        // console.log('uh oh, looks like that comment couldn\'t be deleted')
       }
     })
   }

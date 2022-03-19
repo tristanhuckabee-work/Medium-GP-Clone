@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const bcrypt = require('bcryptjs');
 const db = require('../db/models')
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler, handleValidationErrors } = require('./utils');
@@ -112,7 +111,7 @@ router.get('/:id', csrfProtection, requireAuth, asyncHandler(async (req, res) =>
     where: {recordId: id}
   })
   const likeCounter = likes.length
-  
+
   // getting comments of record
   const comments = await db.Comment.findAll({
     where: {
@@ -132,14 +131,12 @@ router.get('/:id', csrfProtection, requireAuth, asyncHandler(async (req, res) =>
   }else{
     isLiked = false
   }
-  console.log(isLiked)
   res.render('recordId', { record, comments, csrfToken: req.csrfToken(), pk, id, isLiked, likeCounter})
 }))
 
 
 router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res) => {
   const post = await db.Record.findByPk(req.params.id);
-  // console.log('\nyou hit the delete route');
   if (post) {
     await post.destroy();
     res.json({ message: 'Success' });
