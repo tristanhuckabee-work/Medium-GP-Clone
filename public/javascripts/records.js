@@ -32,7 +32,6 @@ window.addEventListener("load", async (e) => {
                 </div>
                     <button class="delete-comment">delete</button>
                 ` + commentDiv.innerHTML;
-                deleteButtonToggle
             }
             // setting comment input field to empty
             const textInputField = document.getElementById('description');
