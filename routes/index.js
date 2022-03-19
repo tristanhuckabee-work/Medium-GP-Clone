@@ -29,7 +29,6 @@ const loginValidators = [
 ];
 
 router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
-  console.log('\nthis is the req.body', req.body, '\n')
   const { userName, password } = req.body;
 
   let errors = [];
@@ -52,7 +51,6 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
   } else {
     errors = validatorErrors.array().map(error => error.msg);
   }
-  console.log('\nthis is the userName', userName, '\n')
   const trending = await db.Record.findAll({
     limit: 6
   })
@@ -86,10 +84,7 @@ const userValidators = [
 ]
 //Not sure what the route should be for sign up
 router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req, res, next) => {
-  // console.log('\nthis is req.body', req.body);
   const { userName, password: passwordSignUp } = req.body;
-
-  // console.log(userName, passwordSignUp)
 
   const userSignUp = db.User.build({
     userName,
@@ -98,14 +93,12 @@ router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req,
   const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
-    console.log('\nthis is if validatorErrors is empty')
     const hashedPassword = await bcrypt.hash(passwordSignUp, 10);
     userSignUp.hashedPassword = hashedPassword;
     await userSignUp.save();
     loginUser(req, res, userSignUp)
     res.redirect('/records');
   } else {
-    console.log('\nthis is if validatorErros isn\'t empty');
     const trending = await db.Record.findAll({
       limit: 6
     })
