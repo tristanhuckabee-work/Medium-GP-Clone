@@ -12,10 +12,31 @@ router.get('/', csrfProtection, async (req, res) => {
     res.redirect('/records')
   } else {
     const user = db.User.build();
-    const trending = await db.Record.findAll({
-      limit: 6
+    const trending = []
+    const recArr = []
+    let rec = {}
+    const rank = 1
+
+    const applauds = await db.Applaud.findAll({})
+
+    applauds.forEach(el => {
+      if(rec[el.recordId] === undefined){
+        return rec[el.recordId] = 1
+      }
+        return rec[el.recordId]++
     })
-    res.render('splashPage', { trending, user, csrfToken: req.csrfToken() });
+
+    for(const keys in rec){
+      recArr.push([Number.parseInt(keys),rec[keys]])
+    }
+
+    recArr.sort((a,b) => b[1] - a[1])
+
+    for(let i = 0;i<recArr.length;i++){
+      trending.push(await db.Record.findByPk(recArr[i][0]))
+    }
+
+    res.render('splashPage', { trending, user, csrfToken: req.csrfToken(), rank});
   }
 });
 

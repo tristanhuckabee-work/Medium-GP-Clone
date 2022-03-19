@@ -29,12 +29,13 @@ block content
       div(class='trendContainer')
         if trending
           for trend in trending
-            div(class='trendCards')
-              div.rank
-                h3=trend.id
-              div.cardContent
-                h3=trend.title
-                p=trend.description
+            if rank <= 6
+              div(class='trendCards')
+                div.rank
+                  h3= rank++
+                div.cardContent
+                  h3=trend.title
+                  p=trend.description
   footer
     p &copy; Team Record Player 2022
     div.githubs
