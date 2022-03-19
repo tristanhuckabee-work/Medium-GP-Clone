@@ -15,23 +15,37 @@ block content
     main
         if records
             for record in records
-              div.records(id=`record-container-${record.id}` onclick=`redirect(${record.id})`)
-                  h2= record.title
-                  p= record.description
+                if user.id === pk
+                    div.records(id=`record-container-${record.id}` onclick=`redirect(${record.id})`)
+                        h2= record.title
+                        p.description= record.description
 
-                  div(class='authorOpts' id=`author-opts-${record.id}`)
-                    button(class="delete-button-toggle delete" id=`delete-post-${record.id}`)
-                      i.fas.fa-trash-can.fa-2x
-                    a(href=`/records/${record.id}/edit`)
-                      button(class="edit-button edit")
-                        i.fas.fa-pen-to-square.fa-2x
+                        div(class='authorOpts' id=`author-opts-${record.id}`)
+                          button(class="delete-button-toggle delete" id=`delete-post-${record.id}`)
+                            i.fas.fa-trash-can.fa-2x
+                          a(href=`/records/${record.id}/edit`)
+                            button(class="edit-button edit")
+                              i.fas.fa-pen-to-square.fa-2x
+                else 
+                    div.records(onclick=`redirect(${record.id})`)
+                        h2= record.title
+                        a.author(href=`/users/${record.User.id}`)= record.User.userName
+                        p.description= record.description
+                        div.authorOpts.not-author    
+        div#noTastes
+          h2 Given Your Records, You've got Great Tastes!!! 
+          p Prove Me Wrong
     aside
         h1= user.userName
         div.relations
           if pk !== user.id
-            div(class="follow relate")
-              i.fas.fa-circle-plus.fa-3x(style="color: darkgray")
-              p FOLLOW
+            if isFollowed === true
+              div(class="follow relate" style="background-color: #661b1c")
+                i.fas.fa-circle-minus.fa-3x(style="color: #dddddd")
+            else 
+              div(class="follow relate" style="background-color: #dddddd")
+                i.fas.fa-circle-plus.fa-3x(style="color: #191d26")
+                
           else 
             div(class="follow relate hidden")
           div.follow
@@ -47,7 +61,7 @@ block content
                 p.following= 0 
               p FOLLOWING
         if user.bio
-            p= user.bio
+            p.bio= user.bio
         else 
-            p.empty No Bio Available :(
+            p.bio No Bio Available :(
 

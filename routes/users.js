@@ -26,12 +26,24 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
       }
     })
     
-    const following = await db.Follow.findAll({
-      where: { followerId: id } }).length;
-    const followers = await db.Follow.findAll({
-      where: { userId: id } }).length;
+    let following = await db.Follow.findAll({
+      where: { followerId: id } });
+    following = following.length;
+    
+    let followers = await db.Follow.findAll({
+      where: { userId: id } });
+    followers = followers.length;
 
-    res.render('usersPage', { user, records, following, followers, pk})
+    let isFollowed = await db.Follow.findAll({
+      where: {
+        followerId:pk,
+        userId:id
+      }
+    })
+    if (isFollowed.length > 0) isFollowed = true;
+    else isFollowed = false;
+
+    res.render('usersPage', { user, pk, records, following, followers, isFollowed})
   }else{
     res.redirect('/');
   }

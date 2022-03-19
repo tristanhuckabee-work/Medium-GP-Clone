@@ -1,5 +1,18 @@
 window.addEventListener("load", e => {
 
+  const records = document.querySelectorAll('.records');
+  const noTaste = document.querySelector('#noTastes');
+  if (records.length <= 0) {
+    noTaste.style.display = 'flex'
+  }
+
+  // disallow Select
+  const userInfo = document.querySelector('aside');
+  const disableselect = e => false;
+
+  userInfo.onselectstart = disableselect;
+  userInfo.onmousedown = disableselect;
+
   // FOLLOW / UNFOLLOW USER
   const followBtn = document.getElementsByClassName('relate')[0];
 
@@ -16,21 +29,27 @@ window.addEventListener("load", e => {
       headers: { 'Content-Type': 'application/json' }
     });
     const returnData = await res.json();
-    console.log(returnData)
 
     const followBtn = document.querySelector('.relate');
-    const followingCount = document.querySelector('.following');
-    const followerCount = document.querySelector('.followers');
-
-
+    const followIcon = followBtn.querySelector('i');
+    let followingCount = document.querySelector('.following');
+    let followerCount = document.querySelector('.followers');
+    
+    
+    
+    
     if (returnData.msg === "User Followed") {
       followBtn.style.backgroundColor = "#661b1c";
-      followingCount.innerText = followingCount.innerText++
-      followerCount.innerText = followerCount.innerText++
+      followBtn.innerHTML = `
+      <i class="fas fa-circle-minus fa-3x" style="color: #dddddd;"></i>
+      `;
+      followerCount.innerText++
     } else {
-      followBtn.style.backgroundColor = "#191d26";
-      followingCount.innerText = followingCount.innerText--
-      followerCount.innerText = followerCount.innerText--
+      followBtn.style.backgroundColor = "#dddddd";
+      followBtn.innerHTML = `
+      <i class="fas fa-circle-plus fa-3x" style="color: #191d26"></i>
+      `;
+      followerCount.innerText--
     }
     
     // console.log(`Page User: ${pageUserId}\nCurrent User: ${currUserId}`);

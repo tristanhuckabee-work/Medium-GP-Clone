@@ -1,36 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Sans&display=swap');
 
 body {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+    display: flex;
+    align-items: flex-start;  
     justify-content: center;
     margin: 0;
-    align-items: flex-start;
     padding-left: 205px;
 }
 
 /* USER BAR */
 aside {
-  background-color: blue;
+  position: fixed;
+  right: 0; top: 0;
+
+  background-color: #191d26;
+  border-left: 15px solid #b39856;
+  width: 20vw;
+  height:100vh;
+  padding: 20px;
+  color: #dddddd;
+}
+aside h1 {
+  padding-left: 10px;
 }
 .relations {
   display: flex;
   align-items: baseline;
   justify-content: space-evenly;
+  cursor: pointer;
 }
-.follow { text-align: center; }
-.relate {
+.follow {
+  text-align: center;
   background-color: #191d26;
   color: darkgray;
   padding: 10px;
   border-radius: 10px;
+  height: 100px;
+}
+.hidden {
+  pointer-events: none
+}
+#noTastes {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 600px;
+  top: 100px;
+  text-align: center;
+  color: #bbbbbb;
+}
+#noTastes h2 {
+  padding: 20px;
+  border-bottom: 1px solid #dddddd;
+}
+.bio {
+  background-color: #1b222c;
+  border: 2px inset #1b222c;
+  border-radius: 10px;
+  padding: 10px;
+  height: 500px;
+}
+.followers, .following {
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  margin-right: 20vw;
 }
 
 /* record container */
-/* record container */
 .records{
-  /* background-color: red; */
-  
   display: grid;
   grid-template-columns: 700px auto 100px;
   grid-template-rows: 50px 100px;
