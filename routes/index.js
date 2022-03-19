@@ -5,6 +5,7 @@ const db = require('../db/models')
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth, logoutUser, loginUser } = require('../auth');
+const algo = require('../public/javascripts/theAlgo');
 
 /* GET home page. */
 router.get('/', csrfProtection, async (req, res) => {
@@ -12,29 +13,9 @@ router.get('/', csrfProtection, async (req, res) => {
     res.redirect('/records')
   } else {
     const user = db.User.build();
-    const trending = []
-    const recArr = []
-    let rec = {}
+
+    const trending = await algo();
     const rank = 1
-
-    const applauds = await db.Applaud.findAll({})
-
-    applauds.forEach(el => {
-      if(rec[el.recordId] === undefined){
-        return rec[el.recordId] = 1
-      }
-        return rec[el.recordId]++
-    })
-
-    for(const keys in rec){
-      recArr.push([Number.parseInt(keys),rec[keys]])
-    }
-
-    recArr.sort((a,b) => b[1] - a[1])
-
-    for(let i = 0;i<recArr.length;i++){
-      trending.push(await db.Record.findByPk(recArr[i][0]))
-    }
 
     res.render('splashPage', { trending, user, csrfToken: req.csrfToken(), rank});
   }
@@ -72,10 +53,9 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
   } else {
     errors = validatorErrors.array().map(error => error.msg);
   }
-  const trending = await db.Record.findAll({
-    limit: 6
-  })
-  res.render('splashPage', { errors, trending, csrfToken: req.csrfToken(), userName });
+  const trending = await algo();
+  const rank = 1
+  res.render('splashPage', { errors, trending, csrfToken: req.csrfToken(), userName, rank });
 }));
 
 const userValidators = [
@@ -120,15 +100,15 @@ router.post('/sign-up', csrfProtection, userValidators, asyncHandler(async (req,
     loginUser(req, res, userSignUp)
     res.redirect('/records');
   } else {
-    const trending = await db.Record.findAll({
-      limit: 6
-    })
+    const trending = await algo();
+    const rank = 1
     const errorsSignup = validatorErrors.array().map(error => error.msg);
     res.render('splashPage', {
       title: 'filler',
       trending,
       userName,
       errorsSignup,
+      rank,
       csrfToken: req.csrfToken(),
     });
   }
