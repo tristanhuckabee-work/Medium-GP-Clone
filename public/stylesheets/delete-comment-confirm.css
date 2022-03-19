@@ -11,6 +11,8 @@
 
 .delete-window-comment-container {
   display: flex;
+  align-self: center;
+  justify-self: center;
   justify-content: center;
   align-items: center;
   z-index: -1;
