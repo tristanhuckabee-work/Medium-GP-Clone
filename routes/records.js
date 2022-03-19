@@ -93,6 +93,7 @@ router.post('/:id/edit', csrfProtection, recordVal, requireAuth, asyncHandler(as
       title,
       description,
       errors,
+      id,
       csrfToken: req.csrfToken(),
     });
   }
