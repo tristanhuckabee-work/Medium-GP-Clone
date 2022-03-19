@@ -102,6 +102,7 @@ router.post('/:id/edit', csrfProtection,recordVal,requireAuth, asyncHandler(asyn
 // GET specific record
 router.get('/:id', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
   const id = req.params.id;
+  const pk = req.session.auth.userId
 
   // getting record info
   const record = await db.Record.findByPk(id, {
@@ -115,13 +116,13 @@ router.get('/:id', csrfProtection, requireAuth, asyncHandler(async (req, res) =>
     order: [['id', 'DESC']],
     include: 'User'
   })
-  res.render('recordId', { record, comments, csrfToken: req.csrfToken() })
+  res.render('recordId', { record, comments, csrfToken: req.csrfToken(), pk, id })
 }))
 
 
 router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res) => {
   const post = await db.Record.findByPk(req.params.id);
-  console.log('\nyou hit the delete route');
+  // console.log('\nyou hit the delete route');
   if (post) {
     await post.destroy();
     res.json({ message: 'Success' });

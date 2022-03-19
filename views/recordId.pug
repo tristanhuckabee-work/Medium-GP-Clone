@@ -2,7 +2,8 @@ extends layout
 
 append head
     link(rel="stylesheet" href="/stylesheets/recordsId.css")
-    script(src="/javascripts/records.js" type="module" defer)
+    link(rel="stylesheet" href="/stylesheets/delete-comment-confirm.css")
+    script(src="/javascripts/records.js" type="module")
 
 block content
     include navbar
@@ -27,3 +28,12 @@ block content
                     a(href=`/users/${comment.User.id}`)
                         h4= comment.User.userName
                     p= comment.description
+                    if comment.userId === pk
+                        button(class="delete-comment") delete
+        div(class="delete-window-container")
+            div(class="delete-window")
+                div(class="delete-comment-text")
+                    h3 Delete Comment?
+                div(class="delete-cancel-buttons")
+                    button(class='delete-button') Delete
+                    button(class='cancel-button') Cancel
