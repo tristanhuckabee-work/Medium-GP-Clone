@@ -13,6 +13,16 @@ block content
             h1= record.title
             h4= record.User.userName
             p= record.description
+            if isLiked
+                div(class='applaud-down-div')
+                    button(class='applaud' id=`${pk}`)
+                        i(class='fas fa-music fa-2x')
+                    p(class='likes')= likeCounter
+            else
+                div(class='applaud-up-div')
+                    button(class='applaud' id=`${pk}`)
+                        i(class='fas fa-music fa-2x')
+                    p(class='likes')= likeCounter
         div(class="comments-section")
             h2 Comment Section
             form(action=`/comments` method="post" class="comments-form")

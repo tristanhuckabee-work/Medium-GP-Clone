@@ -24,13 +24,13 @@ window.addEventListener("load", async (e) => {
             if (waiting.message === 'success!') {
                 const commentDiv = document.querySelector('#comments-container');
                 commentDiv.innerHTML = `
-        <div class="individual-comment">
-            <a href="/users/${userId}">
-                <h4>${waiting.userName}</h4>
-            </a>
-            <p>${description}</p>
-        </div>
-        ` + commentDiv.innerHTML;
+                <div class="individual-comment">
+                    <a href="/users/${userId}">
+                        <h4>${waiting.userName}</h4>
+                    </a>
+                    <p>${description}</p>
+                </div>
+                ` + commentDiv.innerHTML;
             }
             // setting comment input field to empty
             const textInputField = document.getElementById('description');
@@ -83,6 +83,41 @@ window.addEventListener("load", async (e) => {
         cancelButton.addEventListener('click', e => {
             deleteWindow.classList.remove('show');
             deleteWindowContainer.classList.remove('show');
+        })
+    }
+    const likeButton = document.querySelector('.applaud')
+    const likeUpDiv = document.querySelector('.applaud-up-div')
+    const likeDownDiv = document.querySelector('.applaud-down-div')
+    const counter = document.querySelector('.likes')
+
+    if(likeButton){
+        likeButton.addEventListener('click', async(e) => {
+            console.log(e)
+            const recordId = document.URL.split('/')[4];
+            const userId= document.querySelector('.applaud').id;
+            const count = counter.id
+            const res = await fetch('/records/applauds/new', {
+                method: 'POST',
+                body: JSON.stringify(
+                  { userId: userId,
+                    recordId: recordId
+                  }),
+                headers: { 'Content-Type': 'application/json' }
+              });
+            const returnData = await res.json();
+            if(returnData.msg === "User liked"){
+                likeButton.style.color = '#b39856'
+                likeButton.innerHTML = `
+                    <i class="fas fa-music fa-2x"></i>
+                `
+                counter.innerText++
+            }else{
+                likeButton.style.color = 'lightgrey'
+                likeButton.innerHTML = `
+                    <i class="fas fa-music fa-2x"></i>
+                `
+                counter.innerText--
+            }
         })
     }
 

@@ -142,3 +142,29 @@ h4{
     text-decoration: none;
     color: #b39856;
 }
+.applaud-up-div {
+    align-self: flex-start;
+    margin-left: 20%;
+    background-color: transparent;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.applaud-down-div {
+    align-self: flex-start;
+    margin-left: 20%;
+    background-color: transparent;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.applaud-down-div .applaud{
+    background-color: transparent;
+    color:#b39856;
+    border: none;
+}
+.applaud-up-div .applaud{
+    background-color: transparent;
+    color: lightgrey;
+    border: none;
+}

@@ -107,6 +107,12 @@ router.get('/:id', csrfProtection, requireAuth, asyncHandler(async (req, res) =>
   const record = await db.Record.findByPk(id, {
     include: 'User'
   })
+
+  const likes = await db.Applaud.findAll({
+    where: {recordId: id}
+  })
+  const likeCounter = likes.length
+  
   // getting comments of record
   const comments = await db.Comment.findAll({
     where: {
@@ -115,7 +121,19 @@ router.get('/:id', csrfProtection, requireAuth, asyncHandler(async (req, res) =>
     order: [['id', 'DESC']],
     include: 'User'
   })
-  res.render('recordId', { record, comments, csrfToken: req.csrfToken(), pk, id })
+  let isLiked = await db.Applaud.findAll({
+    where: {
+      recordId:id,
+      userId:pk
+    }
+  });
+  if(isLiked.length > 0){
+    isLiked = true
+  }else{
+    isLiked = false
+  }
+  console.log(isLiked)
+  res.render('recordId', { record, comments, csrfToken: req.csrfToken(), pk, id, isLiked, likeCounter})
 }))
 
 
@@ -127,6 +145,22 @@ router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res) =>
     res.json({ message: 'Success' });
   } else {
     res.json({ message: 'Failure' });
+  }
+}));
+
+router.post('/applauds/new', requireAuth, asyncHandler( async(req, res, next) => {
+  let {userId, recordId} = req.body
+
+  const relation = await db.Applaud.findOne({
+    where: { userId, recordId }
+  });
+
+  if (relation) {
+    relation.destroy();
+    res.json({msg: "User Unliked"});
+  } else {
+    await db.Applaud.create(req.body);
+    res.json({msg: "User liked"});
   }
 }));
 
