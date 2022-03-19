@@ -69,9 +69,11 @@ window.addEventListener("load", async (e) => {
                 deleteWindowContainer.classList.add('show');
                 // console.log(e.target.parentElement);
                 recordId = e.target.parentElement.id.split('-')[2];
+                console.log('You Hit Here');
             } else {
                 deleteWindow.classList.remove('show');
                 deleteWindowContainer.classList.remove('show');
+                console.log('You Hit Here');
             }
         })
     }
