@@ -32,7 +32,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        title: 'who won?',
+        title: 'who won? Epic Rap Battles',
         description: 'rick grimes vs walter white: search it up and light up the comments',
         userId: 9,
         createdAt: new Date(),
@@ -102,6 +102,39 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        title:'Bad Vibes Forever',
+        description:'The late rapper makes a similar petition on his second posthumous album, billed as his “final” release. “I’m tryna to tell the world to fucking relax, bro… Let me be a prince, let me be a king, nigga,” he says in a rambling snippet repurposed as the album’s introduction. XXXTentacion’s estate clearly chose this clip to honor and preserve the self-image that the rapper was cultivating when he was shot and killed in 2018 while awaiting trial for domestic abuse charges. But like ? and his first posthumous record, Skins, Bad Vibes Forever fails to make his personal perception and aesthetic ideas cohere into anything other than generic kingmaking. This flimsy, haphazard album attempts to memorialize the rapper as a martyr and renaissance man when he is neither.',
+        userId:15,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title:'Introduction to my new Album',
+        description:'To find, to find the exact words, to find the perfect words, to say less, but to say more, was ideal with this project, and to let my energy and mind be felt, in a less aggressive way, but a more passive and genius way was ideal with this album, to show the versatility and to show the open- to open minds in itself was the goal of this album, and to acquire a large amount of passion, and love and appreciation for myself was the goal of this album; loyalty to myself was the goal of this album. So, Ill offer this warning and set of instructions; if you are not open-minded before you listen to this album, open your mind. If you dont listen to the alternative sound and youve never been into the alternative sound and have not been open to trying different things; open your mind before you listen to this album. You can listen to it anywhere, preferably your room, your car, but it can be played anywhere. This album is far different, far more versatile, far more uplifting than the last. Its something you can find comfort in, its very comforting, but discomforting at the same time. So, with this project, again, youre entering my mind, feeling my insanity, feeling my, my genius, my energy. Enjoy',
+        userId:14,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title:'Fly Me to the Moon greatest song ever??',
+        description:'Frank Sinatra is the one of the worlds greatest artist of all time, never meet an artist with his range! Fly me to the moon is a classic that can be listened to at any time of the year. There has been thousands of covers of "Fly Me to the Moon" and all of them are amazing, one of my favorite covers is by Frank Ocean.',
+        userId:1,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title:'NIKI MINAJ IS THE GOAT!',
+        description:'HAVE YOU EVER LISTENED TO MONSTER?!?!?! SHE SOLOS YOUR FAVORITE RAPPER. NO COMPETITION! BUY MY NEW STEM PLAYER',
+        userId:13,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title:'KANYE WEST MUSIC IS NOT IT!!',
+        description:'LAST NIGHT, WHILE I WAS OUT FIGHTING CRIME OF COURSE, WHEN I SAW A MAN LITTER! SO OBVIOUSLY I HAD TO TAKE HIM DOWN! WHEN I HUNG HIM BY HIS DRAWS ON A GARGOYLE I NOTICED HIS PHONE WAS PLAYING KAYNE WEST!! This criminal was playing "Hey Mama"... Martha... she was my mama... THEN I REALIZED IF CRIMINALS LISTEN TO KAYNE WEST THEN I CANT!!!',
+        userId:8,
+        createdAt: new Date(),
+        updatedAt: new Date(),
         title: 'Blackened Tech-Death',
         description: "Yes, 'blackened tech-death' is an actual metal subgenre, not the name of a futuristic plague. Some subgenres like thrash metal and heavy metal have seen considerable mainstream popularity with bands like Metallica and Iron Maiden, the former featuring fast aggressive riffing and drums with James Hetfield’s snarled vocals, and the latter embracing a more melodic approach with soaring guitar harmonies and Bruce Dickinson’s operatic delivery.The guttural growled or screamed vocals that are often stereotypically associated with metal actually occur in a relatively small percentage of metal, in subgenres like death metal, black metal, and metalcore. Other subgenres take a far more melodic approach, like symphonic metal, progressive metal, power metal, and so on. The ever-increasing number of subgenres has become something of an inside joke within the metal community, but it only goes to show that there is metal out there to cater to everyone. If you haven’t found a single metal song you like, you just haven’t looked hard enough!",
         userId: 2,
