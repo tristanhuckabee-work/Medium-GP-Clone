@@ -10,13 +10,14 @@ body {
 }
 
 .delete-window-container {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: -1;
   position: fixed;
+  top: 0;
   width: 70vw;
-  height: 100vh;
+  height: 100%;
 }
 
 .delete-window {

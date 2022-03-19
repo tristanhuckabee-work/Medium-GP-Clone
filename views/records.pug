@@ -16,7 +16,6 @@ append head
 block content
 
   include navbar
-  include delete-record-confirm
   main
     for record in records
       if record.userId === pk
@@ -36,7 +35,7 @@ block content
           a.author(href=`/users/${record.User.id}`)= record.User.userName
           p.description= record.description
           div.authorOpts.not-author
-    
+
     div.footer
       p &copy; Team Record Player 2022
       div.githubs
@@ -44,3 +43,5 @@ block content
         a(href="https://github.com/mendezangel") Angel Mendez
         a(href="https://github.com/Cmizell186") Christopher Mizell
         a(href="https://github.com/tristanhuckabee-work") Tristan Huckabee
+
+  include delete-record-confirm
