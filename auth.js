@@ -7,7 +7,6 @@ const loginUser = (req, res, user) => {
 };
 
 const restoreUser = async (req, res, next) => {
-  // console.log('\nthis is the current req.session', req.session, '\n');
 
   if (req.session.auth) {
     const { userId } = req.session.auth;
@@ -18,7 +17,6 @@ const restoreUser = async (req, res, next) => {
       if (user) {
         res.locals.authenticated = true;
         res.locals.user = user;
-        // console.log('\nthis is the current res.locals', res.locals, '\n');
         next();
       }
     } catch (err) {
@@ -48,4 +46,3 @@ module.exports = {
   logoutUser,
   requireAuth,
 }
-

@@ -31,8 +31,6 @@ window.addEventListener("load", e => {
     const returnData = await res.json();
 
     const followBtn = document.querySelector('.relate');
-    const followIcon = followBtn.querySelector('i');
-    let followingCount = document.querySelector('.following');
     let followerCount = document.querySelector('.followers');
 
 
@@ -51,9 +49,6 @@ window.addEventListener("load", e => {
       `;
       followerCount.innerText--
     }
-
-    // console.log(`Page User: ${pageUserId}\nCurrent User: ${currUserId}`);
-    // console.log('ReturnData: ', returnData);
   });
 
   // DELETE RECORDS
@@ -69,12 +64,9 @@ window.addEventListener("load", e => {
     const button = deleteButtons[i];
     button.addEventListener('click', async e => {
         const res = await fetch(`/records/${recordId}/delete`, { method: 'DELETE' });
-        console.log('recordID', recordId);
-        console.log('button', button)
         const data = await res.json();
         if (data.message === 'Success') {
             let container = document.getElementById(`record-container-${recordId}`)
-            console.log('Container', container);
             container.remove();
             deleteWindow.classList.remove('show');
             deleteWindowContainer.classList.remove('show');
@@ -91,9 +83,7 @@ for (let i = 0; i < deleteButtonToggle.length; i++) {
             deleteWindow.style.transition = 'all 2s';
             deleteWindow.classList.add('show');
             deleteWindowContainer.classList.add('show');
-            console.log(e.target.parentElement);
             recordId = e.target.parentElement.id.split('-')[2];
-            // console.log('recordId', recordId);
         } else {
             deleteWindow.classList.remove('show');
             deleteWindowContainer.classList.remove('show');
