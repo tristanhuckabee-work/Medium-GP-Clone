@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 const db = require('../db/models')
 const {sequelize, Sequelize: {Op}} = require('../db/models');
-// const Op = Sequelize.Op
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
@@ -25,11 +24,11 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
         ele.description = ele.description.slice(0, 147);
       }
     })
-    
+
     let following = await db.Follow.findAll({
       where: { followerId: id } });
     following = following.length;
-    
+
     let followers = await db.Follow.findAll({
       where: { userId: id } });
     followers = followers.length;

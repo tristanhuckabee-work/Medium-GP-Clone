@@ -42,6 +42,7 @@ textarea:focus{
     margin-left: 20%;
     margin-right: 20%;
 
+    cursor: default;
 }
 
 /* record user owner */
@@ -54,6 +55,8 @@ textarea:focus{
 
     display: flex;
     justify-content: flex-start;
+
+    cursor: default;
 }
 
 /* record description */
@@ -109,6 +112,8 @@ textarea:focus{
     font-family: 'Noto Sans', sans-serif;
     color: #661b1c;
     align-self: flex-start;
+
+    cursor: default;
 }
 
 #comments-container{
@@ -162,9 +167,23 @@ h4{
     background-color: transparent;
     color:#b39856;
     border: none;
+    transition: all 0.2s linear;
 }
 .applaud-up-div .applaud{
     background-color: transparent;
     color: lightgrey;
     border: none;
+    transition: all 0.2s linear;
+}
+.applaud-down-div .applaud:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.applaud-up-div .applaud:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+p {
+    cursor: default;
 }
