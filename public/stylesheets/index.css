@@ -108,10 +108,10 @@ footer a:hover {color:#b39856}
   position: absolute;
   width: 488px;
   height: 547px;
-    background: #191d26;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    color: white;
+  background: #191d26;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  color: white;
 }
 /* This content keeps the modals centered */
 .sign-in-content, .sign-up-content{
@@ -175,14 +175,15 @@ footer a:hover {color:#b39856}
 
 /* styling for error messages */
 .alert{
-    /* flex-wrap: nowrap; */
     background-color: rgba(255,0,0, 0.2);
     border: 1px inset rgba(255,0,0, 0.4);
     border-radius: 5px;
     padding: 10px;
     width: 80%;
+
+    align-self: center;
 }
-#sign-in-instructions, #sign-up-instructions{
+.sign-in-instructions, .sign-up-instructions{
   display: flex;
   justify-content: center;
 }
