@@ -49,8 +49,6 @@ window.addEventListener("load", async (e) => {
             const res = await fetch(`/records/${recordId}/delete`, {
                 method: 'DELETE'
             });
-            console.log('recordID', recordId);
-            console.log('button', button)
             const data = await res.json();
             if (data.message === 'Success') {
                 let container = document.getElementById(`record-container-${recordId}`)
@@ -72,13 +70,10 @@ window.addEventListener("load", async (e) => {
             if (!deleteWindow.classList.value.includes('show')) {
                 deleteWindowContainer.classList.add('show');
                 deleteWindow.classList.add('show');
-                console.log(e.target.parentElement);
                 recordId = e.target.parentElement.id.split('-')[2];
-                console.log('You Hit Here');
             } else {
                 deleteWindow.classList.remove('show');
                 deleteWindowContainer.classList.remove('show');
-                console.log('You Hit Here');
             }
         })
     }
@@ -100,7 +95,6 @@ window.addEventListener("load", async (e) => {
 
     if(likeButton){
         likeButton.addEventListener('click', async(e) => {
-            console.log(e)
             const recordId = document.URL.split('/')[4];
             const userId= document.querySelector('.applaud').id;
             const count = counter.id
