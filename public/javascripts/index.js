@@ -50,4 +50,21 @@ window.addEventListener("load", (event) => {
   })
 
 
+
+  // trend cards
+  const trendCard = document.querySelectorAll('.trendCards');
+  trendCard.forEach((entry) =>{
+    entry.addEventListener('click', (e) =>{
+      if (!signUpContainer.classList.value.includes('show')) {
+        if (signInContainer.classList.value.includes('show')) {
+          signInContainer.classList.remove('show');
+        }
+
+        signUpContainer.classList.add('show');
+      } else {
+        signUpContainer.classList.remove('show');
+      }
+    })
+  })
+
 })

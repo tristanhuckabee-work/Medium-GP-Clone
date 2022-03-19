@@ -2,26 +2,38 @@ extends layout
 
 append head
     link(rel="stylesheet" href="/stylesheets/recordsId.css")
-    script(src="/javascripts/records.js" type="module" defer)
+    link(rel="stylesheet" href="/stylesheets/delete-comment-confirm.css")
+    script(src="/javascripts/records.js" type="module")
 
 block content
-    //- include navbar
+    include navbar
     main
-        div()
+        div(class="record-info")
             h1= record.title
-            h2= record.User.userName
+            h4= record.User.userName
             p= record.description
-        div()
-            h2 comment section
+        div(class="comments-section")
+            h2 Comment Section
             form(action=`/comments` method="post" class="comments-form")
                 input(type='hidden' name='_csrf' value=csrfToken)
                 input(type='hidden' name='recordId' value=record.id class="recordId")
                 input(type='hidden' name='userId' value=record.User.id class="userId")
                 div(class='text-area')
-                    label(for='description') Comment here:
-                    textarea(name="description" type='text' id="description", cols="30", rows="10")
-                button(type='submit' id=`newComment-btn`) submit
+                    label(for='description')
+                    textarea(name="description" type='text' id="description" placeholder="What are your thoughts?")
+                button(type='submit' id=`newComment-btn`) comment
         div(id="comments-container")
             for comment in comments
-                h4= comment.User.userName
-                p= comment.description
+                div(class="individual-comment")
+                    a(href=`/users/${comment.User.id}`)
+                        h4= comment.User.userName
+                    p= comment.description
+                    if comment.userId === pk
+                        button(class="delete-comment") delete
+        div(class="delete-window-container")
+            div(class="delete-window")
+                div(class="delete-comment-text")
+                    h3 Delete Comment?
+                div(class="delete-cancel-buttons")
+                    button(class='delete-button') Delete
+                    button(class='cancel-button') Cancel

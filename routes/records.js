@@ -45,7 +45,6 @@ const recordVal = [
 ]
 router.post('/new', csrfProtection, recordVal, requireAuth, asyncHandler(async (req, res) => {
   const { title, description } = req.body
-  console.log(title, description)
   const record = db.Record.build({ title, description, userId: req.session.auth.userId })
   const validatorErrors = validationResult(req);
 
@@ -63,12 +62,13 @@ router.post('/new', csrfProtection, recordVal, requireAuth, asyncHandler(async (
   }
 }
 ))
-router.get('/:id/edit', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
+router.get('/:id/edit', csrfProtection,recordVal,requireAuth, asyncHandler(async (req, res) => {
   const id = req.params.id
   const pk = req.session.auth.userId
   const user = await db.User.findByPk(pk)
   const record = await db.Record.findByPk(id)
   const { title, description } = record
+
 
   if (record.userId !== req.session.auth.userId) {
     res.redirect('/records')
@@ -76,19 +76,33 @@ router.get('/:id/edit', csrfProtection, requireAuth, asyncHandler(async (req, re
     res.render(`editRecord`, { title, description, csrfToken: req.csrfToken(), id, pk, user })
   }
 }))
-router.post('/:id/edit', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
+router.post('/:id/edit', csrfProtection,recordVal,requireAuth, asyncHandler(async (req, res) => {
   const id = req.params.id
   const record = await db.Record.findByPk(id)
   const { title, description } = req.body
-  record.title = title
-  record.description = description
-  await record.save()
-  res.redirect('/records')
+  const validatorErrors = validationResult(req);
+
+  if(validatorErrors.isEmpty()){
+
+    record.title = title
+    record.description = description
+    await record.save()
+    res.redirect('/records')
+  }else{
+    const errors = validatorErrors.array().map(error => error.msg);
+    res.render('editRecord', {
+      title,
+      description,
+      errors,
+      csrfToken: req.csrfToken(),
+    });
+  }
 }))
 
 // GET specific record
 router.get('/:id', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
   const id = req.params.id;
+  const pk = req.session.auth.userId
 
   // getting record info
   const record = await db.Record.findByPk(id, {
@@ -102,13 +116,13 @@ router.get('/:id', csrfProtection, requireAuth, asyncHandler(async (req, res) =>
     order: [['id', 'DESC']],
     include: 'User'
   })
-  res.render('recordId', { record, comments, csrfToken: req.csrfToken() })
+  res.render('recordId', { record, comments, csrfToken: req.csrfToken(), pk, id })
 }))
 
 
 router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res) => {
   const post = await db.Record.findByPk(req.params.id);
-  console.log('\nyou hit the delete route');
+  // console.log('\nyou hit the delete route');
   if (post) {
     await post.destroy();
     res.json({ message: 'Success' });

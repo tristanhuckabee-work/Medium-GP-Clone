@@ -63,6 +63,6 @@ app.use(function (err, req, res, next) {
 });
 
 app.get('*', (req,res) =>{
-  res.send('you fucked up...💯')
+  res.send('Error! Try again!')
 });
 module.exports = app;

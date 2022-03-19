@@ -56,7 +56,7 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res) 
   const trending = await db.Record.findAll({
     limit: 6
   })
-  res.render('index', { errors, trending, csrfToken: req.csrfToken(), userName });
+  res.render('splashPage', { errors, trending, csrfToken: req.csrfToken(), userName });
 }));
 
 const userValidators = [

@@ -101,7 +101,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        userName: 'KanyeWest',
+        userName: 'Kanye West',
         hashedPassword: bcrypt.hashSync('sketeDavidson', 10),
         bio: "Skete Davidson IS WITH MY WIFE!! RIP CHANCE THE RAPPER, HE AINT DEAD BUT HIS MUSIC IS!",
         image: null,
@@ -117,7 +117,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        userName: 'SwitchMan227',
+        userName: 'Tyler the Creator',
         hashedPassword: bcrypt.hashSync('24681012', 10),
         bio: 'I love nintendo! Especially the switch and I love nintendo     music!',
         image: null,
