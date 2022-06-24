@@ -8,6 +8,8 @@ window.addEventListener("load", (event) => {
   const signUpToggle = document.getElementById("sign-up-open");
   const signInContainer = document.querySelector(".sign-in-container");
   const signUpContainer = document.querySelector(".sign-up-container");
+  const closeModalIN = document.getElementsByClassName("modal-close-X")[0]
+  const closeModalUP = document.getElementsByClassName("modal-close-X")[1]
   const disableselect = e => false;
 
   header.onselectstart = disableselect
@@ -20,24 +22,35 @@ window.addEventListener("load", (event) => {
       }
 
       signInContainer.classList.add('show');
+      closeModalIN.addEventListener('click', (e) => {
+        signInContainer.classList.remove('show')
+      })
     } else {
       signInContainer.classList.remove('show');
     }
   })
 
-  signUpToggle.addEventListener('click', () => {
+  signUpToggle.addEventListener('click', (e) => {
     if (!signUpContainer.classList.value.includes('show')) {
       if (signInContainer.classList.value.includes('show')) {
         signInContainer.classList.remove('show');
       }
 
       signUpContainer.classList.add('show');
+      closeModalUP.addEventListener('click', (e) => {
+        signUpContainer.classList.remove('show')
+      })
     } else {
       signUpContainer.classList.remove('show');
     }
+
   })
 
   signInContainer.addEventListener('click', (e) => {
+    e.stopPropagation();
+  })
+
+  signUpContainer.addEventListener('click', (e) => {
     e.stopPropagation();
   })
 

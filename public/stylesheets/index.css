@@ -268,3 +268,10 @@ footer a:hover {color:#b39856}
 .info-user p{
   font-family: 'Noto Sans', sans-serif;
 }
+.modal-close-X {
+  cursor: pointer;
+  color: #661b1c;
+  align-self: flex-end;
+  margin-right: 10%;
+  margin-top: -10%;
+}

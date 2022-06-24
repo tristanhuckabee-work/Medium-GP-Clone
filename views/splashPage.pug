@@ -46,7 +46,6 @@ block content
 
 
   div(class="sign-in-content")
-
     div(class="sign-in-container")
       if errors
         script.
@@ -67,6 +66,7 @@ block content
         div
           input(type="submit" value="Sign-in" id="sign-in-close")
       p Enter your information to Sign In:
+      p.modal-close-X Close
 
   div(class="sign-up-content")
     div(class="sign-up-container")
@@ -87,3 +87,4 @@ block content
         div()
           input(type="submit" value="Sign-up" id="sign-up-close")
       p Enter your information to Sign Up:
+      p.modal-close-X Close
