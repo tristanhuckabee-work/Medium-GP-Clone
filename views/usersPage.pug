@@ -17,7 +17,7 @@ block content
           h2 Users Records
             for record in records
                 if user.id === pk
-                    div.user-records(id=`record-container-${record.id}` onclick=`redirect(${record.id})`)
+                    div.records(id=`record-container-${record.id}` onclick=`redirect(${record.id})`)
                         h2= record.title
                         p.description= record.description
 
@@ -28,7 +28,7 @@ block content
                             button(class="edit-button edit")
                               i.fas.fa-pen-to-square.fa-2x
                 else
-                    div.user-records(onclick=`redirect(${record.id})`)
+                    div.records(onclick=`redirect(${record.id})`)
                         h2= record.title
                         p.description= record.description
                         div.authorOpts.not-author
