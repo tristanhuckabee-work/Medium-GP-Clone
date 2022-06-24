@@ -4,17 +4,18 @@ body{
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    padding-left: 150px;
     margin: 0;
 }
 
 /* record container */
 .records{
     /* background-color: red; */
-    
+
     display: grid;
     grid-template-columns: 700px auto 100px;
     grid-template-rows: 50px 100px;
-    grid-template-areas: 
+    grid-template-areas:
     'title writer opts'
     'desc  desc   opts';
     grid-gap: 10px;
@@ -74,7 +75,7 @@ body{
   grid-area: writer;
   align-self: center;
   justify-self: right;
-  
+
   margin: 0;
   color: darkgray;
   font-size: 14px;
@@ -127,7 +128,7 @@ body{
   background-color: #dddddd;
   border: 2px solid #b39856;
   color: #b39856;
-  
+
   border-radius: 5px;
   cursor: pointer;
 

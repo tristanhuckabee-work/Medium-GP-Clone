@@ -2,10 +2,11 @@
 
 body {
     display: flex;
-    align-items: flex-start;  
+    align-items: flex-start;
     justify-content: center;
     margin: 0;
-    padding-left: 205px;
+    padding-left: 165px;
+    padding-right: 50px;
 }
 
 /* USER BAR */
@@ -74,11 +75,11 @@ main {
 }
 
 /* record container */
-.records{
+.user-records{
   display: grid;
   grid-template-columns: 700px auto 100px;
   grid-template-rows: 50px 100px;
-  grid-template-areas: 
+  grid-template-areas:
   'title title opts'
   'desc  desc   opts';
   grid-gap: 10px;
@@ -90,7 +91,7 @@ main {
   border-left: 3px solid transparent;
 
 
-  width: 1100px;
+  /* width: 1100px; */
   margin: 40px 0 10px 0;
 
   font-family: 'Noto Sans', sans-serif;
@@ -98,6 +99,7 @@ main {
   text-decoration: none;
   cursor: pointer;
 }
+
 .records:hover {
 border-left: 3px solid #b39856;
 }

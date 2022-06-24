@@ -4,7 +4,6 @@ let algo = async() =>{
     const trending = []
     const recArr = []
     let rec = {}
-    // const rank = 1
 
     const applauds = await db.Applaud.findAll({})
 

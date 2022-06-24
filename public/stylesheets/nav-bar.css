@@ -7,7 +7,7 @@ nav {
   left:0; top:0;
   width: 35px;
   height: 100vh;
-  
+
   border-right: 15px solid #b39856;
   box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.5);
 }
@@ -15,12 +15,12 @@ nav {
 .nav-bar{
     background-color: #191d26;
     justify-content: space-between;
-    width: 200px;
+    width: 150px;
     padding: -10px 0;
     box-sizing: border-box;
 }
 /* location and spacing of buttons */
-.home-create-buttons, .user-logout-buttons{
+.home-create-buttons, .user-logout-buttons, .vinyl-icon{
     display: flex;
     flex-direction: column;
     justify-content: center;
