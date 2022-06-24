@@ -75,7 +75,7 @@ main {
 }
 
 /* record container */
-.user-records{
+.records{
   display: grid;
   grid-template-columns: 700px auto 100px;
   grid-template-rows: 50px 100px;
