@@ -54,13 +54,13 @@ block content
                 p.followers= followers
               else
                 p.followers= 0
-              p FOLLOWERS
+              p.followers-p FOLLOWERS
           div.follow
               if following
                 p.following= following
               else
                 p.following= 0
-              p FOLLOWING
+              p.following-p FOLLOWING
         if user.bio
             p.bio= user.bio
         else
