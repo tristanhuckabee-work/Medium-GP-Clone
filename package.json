@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "node psql-setup-scripts.js",
     "cleanSlate": "npx dotenv sequelize db:seed:undo:all && npx dotenv sequelize db:migrate:undo:all && npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all",
     "start": "per-env",
     "start:development": "nodemon -r dotenv/config ./bin/www",
